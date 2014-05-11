@@ -1,3 +1,13 @@
+
+# Github insists we set a markdown interpereter that is not the default
+markdown: redcarpet
+# This is the full set of plugins that GitHub supports
+gems:
+- jekyll-mentions
+- jemoji
+- jekyll-redirect-from
+#- jekyll-sitemap       # Disabled, as a template based one may need removal first
+
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
 permalink: /:categories/:year/:month/:day/:title 
