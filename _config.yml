@@ -8,6 +8,10 @@ gems:
 - jekyll-redirect-from
 #- jekyll-sitemap       # Disabled, as a template based one may need removal first
 
+# This will eventually be a list instead, for chaining parent themes.
+# Must be set
+theme: bootstrap-3
+
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
 permalink: /:categories/:year/:month/:day/:title 

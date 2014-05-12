@@ -2,4 +2,5 @@
 layout: default
 ---
 {% include JB/setup %}
-{% include themes/bootstrap-3/post.html %}
+{% capture themelayout %}themes/{{ site.theme }}/post.html{% endcapture %}
+{% include {{ themelayout }} %}
