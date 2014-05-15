@@ -1,9 +1,8 @@
 {% capture tinc %}
-{% for theme in site.theme_chain %}
-{% if site.data[theme].provides contains include.file %}
-{% capture theme_include_filename %}themes/{{ theme }}/{{ include.file }}{% endcapture %}
-{% break %}
-{% endif %}
-{% endfor %}
-{% endcapture %}{% assign tinc = nil %}
-{% include {{ theme_include_filename }} %}
+  {% for theme in site.theme_chain %}
+    {% if site.data[theme].provides contains include.file %}
+      {% capture theme_include_filename %}themes/{{ theme }}/{{ include.file }}{% endcapture %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}{% assign tinc = nil %}{% include {{ theme_include_filename }} %}
