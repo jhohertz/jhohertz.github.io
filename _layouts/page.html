@@ -1,7 +1,4 @@
 ---
 layout: default
 ---
-{% include JB/setup %}
-{% capture themelayout %}themes/{{ site.theme }}/page.html{% endcapture %}
-{% include {{ themelayout }} %}
-
+{% include JB/setup %}{% include theme_include file="page.html" %}

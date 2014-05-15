@@ -1,6 +1,4 @@
 ---
 layout: default
 ---
-{% include JB/setup %}
-{% capture themelayout %}themes/{{ site.theme }}/post.html{% endcapture %}
-{% include {{ themelayout }} %}
+{% include JB/setup %}{% include theme_include file="post.html" %}

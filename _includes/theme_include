@@ -1,8 +1,9 @@
+{% capture tinc %}
 {% for theme in site.theme_chain %}
-{% if site[theme].provides contains include.file %}
+{% if site.data[theme].provides contains include.file %}
 {% capture theme_include_filename %}themes/{{ theme }}/{{ include.file }}{% endcapture %}
-{% include {{ theme_include_filename }} %}
-{% assign theme_include_filename = nil %}
 {% break %}
 {% endif %}
 {% endfor %}
+{% endcapture %}{% assign tinc = nil %}
+{% include {{ theme_include_filename }} %}
