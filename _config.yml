@@ -11,6 +11,10 @@ gems:
 # This will eventually be a list instead, for chaining parent themes.
 # Must be set
 theme: bootstrap-3
+theme_chain: 
+  - local
+  - bootstrap-3
+  - default
 
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
