@@ -1,3 +1,7 @@
+
+# NOTE: This file and it's functions are deprecated for our purposes.
+# What is useful, will be converted to shell script
+
 require "rubygems"
 require 'rake'
 require 'yaml'
