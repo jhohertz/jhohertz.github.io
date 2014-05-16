@@ -1,0 +1,8 @@
+{% if site.safe and site.data.sharing.provider and page.JB.sharing != false %}
+
+{% case site.data.sharing.provider %}
+{% when "custom" %}
+  {% include custom/sharing %}
+{% endcase %}
+
+{% endif %}

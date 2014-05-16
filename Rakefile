@@ -1,3 +1,7 @@
+
+# NOTE: This file and it's functions are deprecated for our purposes.
+# What is useful, will be converted to shell script
+
 require "rubygems"
 require 'rake'
 require 'yaml'
@@ -129,27 +133,11 @@ namespace :theme do
     abort("rake aborted: '#{theme_path}' directory not found.") unless FileTest.directory?(theme_path)
     abort("rake aborted: '#{CONFIG['layouts']}' directory not found.") unless FileTest.directory?(CONFIG['layouts'])
 
-    Dir.glob("#{theme_path}/*") do |filename|
-      next if non_layout_files.include?(File.basename(filename).downcase)
-      puts "Generating '#{theme_name}' layout: #{File.basename(filename)}"
+    # FIXME: add a config edit here
 
-      open(File.join(CONFIG['layouts'], File.basename(filename)), 'w') do |page|
-        if File.basename(filename, ".html").downcase == "default"
-          page.puts "---"
-          page.puts File.read(settings_file) if File.exist?(settings_file)
-          page.puts "---"
-        else
-          page.puts "---"
-          page.puts "layout: default"
-          page.puts "---"
-        end 
-        page.puts "{% include JB/setup %}"
-        page.puts "{% include themes/#{theme_name}/#{File.basename(filename)} %}" 
-      end
-    end
-    
-    puts "=> Theme successfully switched!"
-    puts "=> Reload your web-page to check it out =)"
+    puts "=> Not implemented, edit theme: your _config.yml"
+    #puts "=> Theme successfully switched!"
+    #puts "=> Reload your web-page to check it out =)"
   end # task :switch
   
   # Public: Install a theme using the theme packager.
@@ -210,9 +198,6 @@ namespace :theme do
     
     puts "=> #{name} theme has been installed!"
     puts "=> ---"
-    if ask("=> Want to switch themes now?", ['y', 'n']) == 'y'
-      system("rake switch_theme name='#{name}'")
-    end
   end
 
   # Public: Package a theme using the theme packager.
