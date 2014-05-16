@@ -10,9 +10,10 @@ gems:
 
 # This will eventually be a list instead, for chaining parent themes.
 # Must be set
-theme: base_bootstrap
+theme: jekb
 theme_chain: 
   - local
+  - jekb
   - base_bootstrap
   - core
 
