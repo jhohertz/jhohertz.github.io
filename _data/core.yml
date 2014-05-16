@@ -1,5 +1,3 @@
-name: default
+name: core
 provides:
-  - default.html
-  - page.html
-  - post.html
+  - liquid_raw

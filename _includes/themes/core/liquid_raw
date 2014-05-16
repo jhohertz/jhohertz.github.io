@@ -19,7 +19,8 @@ Usage:
   |.% endfor %.|
 
   |.% assign tags_list = null %.|{% endcapture %}    
-  {% include theme_include file=JB/liquid_raw %}
+
+  then do the include
   
   As seen here, you must use "|." and ".|" as opening and closing brackets.
 -->{% endcomment%}
