@@ -1,5 +1,0 @@
-name: bootstrap-3
-provides:
-  - default.html
-  - page.html
-  - post.html
