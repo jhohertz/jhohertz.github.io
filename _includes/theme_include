@@ -8,4 +8,4 @@
       {% break %}
     {% endif %}
   {% endfor %}
-{% endcapture %}{% assign tinc = nil %}{% include {{ theme_include_filename }} %}
+{% endcapture %}{% assign tinc = nil %}{% include {{theme_include_filename}} %}
