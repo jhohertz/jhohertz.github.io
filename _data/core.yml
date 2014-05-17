@@ -3,3 +3,4 @@ provides:
   - liquid_raw
   - categories_list
   - pages_list
+  - posts_collate
