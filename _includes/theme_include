@@ -1,6 +1,6 @@
 {% capture tinc %}
   {% if include.dosetup == "yes" %}
-    {% include JB/setup %}
+    {% include setup %}
   {% endif %}
   {% for theme in site.theme_chain %}
     {% if site.data[theme].provides contains include.file %}

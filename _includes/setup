@@ -1,4 +1,4 @@
-{% capture jbcache %}
+{% capture setupcache %}
   <!--
   - Dynamically set liquid variables for working with URLs/paths
   -->
@@ -13,4 +13,4 @@
       {% assign HOME_PATH = "/" %}
     {% endif %}
   {% endif %}
-{% endcapture %}{% assign jbcache = nil %}
+{% endcapture %}{% assign setupcache = nil %}
