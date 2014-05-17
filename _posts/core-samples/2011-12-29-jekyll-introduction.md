@@ -9,6 +9,10 @@ tags : [intro, beginner, jekyll, tutorial]
 This Jekyll introduction will outline specifically  what Jekyll is and why you would want to use it.
 Directly following the intro we'll learn exactly _how_ Jekyll does what it does.
 
+Dr. Henry is a base on top of jekyll for making sites, it is based somewhat on Jekyll-bootstrap, but is diverging quite quickly. It is of an "alpha" quality right now.
+
+<!--fold-->
+
 ## Overview
 
 ### What is Jekyll?

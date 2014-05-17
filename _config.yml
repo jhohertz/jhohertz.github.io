@@ -1,6 +1,7 @@
 
 # Github insists we set a markdown interpereter that is not the default
-markdown: redcarpet
+#markdown: redcarpet
+markdown: kramdown
 # This is the full set of plugins that GitHub supports
 gems:
 - jekyll-mentions
@@ -23,6 +24,15 @@ permalink: /:categories/:year/:month/:day/:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 pygments: true
+
+# Pagination, affects both front and archive paging
+paginate: 10          # Posts per page on the blog index
+paginate_path: "archive/:num"
+
+excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
+# doesn't seem to work as documented. doing our own search/split for this.
+#excerpt_seperator: "<!--fold-->"
+
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.

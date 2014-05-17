@@ -1,7 +1,8 @@
 name: core
 provides:
-  - liquid_raw
+  - article
   - categories_list
+  - liquid_raw
   - pages_list
   - posts_collate
   - tags_list
