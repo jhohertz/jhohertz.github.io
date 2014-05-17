@@ -1,3 +1,4 @@
 name: core
 provides:
   - liquid_raw
+  - categories_list
