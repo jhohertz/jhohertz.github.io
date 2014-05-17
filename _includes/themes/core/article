@@ -16,11 +16,12 @@
   <div class="entry-content">
     {% if content contains '<!--fold-->' %}
       {{ content | split:'<!--fold-->' | first }}
+      {% capture excerpted %}true{% endcapture %}
     {% else %}
       {{ content }}
+      {% capture excerpted %}false{% endcapture %}
     {% endif %}
   </div>
-  {% capture excerpted %}{{ content | has_excerpt }}{% endcapture %}
   {% if excerpted == 'true' %}
     <footer>
       <a rel="full-article" href="{{ root_url }}{{ post.url }}">{{ site.excerpt_link }}</a>
