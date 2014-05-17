@@ -4,3 +4,4 @@ provides:
   - categories_list
   - pages_list
   - posts_collate
+  - tags_list
