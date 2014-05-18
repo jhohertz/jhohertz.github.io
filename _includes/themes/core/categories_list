@@ -17,17 +17,26 @@ Usage:
   This helper can be seen in use at: ../_layouts/default.html
 -->{% endcomment %}
 
-{% if categories_list.first[0] == null %}
-  {% for category in categories_list %} 
-    <li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category }}-ref">
-      {{ category | join: "/" }} <span>{{ site.categories[category].size }}</span>
+{% for category in categories_list %} 
+  {% if categories_list.first[0] == null %}
+    {% assign cats = category %}
+    {% assign cats_size = site.categories[category].size %}
+  {% else %}
+    {% assign cats = category[0] %}
+    {% assign cats_size = category[1].size %}
+  {% endif %}
+  {% capture cats_href %}{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ cats }}-ref{% endcapture %}
+  {% if cats_mode == "comma" %}
+    {% capture cats_link %}<a href="{{ cats_href }}">{{ cats | join: "/" }}</a>{% endcapture %}
+    {% if forloop.first %}{{ cats_link }}{% else %}, {{ cats_link }}{% endif %}
+    {% assign cats_link = nil %}
+  {% else %}
+    <li><a href="{{ cats_href }}">
+      {{ cats | join: "/" }} <span>{{ cats_size }}</span>
     </a></li>
-  {% endfor %}
-{% else %}
-  {% for category in categories_list %} 
-    <li><a href="{{ BASE_PATH }}{{ site.JB.categories_path }}#{{ category[0] }}-ref">
-      {{ category[0] | join: "/" }} <span>{{ category[1].size }}</span>
-    </a></li>
-  {% endfor %}
-{% endif %}
+  {% endif %}
+{% endfor %}
 {% assign categories_list = nil %}
+{% assign cats_mode = nil %}
+{% assign cats = nil %}
+{% assign cats_size = nil %}
