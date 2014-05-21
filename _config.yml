@@ -56,6 +56,9 @@ author :
 #
 production_url : http://username.github.io
 
+# Recent posts aside limit
+recent_posts: 5
+
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
 JB :

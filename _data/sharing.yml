@@ -22,3 +22,18 @@ googleplus_hidden: false
 # Facebook Like
 facebook_like: false
 
+# Aside: Github user stats
+github_user: false
+github_repo_count: 5
+github_skip_forks: true
+github_show_profile_link: true
+
+# Aside: delicious bookmarks
+delicious_user: false
+delicious_count: 5
+
+# Aside: pinboard 
+pinboard_user: false
+pinboard_count: 5
+
+
