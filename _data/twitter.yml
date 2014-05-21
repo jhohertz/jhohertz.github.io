@@ -3,3 +3,4 @@ provides:
   - default.html
   - page.html
   - post.html
+  - head

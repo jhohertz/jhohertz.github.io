@@ -1,3 +1,4 @@
 name: jekb
 provides:
   - default.html
+  - head
