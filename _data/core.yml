@@ -1,8 +1,15 @@
 name: core
 provides:
+  - after_footer
+  - archive_post
   - article
+  - author
+  - categories
   - categories_list
+  - footer
+  - header
   - liquid_raw
+  - navigation
   - pages_list
   - posts_collate
   - tags_list
