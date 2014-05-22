@@ -12,13 +12,7 @@ title: Blog
     </article>
   {% endfor %}
   <div class="pagination">
-    {% if paginator.next_page %}
-      <a class="prev" href="{{paginator.next_page}}">&larr; Older</a>
-    {% endif %}
-    <a href="/blog/archives">Blog Archives</a>
-    {% if paginator.previous_page %}
-    <a class="next" href="{{paginator.previous_page}}">Newer &rarr;</a>
-    {% endif %}
+    <a class="prev" href="{{ root_url }}/archive/2">&larr; Older</a>
   </div>
 </div>
 <aside class="sidebar">

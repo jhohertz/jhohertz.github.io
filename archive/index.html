@@ -24,8 +24,8 @@ footer: false
 </div>
 <aside class="sidebar">
   {% if site.blog_index_asides.size %}
-    {% include array array=blog_index_asides %}
+    {% include array array=site.blog_index_asides %}
   {% else %}
-    {% include array array=default_asides %}
+    {% include array array=site.default_asides %}
   {% endif %}
 </aside>
