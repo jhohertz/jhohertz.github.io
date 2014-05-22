@@ -1,5 +1,9 @@
 <div class="row post-full">
+  {% if page.sidebar == false %}
   <div class="col-xs-12">
+  {% else %}
+  <div class="col-xs-9">
+  {% endif %}
     <article class="hentry" role="article">
       {% include theme_include file="article" %}
       <footer>
@@ -31,12 +35,14 @@
     {% include modules/comments %}
   </div>
   {% unless page.sidebar == false %}
-  <aside class="sidebar">
+  <div class="col-xs-3">
+    <aside class="sidebar">
       {% if site.blog_index_asides.size %}
         {% include array array=site.blog_index_asides %}
       {% else %}
         {% include array array=site.default_asides %}
       {% endif %}
     </aside>
+  </div>
   {% endunless %}
 </div>
