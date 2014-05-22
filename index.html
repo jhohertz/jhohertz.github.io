@@ -1,12 +1,11 @@
 ---
 layout: page
-title: Blog Archive
-footer: false
+title: Blog
 ---
 {% include setup %}
 <div class="blog-index">
   {% assign index = true %}
-  {% for post in paginator.posts %}
+  {% for post in site.posts limit: site.paginate %}
   {% assign content = post.content %}
     <article>
       {% include theme_include file="article" %}
@@ -24,8 +23,8 @@ footer: false
 </div>
 <aside class="sidebar">
   {% if site.blog_index_asides.size %}
-    {% include array array=blog_index_asides %}
+    {% include array array=site.blog_index_asides %}
   {% else %}
-    {% include array array=default_asides %}
+    {% include array array=site.default_asides %}
   {% endif %}
 </aside>
