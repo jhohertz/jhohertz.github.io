@@ -4,3 +4,6 @@ provides:
   - page.html
   - post.html
   - head
+  - navigation
+  - footer
+  - after_footer
