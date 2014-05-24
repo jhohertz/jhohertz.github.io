@@ -13,3 +13,7 @@ provides:
   - pages_list
   - posts_collate
   - tags_list
+  - page_article_area
+  - page_asides
+  - post_article_area
+  - post_asides

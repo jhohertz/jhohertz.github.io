@@ -4,38 +4,12 @@
   {% else %}
   <div class="col-xs-9">
   {% endif %}
-    <article role="article">
-      {% if page.title %}
-      <header>
-        <h1 class="entry-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
-        {% if page.date %}<p class="meta">{% include modules/date %}{{ time }}</p>{% endif %}
-      </header>
-      {% endif %}
-      {{ content }}
-      {% unless page.footer == false %}
-        <footer>
-          {% if page.date or page.author %}<p class="meta">
-            {% if page.author %}{% include theme_include file="author" %}{% endif %}
-            {% include modules/date %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
-            {% if page.categories %}{% include theme_include file="categories" %}{% endif %}
-          </p>{% endif %}
-          {% unless page.sharing == false %}
-            {% include modules/sharing %}
-          {% endunless %}
-        </footer>
-      {% endunless %}
-    </article>
-    {% include modules/comments %}
+  {% include theme_include file="page_article_area" %}
+  {% include modules/comments %}
   </div>
   {% unless page.sidebar == false %}
   <div class="col-xs-3">
-    <aside class="sidebar">
-      {% if site.blog_index_asides.size %}
-        {% include array array=site.blog_index_asides %}
-      {% else %}
-        {% include array array=site.default_asides %}
-      {% endif %}
-    </aside>
+    {% include theme_include file="page_asides" %}
   </div>
   {% endunless %}
 </div>

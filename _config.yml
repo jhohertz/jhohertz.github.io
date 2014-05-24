@@ -3,6 +3,9 @@
 #markdown: redcarpet
 markdown: kramdown
 
+sass:
+  sass_dir: _sass
+
 # This is the full set of plugins that GitHub supports
 gems:
   - jekyll-sitemap
@@ -18,6 +21,7 @@ theme_chain:
   - jekb
   - base_bootstrap
   - core
+#- octo
 
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
@@ -69,6 +73,8 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # blog_index_asides:
 # post_asides:
 # page_asides:
+
+simple_search: true
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #

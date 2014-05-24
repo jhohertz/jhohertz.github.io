@@ -4,45 +4,12 @@
   {% else %}
   <div class="col-xs-9">
   {% endif %}
-    <article class="hentry" role="article">
-      {% include theme_include file="article" %}
-      <footer>
-        <p class="meta">
-          {% include theme_include file="author" %}
-          {% include modules/date %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
-          {% include theme_include file="categories" %}
-        </p>
-        {% unless page.sharing == false %}
-          {% include modules/sharing %}
-        {% endunless %}
-        <p class="meta">
-          <ul class="pagination">
-          {% if page.previous %}
-            <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&laquo; Previous</a></li>
-          {% else %}
-            <li class="prev disabled"><a>&larr; Previous</a></li>
-          {% endif %}
-            <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">Archive</a></li>
-          {% if page.next %}
-            <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &raquo;</a></li>
-          {% else %}
-            <li class="next disabled"><a>Next &rarr;</a>
-          {% endif %}
-          </ul>
-        </p>
-      </footer>
-    </article>
-    {% include modules/comments %}
+  {% include theme_include file="post_article_area" %}
+  {% include modules/comments %}
   </div>
   {% unless page.sidebar == false %}
   <div class="col-xs-3">
-    <aside class="sidebar">
-      {% if site.blog_index_asides.size %}
-        {% include array array=site.blog_index_asides %}
-      {% else %}
-        {% include array array=site.default_asides %}
-      {% endif %}
-    </aside>
+    {% include theme_include file="post_asides" %}
   </div>
   {% endunless %}
 </div>
