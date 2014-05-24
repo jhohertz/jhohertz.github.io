@@ -15,8 +15,8 @@
   <![endif]-->
 
   <!-- Le styles -->
-  <link href="{{ BASE_PATH }}/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
-  <link href="{{ BASE_PATH }}/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ root_url }}/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+  <link href="{{ root_url }}/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
 
   <!-- Le fav and touch icons -->
 <!-- Update these with your own images
@@ -27,7 +27,7 @@
 -->
 
   <!-- atom & rss feed -->
-  <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
-  <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+  <link href="{{ root_url }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+  <link href="{{ root_url }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
 
 </head>

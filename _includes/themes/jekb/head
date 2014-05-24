@@ -12,14 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap styles -->
-    <link href="{{ BASE_PATH }}/assets/themes/base_bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ root_url }}/assets/themes/base_bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Optional theme -->
-    <link href="{{ BASE_PATH }}/assets/themes/base_bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="{{ root_url }}/assets/themes/base_bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Sticky Footer -->
-    <link href="{{ BASE_PATH }}/assets/themes/base_bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+    <link href="{{ root_url }}/assets/themes/base_bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
     
     <!-- Custom styles -->
-    <link href="{{ BASE_PATH }}/assets/themes/jekb/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="{{ root_url }}/assets/themes/jekb/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,7 +37,7 @@
     -->
 
     <!-- atom & rss feed -->
-    <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
-    <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    <link href="{{ root_url }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="{{ root_url }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
 
   </head>

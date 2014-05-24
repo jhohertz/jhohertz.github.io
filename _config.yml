@@ -1,10 +1,7 @@
 
 # Github insists we set a markdown interpereter that is not the default
-#markdown: redcarpet
-markdown: kramdown
-
-sass:
-  sass_dir: _sass
+#markdown: redcarpet	# has bugs
+markdown: kramdown	# github's suggestion
 
 # This is the full set of plugins that GitHub supports
 gems:
@@ -18,10 +15,25 @@ gems:
 theme: jekb
 theme_chain: 
   - local
-  - jekb
-  - base_bootstrap
+  #  - jekb
+  #  - base_bootstrap
+  - octo
   - core
-#- octo
+
+# If publishing to a subdirectory as in http://site.com/project set 'root: /project'
+# Must not have trailing slash, IE: '/project/'
+root: /
+
+# The production_url is only used when full-domain names are needed
+# such as sitemap.txt 
+# Most places will/should use root_url to make the urls
+# Links in your website should always be prefixed with {{ root_url }}
+#
+# If you have set a CNAME (pages.github.com) set your custom domain here.
+# Else if you are pushing to username.github.io, replace with your username.
+# Finally if you are pushing to a GitHub project page, include the project name at the end.
+#
+production_url : http://username.github.io
 
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
@@ -51,16 +63,6 @@ author :
   twitter : username
   feedburner : feedname
 
-# The production_url is only used when full-domain names are needed
-# such as sitemap.txt 
-# Most places will/should use BASE_PATH to make the urls
-#
-# If you have set a CNAME (pages.github.com) set your custom domain here.
-# Else if you are pushing to username.github.io, replace with your username.
-# Finally if you are pushing to a GitHub project page, include the project name at the end.
-#
-production_url : http://username.github.io
-
 # Recent posts aside limit
 recent_posts: 5
 
@@ -81,30 +83,6 @@ simple_search: https://www.google.com/search
 JB :
   version : 0.3.0
 
-  # All links will be namespaced by BASE_PATH if defined.
-  # Links in your website should always be prefixed with {{BASE_PATH}}
-  # however this value will be dynamically changed depending on your deployment situation.
-  #
-  # CNAME (http://yourcustomdomain.com)
-  #   DO NOT SET BASE_PATH 
-  #   (urls will be prefixed with "/" and work relatively)
-  #
-  # GitHub Pages (http://username.github.io)
-  #   DO NOT SET BASE_PATH 
-  #   (urls will be prefixed with "/" and work relatively)
-  #
-  # GitHub Project Pages (http://username.github.io/project-name)
-  #
-  #   A GitHub Project site exists in the `gh-pages` branch of one of your repositories.
-  #  REQUIRED! Set BASE_PATH to: http://username.github.io/project-name
-  #
-  # CAUTION:
-  #   - When in Localhost, your site will run from root "/" regardless of BASE_PATH
-  #   - Only the following values are falsy: ["", null, false]
-  #   - When setting BASE_PATH it must be a valid url.
-  #     This means always setting the protocol (http|https) or prefixing with "/"
-  BASE_PATH : false
-
   # These paths are to the main pages Jekyll-Bootstrap ships with.
   # Some JB helpers refer to these paths; change them here if needed.
   #
@@ -114,22 +92,3 @@ JB :
   atom_path : /atom.xml
   rss_path : /rss.xml
 
-  # Settings for sharing helper. 
-  # Sharing is for things like tweet, plusone, like, reddit buttons etc.
-  # Set 'provider' to the sharing provider you want to use.
-  # Set 'provider' to false to turn sharing off globally.
-  #
-  sharing :
-    provider : false
-    
-  # Settings for all other include helpers can be defined by creating 
-  # a hash with key named for the given helper. ex:
-  #
-  #   pages_list :
-  #     provider : "custom"   
-  #
-  # Setting any helper's provider to 'custom' will bypass the helper code
-  # and include your custom code. Your custom file must be defined at:
-  #   ./_includes/custom/[HELPER]
-  # where [HELPER] is the name of the helper you are overriding.
-  

@@ -1,0 +1,8 @@
+# RSS / Email (optional) subscription links (change if using something like Feedburner)
+rss: /atom.xml
+#email:
+# RSS feeds can list your email address if you like
+# FIXME: not implemented yet
+#email:
+
+
