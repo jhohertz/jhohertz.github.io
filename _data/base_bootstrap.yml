@@ -7,3 +7,4 @@ provides:
   - navigation
   - footer
   - after_footer
+  - search_box

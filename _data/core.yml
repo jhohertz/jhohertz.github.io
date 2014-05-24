@@ -17,3 +17,4 @@ provides:
   - page_asides
   - post_article_area
   - post_asides
+  - search_box

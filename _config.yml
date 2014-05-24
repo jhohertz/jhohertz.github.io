@@ -74,7 +74,7 @@ default_asides: [asides/recent_posts.html, asides/github.html, asides/delicious.
 # post_asides:
 # page_asides:
 
-simple_search: true
+simple_search: https://www.google.com/search
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
