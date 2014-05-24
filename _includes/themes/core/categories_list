@@ -25,7 +25,7 @@ Usage:
     {% assign cats = category[0] %}
     {% assign cats_size = category[1].size %}
   {% endif %}
-  {% capture cats_href %}{{ root_url }}{{ site.JB.categories_path }}#{{ cats }}-ref{% endcapture %}
+  {% capture cats_href %}{{ root_url }}{{ site.data.dr.categories_path }}#{{ cats }}-ref{% endcapture %}
   {% if cats_mode == "comma" %}
     {% capture cats_link %}<a href="{{ cats_href }}">{{ cats | join: "/" }}</a>{% endcapture %}
     {% if forloop.first %}{{ cats_link }}{% else %}, {{ cats_link }}{% endif %}

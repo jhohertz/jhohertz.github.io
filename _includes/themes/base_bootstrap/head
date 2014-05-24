@@ -33,6 +33,6 @@
       <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
     -->
     <!-- atom & rss feed -->
-    <link href="{{ root_url }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
-    <link href="{{ root_url }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    <link href="{{ root_url }}{{ site.data.subscribe.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="{{ root_url }}{{ site.data.subscribe.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
   </head>
