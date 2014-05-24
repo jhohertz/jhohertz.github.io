@@ -3,7 +3,6 @@ layout: page
 title: Blog Archive
 footer: false
 ---
-{% include setup %}
 <div class="blog-index">
   {% assign index = true %}
   {% for post in paginator.posts %}
@@ -22,10 +21,3 @@ footer: false
     {% endif %}
   </div>
 </div>
-<aside class="sidebar">
-  {% if site.blog_index_asides.size %}
-    {% include array array=site.blog_index_asides %}
-  {% else %}
-    {% include array array=site.default_asides %}
-  {% endif %}
-</aside>

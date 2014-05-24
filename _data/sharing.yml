@@ -7,11 +7,11 @@ provider: false
 
 # set provider to local, and setup below items
 # Twitter
-twitter_user:
+twitter_user: joehohertz
 twitter_tweet_button: true
 
 # Google +1
-google_plus_one: false
+google_plus_one: true
 google_plus_one_size: medium
 
 # Google Plus Profile
@@ -20,10 +20,10 @@ googleplus_user:
 googleplus_hidden: false
 
 # Facebook Like
-facebook_like: false
+facebook_like: true
 
 # Aside: Github user stats
-github_user: false
+github_user: jhohertz
 github_repo_count: 5
 github_skip_forks: true
 github_show_profile_link: true

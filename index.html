@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Blog
+index_page: true
 comments: false
 ---
 {% include setup %}
@@ -16,10 +17,3 @@ comments: false
     <a class="prev" href="{{ root_url }}/archive/2">&larr; Older</a>
   </div>
 </div>
-<aside class="sidebar">
-  {% if site.blog_index_asides.size %}
-    {% include array array=site.blog_index_asides %}
-  {% else %}
-    {% include array array=site.default_asides %}
-  {% endif %}
-</aside>
