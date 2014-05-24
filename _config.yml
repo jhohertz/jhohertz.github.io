@@ -2,12 +2,13 @@
 # Github insists we set a markdown interpereter that is not the default
 #markdown: redcarpet
 markdown: kramdown
+
 # This is the full set of plugins that GitHub supports
 gems:
-- jekyll-mentions
-- jemoji
-- jekyll-redirect-from
-#- jekyll-sitemap       # Disabled, as a template based one may need removal first
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-mentions
+  - jemoji
 
 # This will eventually be a list instead, for chaining parent themes.
 # Must be set
