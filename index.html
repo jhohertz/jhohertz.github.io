@@ -1,15 +1,14 @@
 ---
 layout: page
-title: Blog
+#title: Blog
 index_page: true
 comments: false
 ---
-{% include setup %}
 <div class="blog-index">
   {% assign index = true %}
   {% for post in site.posts limit: site.paginate %}
   {% assign content = post.content %}
-    <article>
+    <article role="article">
       {% include theme_include file="article" %}
     </article>
   {% endfor %}
