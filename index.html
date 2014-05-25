@@ -4,6 +4,7 @@ layout: page
 index_page: true
 comments: false
 ---
+{% include setup %}
 <div class="blog-index">
   {% assign index = true %}
   {% for post in site.posts limit: site.paginate %}
