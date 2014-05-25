@@ -13,7 +13,9 @@ comments: false
       {% include theme file="article" %}
     </article>
   {% endfor %}
-  <div class="pagination">
-    <a class="prev" href="{{ root_url }}/archive/2">&larr; Older</a>
-  </div>
+  {% if site.posts.size > site.paginate %}
+    <div class="pagination">
+      <a class="prev" href="{{ root_url }}{{ site.data.dr.archive_path }}/2">&larr; Older</a>
+    </div>
+  {% endif %}
 </div>

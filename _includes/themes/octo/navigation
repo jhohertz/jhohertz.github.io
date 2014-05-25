@@ -2,6 +2,6 @@
 {% include theme file="search_box" %}
 <ul class="main-navigation">
   <li><a href="{{ root_url }}/">Blog</a></li>
-  <li><a href="{{ root_url }}/archives">Archives</a></li>
+  <li><a href="{{ root_url }}{{ site.data.dr.archive_path }}">Archives</a></li>
 </ul>
 {% include custom/navigation %}

@@ -1,4 +1,4 @@
 version: 0
-archive_path: /archive.html
+archive_path: /archive
 categories_path : /categories.html
 tags_path : /tags.html

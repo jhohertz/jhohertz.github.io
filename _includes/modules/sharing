@@ -5,7 +5,7 @@
     {% when "internal" %}
       <div class="sharing">
         {% if site.data.sharing.twitter_tweet_button %}
-        <a href="//twitter.com/share" class="twitter-share-button" data-url="{{ site.url }}{{ page.url }}" data-via="{{ site.data.sharing.twitter_user }}" data-counturl="{{ site.url }}{{ page.url }}" >Tweet</a>
+        <a href="//twitter.com/share" class="twitter-share-button" data-url="{{ site.production_url }}{{ page.url }}" data-via="{{ site.data.sharing.twitter_user }}" data-counturl="{{ site.url }}{{ page.url }}" >Tweet</a>
         {% endif %}
         {% if site.data.sharing.google_plus_one %}
         <div class="g-plusone" data-size="{{ site.data.sharing.google_plus_one_size }}"></div>
