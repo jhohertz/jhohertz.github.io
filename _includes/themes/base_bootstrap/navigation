@@ -6,14 +6,14 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
   </button>
-  {% include theme_include file="header" %}
+  {% include theme file="header" %}
 </div>
 <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="jb-navbar-collapse">
   <ul class="nav navbar-nav">
     {% assign pages_list = site.pages %}
     {% assign group = 'navigation' %}
-    {% include theme_include file="pages_list" %}
+    {% include theme file="pages_list" %}
   </ul>
-  {% include theme_include file="search_box" %}
+  {% include theme file="search_box" %}
 </div><!-- /.navbar-collapse -->

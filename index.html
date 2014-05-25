@@ -9,7 +9,7 @@ comments: false
   {% for post in site.posts limit: site.paginate %}
   {% assign content = post.content %}
     <article role="article">
-      {% include theme_include file="article" %}
+      {% include theme file="article" %}
     </article>
   {% endfor %}
   <div class="pagination">

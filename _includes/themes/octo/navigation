@@ -1,5 +1,5 @@
-{% include theme_include file="subscribe" %}
-{% include theme_include file="search_box" %}
+{% include theme file="subscribe" %}
+{% include theme file="search_box" %}
 <ul class="main-navigation">
   <li><a href="{{ root_url }}/">Blog</a></li>
   <li><a href="{{ root_url }}/archives">Archives</a></li>

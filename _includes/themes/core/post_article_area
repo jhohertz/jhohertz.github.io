@@ -1,16 +1,16 @@
 <article class="hentry" role="article">
-  {% include theme_include file="article" %}
+  {% include theme file="article" %}
   <footer>
     <p class="meta">
-      {% include theme_include file="author" %}
+      {% include theme file="author" %}
       {% include modules/date %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
-      {% include theme_include file="categories" %}
+      {% include theme file="categories" %}
     </p>
     {% unless page.sharing == false %}
       {% include modules/sharing %}
     {% endunless %}
     <p class="meta">
-      {% include theme_include file="pagination_pages" %}
+      {% include theme file="pagination_pages" %}
     </p>
   </footer>
 </article>

@@ -1,15 +1,15 @@
-{% include theme_include file="head" %}
+{% include theme file="head" %}
 <body {% if page.body_id %} id="{{ page.body_id }}" {% endif %}/>
   <div id="wrap">
     <nav class="navbar navbar-default" role="navigation">
-      {% include theme_include file="navigation" %}
+      {% include theme file="navigation" %}
     </nav>
     <div class="container">
       {{ content }}
     </div>
   </div>
-  {% include theme_include file="footer" %}
+  {% include theme file="footer" %}
   {% include modules/analytics %}
-  {% include theme_include file="after_footer" %}
+  {% include theme file="after_footer" %}
 </body>
 </html>

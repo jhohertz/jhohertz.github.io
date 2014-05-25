@@ -8,8 +8,8 @@ footer: false
   {% for post in paginator.posts %}
   {% assign content = post.content %}
     <article>
-      {% include theme_include file="article" %}
+      {% include theme file="article" %}
     </article>
   {% endfor %}
-  {% include theme_include file="pagination_archive" %}
+  {% include theme file="pagination_archive" %}
 </div>

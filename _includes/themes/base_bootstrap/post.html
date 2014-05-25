@@ -4,12 +4,12 @@
   {% else %}
   <div class="col-xs-9">
   {% endif %}
-  {% include theme_include file="post_article_area" %}
+  {% include theme file="post_article_area" %}
   {% include modules/comments %}
   </div>
   {% unless page.sidebar == false %}
   <div class="col-xs-3">
-    {% include theme_include file="post_asides" %}
+    {% include theme file="post_asides" %}
   </div>
   {% endunless %}
 </div>
