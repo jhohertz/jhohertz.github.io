@@ -7,7 +7,7 @@
     {% endif %}
     {% unless page.meta == false %}
       <p class="meta">
-        {% include modules/date %}<div class="date">{{ time }}</div>
+        {% include modules/date %}{{ time }}
       </p>
     {% endunless %}
   </header>
