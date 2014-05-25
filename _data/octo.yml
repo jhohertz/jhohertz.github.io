@@ -3,5 +3,6 @@ provides:
   - default.html
   - head
   - header
+  - navigation
   - page.html
   - post.html
