@@ -1,6 +1,9 @@
 name: twitter
 provides:
   - default.html
-  - page.html
-  - post.html
+  - footer
   - head
+  - navigation
+  - page.html
+  - pagination_pages
+  - post.html

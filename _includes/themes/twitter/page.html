@@ -3,7 +3,17 @@
 </div>
 
 <div class="row-fluid">
+  {% if page.sidebar == false %}
   <div class="span12">
-    {{ content }}
+  {% else %}
+  <div class="span9">
+  {% endif %}
+  {% include theme_include file="page_article_area" %}
+  {% include modules/comments %}
   </div>
+  {% unless page.sidebar == false %}
+  <div class="span3">
+    {% include theme_include file="page_asides" %}
+  </div>
+  {% endunless %}
 </div>
