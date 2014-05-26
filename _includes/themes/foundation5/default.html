@@ -1,15 +1,13 @@
 {% include theme file="head" %}
 <body {% if page.body_id %} id="{{ page.body_id }}" {% endif %}>
-  <div id="wrap">
-    <nav class="navbar navbar-default" role="navigation">
-      {% include theme file="navigation" %}
-    </nav>
-    <div class="container">
-      {{ content }}
-    </div>
-  </div>
+  {% include theme file="navigation" %}
+  {{ content }}
   {% include theme file="footer" %}
   {% include modules/analytics %}
   {% include theme file="after_footer" %}
+  <script src="{{ root_url }}/assets/themes/foundation5/js/foundation.min.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
 </body>
 </html>

@@ -1,0 +1,9 @@
+<aside class="large-3 columns">
+  {% if page.index_page and site.blog_index_asides.size %}
+    {% include array array=site.blog_index_asides %}
+  {% elsif site.page_asides.size %}
+    {% include array array=site.page_asides %}
+  {% else %}
+    {% include array array=site.default_asides %}
+  {% endif %}
+</aside>

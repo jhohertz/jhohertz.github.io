@@ -2,3 +2,4 @@ version: 0.0.1
 archive_path: /blog
 categories_path : /categories.html
 tags_path : /tags.html
+pages_path : /pages.html
