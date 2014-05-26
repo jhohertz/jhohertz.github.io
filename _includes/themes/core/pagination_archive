@@ -1,9 +1,9 @@
 <div class="pagination">
   {% if paginator.next_page %}
-    <a class="prev" href="{{paginator.next_page}}">&larr; Older</a>
+    <a class="prev" href="{{ root_url }}{{ site.data.dr.archive.path }}/{{ paginator.next_page }}">&larr; Older</a>
   {% endif %}
   <a href="{{ root_url }}{{ site.data.dr.archive_path }}">Blog Archives</a>
   {% if paginator.previous_page %}
-  <a class="next" href="{{paginator.previous_page}}">Newer &rarr;</a>
+  <a class="next" href="{{ root_url }}{{ site.data.dr.archive.path }}/{{ paginator.previous_page }}">Newer &rarr;</a>
   {% endif %}
 </div>
