@@ -8,6 +8,21 @@
 
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="{{ root_url }}/assets/themes/foundation5/css/foundation.css" />
+
+  <style type="text/css">
+.top-bar input[type="text"], .top-bar .button {
+    font-size: 0.77778rem;
+    position: relative;
+    top: 7px;
+}
+
+.top-bar input[type="text"] {
+    height: auto;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    font-size: 0.75rem;
+}
+  </style>
   <!-- atom & rss feed -->
   <link href="{{ root_url }}{{ site.data.subscribe.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
   <link href="{{ root_url }}{{ site.data.subscribe.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
