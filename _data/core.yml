@@ -7,6 +7,7 @@ provides:
   - categories
   - categories_list
   - footer
+  - head_icons
   - header
   - liquid_raw
   - navigation
