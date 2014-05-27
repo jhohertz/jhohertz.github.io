@@ -3,6 +3,11 @@ provides:
   - after_footer
   - archive_post
   - article
+  - asides/delicious.html
+  - asides/github.html
+  - asides/googleplus.html
+  - asides/pinboard.html
+  - asides/recent_posts.html
   - author
   - categories
   - categories_list
