@@ -32,5 +32,11 @@
 
   <!-- jQuery needs to be up top, do not move -->
   <script src="{{ root_url }}/assets/themes/foundation5/js/vendor/jquery.js"></script>
+
+  <script src="{{ root_url }}/assets/themes/foundation5/js/foundation.min.js"></script>
+  <script>
+    $(document).ready( function(){ $(document).foundation(); });
+  </script>
+
 </head>
 
