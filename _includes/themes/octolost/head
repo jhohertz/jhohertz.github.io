@@ -42,7 +42,6 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic,500,500italic' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
 
-  {% include custom/head.html %}
-  {% include google_analytics.html %}
+  {% include custom/head %}
 </head>
 

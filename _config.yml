@@ -18,6 +18,7 @@ theme_chain:
   #- base_bootstrap
   #- octo
   #- twitter
+  - octolost
   - foundation5
   - core
 
