@@ -1,10 +1,14 @@
 <div class="blog-index">
   {% assign index = true %}
-  {% for post in paginator.posts %}
+  {% for post in site.posts limit: site.paginate %}
   {% assign content = post.content %}
-    <article>
+    <article role="article">
       {% include theme file="article" %}
     </article>
   {% endfor %}
-  {% include theme file="pagination_archive" %}
+  {% if site.posts.size > site.paginate %}
+    <div class="pagination">
+      <a class="prev" href="{{ root_url }}{{ site.data.dr.archive_path }}/2">&larr; Older</a>
+    </div>
+  {% endif %}
 </div>
