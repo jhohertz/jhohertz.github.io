@@ -1,0 +1,21 @@
+<div class="small-12 medium-12 {% if page.sidebar == false %}large-10 large-centered {% elsif page.sidebar_left %}large-8 large-push-4 {% else %}large-8 {% endif %}columns">
+  {% if page.title %}
+    <header class="page-header">
+      <h1 class="page-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
+      {% if page.subtitle %}<h1 class="subheader">{{ page.subtitle }}</h1>{% endif %}
+    </header>
+  {% endif %}
+  <div class="blog-index">
+    {% assign index = true %}
+    {% for post in paginator.posts %}
+    {% assign content = post.content %}
+      <article>
+        {% include theme file="article" %}
+      </article>
+      {% unless post == paginator.posts.last %}
+      <hr>
+      {% endunless %}
+    {% endfor %}
+    {% include theme file="pagination_archive" %}
+  </div>
+</div>
