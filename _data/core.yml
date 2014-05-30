@@ -9,6 +9,8 @@ provides:
   - asides/pinboard.html
   - asides/recent_posts.html
   - author
+  - blog_index
+  - blog_archive
   - categories
   - categories_list
   - date
