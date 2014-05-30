@@ -3,6 +3,6 @@
 <time datetime="{{ post.date | datetime | date_to_xmlschema }}" pubdate><i class="fa fa-calendar-o"></i> {{ post.date | date: "<span class='month'>%b</span> <span class='day'>%d,</span> <span class='year'>%Y</span>"}}</time>
 {% if category != '0' %}
 <footer>
-  <span class="categories"><i class="fa fa-tag"></i> Posted in {% assign cats_mode = "comma" %}{% assign categories_list = post.categories %}{% include theme file=categories_list %}</span>
+  <span class="categories"><i class="fa fa-tag"></i> Posted in {% assign cats_mode = "comma" %}{% assign categories_list = post.categories %}{% include theme file="categories_list" %}</span>
 </footer>
 {% endif %}
