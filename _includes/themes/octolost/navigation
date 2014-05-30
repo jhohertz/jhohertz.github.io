@@ -1,3 +1,5 @@
+<header role="banner" class="top-header">{% include theme file="header" %}</header>
+<nav role="navigation">
 {% include theme file="subscribe" %}
 {% include theme file="search_box" %}
 {% if site.fixed_navigation %}
@@ -29,3 +31,4 @@
 {% if site.fixed_navigation %}
 </div>
 {% endif %}
+</nav>
