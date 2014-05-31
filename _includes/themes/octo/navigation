@@ -1,7 +1,8 @@
 {% include theme file="subscribe" %}
 {% include theme file="search_box" %}
 <ul class="main-navigation">
-  <li><a href="{{ root_url }}/">Blog</a></li>
+  <li><a href="{{ root_url }}//">Home</a></li>
+  <li><a href="{{ root_url }}{{ site.data.dr.blog_path }}/">Blog</a></li>
   <li><a href="{{ root_url }}{{ site.data.dr.archive_path }}">Archives</a></li>
 </ul>
 {% include custom/navigation %}

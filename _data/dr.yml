@@ -1,5 +1,6 @@
 version: 0.0.1
-archive_path: /blog
+blog_path: /blog
+archive_path: /blog/archives
 categories_path : /categories.html
 tags_path : /tags.html
 pages_path : /pages.html

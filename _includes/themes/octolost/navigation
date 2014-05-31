@@ -11,20 +11,19 @@
       </li>
       <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
-
   <section class="top-bar-section">
     {% include theme file="search_box" %}
     <ul class="main-navigation right">
         <li{% if page.url == '/index.html' %} class="active"{% endif %}><a href="{{ root_url }}/">Home</a></li>
         <li class="has-dropdown{% if page.url == site.data.dr.categories_path or page.url == site.data.dr.tags_path or page.url == site.data.dr.pages_path or page.url == '/no-sidebar/example-formatting/index.html' %} active{% endif %}">
-          <a href="{{ root_url }}/blog/archives">Archives</a>
+          <a href="{{ root_url }}{{ site.data.dr.archive_path }}/">Archives</a>
           <ul class="dropdown">
             <li><a href="{{ root_url }}{{ site.data.dr.categories_path }}">Categories</a></li>
             <li><a href="{{ root_url }}{{ site.data.dr.tags_path }}">Tags</a></li>
             <li><a href="{{ root_url }}{{ site.data.dr.pages_path }}">Pages</a></li>
           </ul>
         </li>
-        <li{% if page.url == '/blog/index.html' %} class="active"{% endif %}><a href="{{ root_url }}/blog">Blog</a></li>
+        <li{% if page.url == '/blog/index.html' %} class="active"{% endif %}><a href="{{ root_url }}{{ site.data.dr.blog_path }}">Blog</a></li>
     </ul>
   </section>
 </nav>
