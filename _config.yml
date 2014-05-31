@@ -60,8 +60,8 @@ excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
-tagline: Site Tagline
+title : Dr. Henry
+tagline: Transformation for your GitHub Pages, pages.
 author :
   name : Name Lastname
   email : blah@email.test
