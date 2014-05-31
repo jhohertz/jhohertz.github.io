@@ -14,12 +14,12 @@ gems:
 # Must be set
 theme_chain: 
   - local
-  #- jekb
-  #- base_bootstrap
+  - jekb
+  - base_bootstrap
   #- octo
   #- twitter
-  - octolost
-  - foundation5
+  #- octolost
+  #- foundation5
   - core
 
 icon_set: dr
