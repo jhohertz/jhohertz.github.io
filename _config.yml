@@ -61,7 +61,7 @@ excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of 
 # so be sure to set them if your theme uses them.
 #
 title : Dr. Henry
-tagline: Transformation for your GitHub Pages, pages.
+subtitle : Transformation for your GitHub Pages, pages.
 author :
   name : Name Lastname
   email : blah@email.test

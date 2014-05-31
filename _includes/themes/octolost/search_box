@@ -4,11 +4,11 @@
     <div class="row collapse">
       <form action="{{ site.simple_search }}" method="get" role="search">
         <input type="hidden" name="q" value="site:{{ site.production_url | shorthand_url }}" />
-        <div class="large-8 small-9 columns">
+        <div class="large-8 small-10 columns">
           <input class="form-control" type="text" name="q" results="0" placeholder="Search"/>
         </div>
-        <div class="large-4 small-3 columns">
-          <button class="button expand" type="submit">Submit</button>
+        <div class="large-4 small-2 columns">
+          <button class="button small" type="submit">Go</button>
         </div>
       </form>
     </div>

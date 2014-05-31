@@ -34,6 +34,14 @@
     padding-bottom: 0.35rem;
     font-size: 0.75rem;
 }
+
+.top-bar button[type="submit"] {
+    font-size: 0.77778rem;
+    position: relative;
+    top: 7px;
+}
+
+
   </style>
 
 
