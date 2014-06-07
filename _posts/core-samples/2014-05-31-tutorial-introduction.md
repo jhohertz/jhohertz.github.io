@@ -1,7 +1,23 @@
+---
+layout: post
+category : tutorial
+title: "Tutorial: Introduction"
+subtitle: "An introduction to Dr. Henry"
+tags : [intro, beginner, jekyll, tutorial, dr. henry]
+---
+{% include setup %}
 
 ## Introduction
 
-This introduction to Dr. Henry will explain what it is, where it comes from, and what it aims to be. Much inspiration (and code) comes from other projects, credited in the features and credits section below.
+This introduction to [Dr. Henry](https://github.com/jhohertz/dr-henry) will explain what it is, where it comes from, and what it aims to be. Much inspiration (and code) comes from other projects, credited in the features and credits section below.
+
+This post is also the inital README.md file for this project, so having a look at that is probably work a look if this post is old as you read this.
+
+Later posts will explain in more detail the implementation of Dr. Henry, and how to use it
+
+For now, read on, to get a general overview of Dr. Henry.
+
+<!--fold-->
 
 ## Goals
 
