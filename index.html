@@ -1,19 +1,7 @@
 ---
 layout: page
-title: Blog
+#title: Blog
 index_page: true
 comments: false
 ---
-{% include setup %}
-<div class="blog-index">
-  {% assign index = true %}
-  {% for post in site.posts limit: site.paginate %}
-  {% assign content = post.content %}
-    <article>
-      {% include theme_include file="article" %}
-    </article>
-  {% endfor %}
-  <div class="pagination">
-    <a class="prev" href="{{ root_url }}/archive/2">&larr; Older</a>
-  </div>
-</div>
+{% include theme file="blog_archive" dosetup="yes" %}

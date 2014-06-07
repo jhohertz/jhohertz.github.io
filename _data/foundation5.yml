@@ -1,0 +1,12 @@
+name: foundation5
+provides:
+  - default.html
+  - footer
+  - head
+  - header
+  - navigation
+  - page_asides
+  - page.html
+  - post_asides
+  - post.html
+  - search_box

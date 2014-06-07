@@ -1,3 +1,0 @@
-{% for inc in include.array %}
-  {% include {{inc}} %}
-{% endfor %}

@@ -1,0 +1,11 @@
+name: bootstrap3
+provides:
+  - default.html
+  - page.html
+  - post.html
+  - head
+  - header
+  - navigation
+  - footer
+  - after_footer
+  - search_box

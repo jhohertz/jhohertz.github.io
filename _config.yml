@@ -10,15 +10,26 @@ gems:
   - jekyll-mentions
   - jemoji
 
-# This will eventually be a list instead, for chaining parent themes.
+# This is going to be a lot easier later...
 # Must be set
-theme: jekb
 theme_chain: 
+  # Do local site stuff here, empty by default, masks all
   - local
-  #  - jekb
-  #  - base_bootstrap
-  - octo
+  # Regular themes, need to pick right base below per comments
+  # Needs Bootstrap3
+  #- jekb
+  # No base needed
+  #- octo
+  # Needs Foundation5
+  - octolost
+  # Base themes from here to core pick what's needed
+  #- bootstrap2
+  #- bootstrap3
+  - foundation5
+  # Always have core.
   - core
+
+icon_set: dr
 
 # If publishing to a subdirectory as in http://site.com/project set 'root: /project'
 # Must not have trailing slash, IE: '/project/'
@@ -37,14 +48,16 @@ production_url : http://username.github.io
 
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
-permalink: /:categories/:year/:month/:day/:title 
+# Until we have category landings established, this pattern doesn't suit well
+#permalink: /:categories/:year/:month/:day/:title 
+permalink: /blog/:year/:month/:day/:title/
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 pygments: true
 
 # Pagination, affects both front and archive paging
 paginate: 10          # Posts per page on the blog index
-paginate_path: "archive/:num"
+paginate_path: "blog/:num"
 
 excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of excerpted articles
 # doesn't seem to work as documented. doing our own search/split for this.
@@ -54,8 +67,8 @@ excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Jekyll Bootstrap
-tagline: Site Tagline
+title : Dr. Henry
+subtitle : Jekyll transformation for your GitHub Pages... pages.
 author :
   name : Name Lastname
   email : blah@email.test

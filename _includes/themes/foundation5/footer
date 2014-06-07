@@ -1,0 +1,23 @@
+<footer class="row">
+  <div class="large-12 columns">
+    <hr/>
+    <div class="row">
+      <div class="large-6 columns">
+        <p>
+          Copyright &copy; {{ site.time | date: "%Y" }} - {{ site.author.name }} -
+          <span class="credit">Powered by <a href="http://github.com/jhohertz/dr-henry">Dr. Henry</a></span>
+        </p>
+      </div>
+      <!-- dormant
+      <div class="large-6 columns">
+        <ul class="inline-list right">
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+        </ul>
+      </div>
+      -->
+    </div>
+  </div>
+</footer>

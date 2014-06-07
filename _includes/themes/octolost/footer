@@ -1,0 +1,12 @@
+<footer role="contentinfo">
+<p class="text-center">
+  <span class="copyright">
+       Copyright &copy; {{ site.time | date: "%Y" }} by {{ site.author.name }}
+  </span>
+
+  <span class="credit">
+       Powered by <a href="https://github.com/jhohertz/dr-henry">Dr. Henry</a><br/>
+       Theme based on <a href="https://github.com/annejohnson/octofound">Octofound</a> by <a href="http://annekjohnson.com">Anne Johnson</a>
+  </span>
+</p>
+</footer>

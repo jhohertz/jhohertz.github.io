@@ -1,0 +1,26 @@
+name: octo
+provides:
+  - archive_post
+  - article
+  - asides/github.html
+  - asides/googleplus.html
+  - asides/recent_posts.html
+  - author
+  - blog_archive
+  - blog_index
+  - categories
+  - date
+  - default.html
+  - footer
+  - head
+  - header
+  - navigation
+  - page.html
+  - page_article_area
+  - page_asides
+  - pagination_pages
+  - post.html
+  - post_article_area
+  - post_asides
+  - search_box
+  - subscribe

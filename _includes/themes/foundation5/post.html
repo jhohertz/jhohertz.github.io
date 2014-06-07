@@ -1,0 +1,13 @@
+<div class="row">
+  {% if page.sidebar == false %}
+  <div class="large-12 columns" role="content">
+  {% else %}
+  <div class="large-9 columns" role="content">
+  {% endif %}
+  {% include theme file="post_article_area" %}
+  {% include modules/comments %}
+  </div>
+  {% unless page.sidebar == false %}
+    {% include theme file="post_asides" %}
+  {% endunless %}
+</div>

@@ -12,11 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootstrap styles -->
-    <link href="{{ root_url }}/assets/themes/base_bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ root_url }}/assets/themes/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
     <!-- Optional theme -->
-    <link href="{{ root_url }}/assets/themes/base_bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="{{ root_url }}/assets/themes/bootstrap3/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Sticky Footer -->
-    <link href="{{ root_url }}/assets/themes/base_bootstrap/css/bs-sticky-footer.css" rel="stylesheet">
+    <link href="{{ root_url }}/assets/themes/bootstrap3/css/bs-sticky-footer.css" rel="stylesheet">
     
     <!-- Custom styles -->
     <link href="{{ root_url }}/assets/themes/jekb/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
@@ -27,17 +27,11 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <!-- Update these with your own images
-      <link rel="shortcut icon" href="images/favicon.ico">
-      <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-      <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-      <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
-    -->
-
+    {% include theme file="head_icons" %}
     <!-- atom & rss feed -->
     <link href="{{ root_url }}{{ site.data.subscribe.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <link href="{{ root_url }}{{ site.data.subscribe.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
 
+    <!-- jQuery needs to be up top, do not move -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   </head>

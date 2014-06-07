@@ -1,28 +1,16 @@
 <article class="hentry" role="article">
-  {% include theme_include file="article" %}
+  {% include theme file="article" %}
   <footer>
     <p class="meta">
-      {% include theme_include file="author" %}
-      {% include modules/date %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
-      {% include theme_include file="categories" %}
+      {% include theme file="author" %}
+      {% include theme file="date" %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+      {% include theme file="categories" %}
     </p>
     {% unless page.sharing == false %}
       {% include modules/sharing %}
     {% endunless %}
     <p class="meta">
-      <ul class="pagination">
-      {% if page.previous %}
-        <li class="prev"><a href="{{ root_url }}{{ page.previous.url }}" title="{{ page.previous.title }}">&laquo; Previous</a></li>
-      {% else %}
-        <li class="prev disabled"><a>&larr; Previous</a></li>
-      {% endif %}
-        <li><a href="{{ root_url }}{{ site.data.dr.archive_path }}">Archive</a></li>
-      {% if page.next %}
-        <li class="next"><a href="{{ root_url }}{{ page.next.url }}" title="{{ page.next.title }}">Next &raquo;</a></li>
-      {% else %}
-        <li class="next disabled"><a>Next &rarr;</a>
-      {% endif %}
-      </ul>
+      {% include theme file="pagination_pages" %}
     </p>
   </footer>
 </article>

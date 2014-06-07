@@ -1,0 +1,15 @@
+<div class="row post-full">
+  {% if page.sidebar == false %}
+  <div class="col-xs-12">
+  {% else %}
+  <div class="col-xs-9">
+  {% endif %}
+  {% include theme file="page_article_area" %}
+  {% include modules/comments %}
+  </div>
+  {% unless page.sidebar == false %}
+  <div class="col-xs-3">
+    {% include theme file="page_asides" %}
+  </div>
+  {% endunless %}
+</div>

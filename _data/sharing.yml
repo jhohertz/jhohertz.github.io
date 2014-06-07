@@ -20,6 +20,7 @@ googleplus_user:
 googleplus_hidden: false
 
 # Facebook Like
+facebook_appid: "123456789012345"
 facebook_like: true
 
 # Aside: Github user stats
@@ -35,5 +36,4 @@ delicious_count: 5
 # Aside: pinboard 
 pinboard_user: false
 pinboard_count: 5
-
 

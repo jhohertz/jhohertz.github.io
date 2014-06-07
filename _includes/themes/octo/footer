@@ -1,0 +1,4 @@
+<p>
+  Copyright &copy; {{ site.time | date: "%Y" }} - {{ site.author.name }} -
+  <span class="credit">Powered by <a href="http://github.com/jhohertz/dr-henry">Dr. Henry</a>, theme adapted from <a href="http://octopress.org">Octopress 2.0</a></span>
+</p>

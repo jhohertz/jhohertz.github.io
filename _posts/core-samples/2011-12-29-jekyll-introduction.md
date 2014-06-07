@@ -247,7 +247,7 @@ Render the content variable wherever you want your main content to be injected i
   </div>
 </body>
 ...{% endcapture %}
-{% include theme_include file="liquid_raw" %}
+{% include theme file="liquid_raw" %}
 
 ### Sub-Templates
 

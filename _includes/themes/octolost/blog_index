@@ -1,0 +1,13 @@
+<div class="blog-index">
+  {% assign index = true %}
+  {% for post in paginator.posts %}
+  {% assign content = post.content %}
+    <article>
+      {% include theme file="article" %}
+    </article>
+    {% unless post == paginator.posts.last %}
+    <hr>
+    {% endunless %}
+  {% endfor %}
+  {% include theme file="pagination_archive" %}
+</div>

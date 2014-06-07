@@ -1,0 +1,9 @@
+<div class="pagination">
+  {% if paginator.next_page %}
+    <a class="prev" href="{{ root_url }}{{ site.data.dr.blog_path }}/{{ paginator.next_page }}/">&larr; Older</a>
+  {% endif %}
+  <a href="{{ root_url }}{{ site.data.dr.archive_path }}">Blog Archives</a>
+  {% if paginator.previous_page %}
+  <a class="next" href="{{ root_url }}{{ site.data.dr.blog_path }}/{% if paginator.previous_page != 1 %}{{ paginator.previous_page }}/{% endif %}">Newer &rarr;</a>
+  {% endif %}
+</div>

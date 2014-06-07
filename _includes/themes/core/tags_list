@@ -2,11 +2,11 @@
 The tags_list include is a listing helper for tags.
 Usage:
   1) assign the 'tags_list' variable to a valid array of tags.
-  2) include theme_include file="tags_list"
+  2) include theme file="tags_list"
   example:
     <ul>
   	  {% assign tags_list = site.tags %}  
-          {% include theme_include file="tags_list" %}
+          {% include theme file="tags_list" %}
   	</ul>
   
   Notes: 

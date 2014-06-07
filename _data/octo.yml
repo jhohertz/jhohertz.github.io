@@ -1,7 +1,9 @@
 name: octo
 provides:
   - default.html
+  - footer
   - head
   - header
+  - navigation
   - page.html
   - post.html

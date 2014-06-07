@@ -7,6 +7,6 @@
     {% assign categories_list = page.categories %}
   {% endif %}
   {% assign cats_mode = "comma" %}
-  {% include theme_include file="categories_list" %}
+  {% include theme file="categories_list" %}
 </span>
 {% endunless %}

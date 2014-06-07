@@ -1,0 +1,42 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+  <meta name="author" content="{{ site.author.name }}">
+
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ root_url }}/assets/themes/foundation5/css/foundation.css" />
+
+  <style type="text/css">
+.top-bar input[type="text"], .top-bar .button {
+    font-size: 0.77778rem;
+    position: relative;
+    top: 7px;
+}
+
+.top-bar input[type="text"] {
+    height: auto;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+    font-size: 0.75rem;
+}
+  </style>
+
+  {% include theme file="head_icons" %}
+  <!-- atom & rss feed -->
+  <link href="{{ root_url }}{{ site.data.subscribe.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+  <link href="{{ root_url }}{{ site.data.subscribe.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+  <script src="{{ root_url }}/assets/themes/foundation5/js/vendor/modernizr.js"></script>
+
+  <!-- jQuery needs to be up top, do not move -->
+  <script src="{{ root_url }}/assets/themes/foundation5/js/vendor/jquery.js"></script>
+
+  <script src="{{ root_url }}/assets/themes/foundation5/js/foundation.min.js"></script>
+  <script>
+    $(document).ready( function(){ $(document).foundation(); });
+  </script>
+
+</head>
+
