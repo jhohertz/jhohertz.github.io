@@ -1,4 +1,4 @@
-name: twitter
+name: bootstrap2
 provides:
   - default.html
   - footer

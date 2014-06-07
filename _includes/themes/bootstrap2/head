@@ -15,8 +15,8 @@
   <![endif]-->
 
   <!-- Le styles -->
-  <link href="{{ root_url }}/assets/themes/twitter/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
-  <link href="{{ root_url }}/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+  <link href="{{ root_url }}/assets/themes/bootstrap2/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+  <link href="{{ root_url }}/assets/themes/bootstrap2/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
   {% include theme file="head_icons" %}
   <!-- atom & rss feed -->
   <link href="{{ root_url }}{{ site.data.subscribe.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
