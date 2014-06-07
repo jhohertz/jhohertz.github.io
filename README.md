@@ -21,6 +21,7 @@ For now, a basic blog and home page is the main goal. There's others, but they d
 - several themes included, meant to illustrate using base themes like "bootstrap" and "foundation", with local overrides to implement styling
 - pluggable social, comments, analytics, converted from the projects Dr. Henry takes from.
 - uses files in the _data folder for configuring much of this
+- uses the plugins github pages supports, sitemap, emoji :smile: and more.
 
 ## Themes 
 

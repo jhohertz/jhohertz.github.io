@@ -21,7 +21,7 @@ For now, read on, to get a general overview of Dr. Henry.
 
 The ultimate goal of Dr. Henry is to have a nice way to make use of [GitHub Pages](https://pages.github.com), and depending on nothing but [git](http://git-scm.com/), and your favourite text editor while working with it. This does bring certain limitations relative to other methods of publishing to GitHub Pages, but it was the work flow I wanted, letting GitHub generate the pages after a check-in.
 
-I also wanted it to be themable, with the ability to fallback w/ override in a modular way. Also, try to be as agnostic as possible to differing frameworks.
+I also wanted it to be themable, with the ability to fallback to another theme w/ override in a modular way. Also, try to be as agnostic as possible to differing frameworks.
 
 For now, a basic blog and home page is the main goal. There's others, but they depend on upgrades happening at GitHub Pages.
 
@@ -35,6 +35,7 @@ For now, a basic blog and home page is the main goal. There's others, but they d
 - several themes included, meant to illustrate using base themes like "bootstrap" and "foundation", with local overrides to implement styling
 - pluggable social, comments, analytics, converted from the projects Dr. Henry takes from.
 - uses files in the _data folder for configuring much of this
+- uses the plugins github pages supports, sitemap, emoji :smile: and more.
 
 ## Themes 
 
