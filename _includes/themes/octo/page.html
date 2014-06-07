@@ -1,0 +1,7 @@
+<div>
+  {% include theme file="page_article_area" %}
+  {% include modules/comments %}
+</div>
+{% unless page.sidebar == false %}
+  {% include theme file="page_asides" %}
+{% endunless %}

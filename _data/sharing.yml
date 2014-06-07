@@ -1,0 +1,39 @@
+# Settings for sharing helper.
+# Sharing is for things like tweet, plusone, like, reddit buttons etc.
+# Set 'provider' to the sharing provider you want to use.
+# Set 'provider' to false to turn sharing off globally.
+#
+provider: false
+
+# set provider to local, and setup below items
+# Twitter
+twitter_user: joehohertz
+twitter_tweet_button: true
+
+# Google +1
+google_plus_one: true
+google_plus_one_size: medium
+
+# Google Plus Profile
+# Hidden: No visible button, just add author information to search results
+googleplus_user:
+googleplus_hidden: false
+
+# Facebook Like
+facebook_appid: "123456789012345"
+facebook_like: true
+
+# Aside: Github user stats
+github_user: jhohertz
+github_repo_count: 5
+github_skip_forks: true
+github_show_profile_link: true
+
+# Aside: delicious bookmarks
+delicious_user: false
+delicious_count: 5
+
+# Aside: pinboard 
+pinboard_user: false
+pinboard_count: 5
+

@@ -1,0 +1,17 @@
+{% if site.data.comments.provider and page.comments != false %}
+  <section>
+    <h1>Comments</h1>
+    {% case site.data.comments.provider %}
+    {% when "disqus" %}
+      {% include modules/comments-providers/disqus %}
+    {% when "livefyre" %}
+      {% include modules/comments-providers/livefyre %}
+    {% when "intensedebate" %}
+      {% include modules/comments-providers/intensedebate %}
+    {% when "facebook" %}
+      {% include modules/comments-providers/facebook %}
+    {% when "custom" %}
+      {% include custom/comments %}
+    {% endcase %}
+  </section>
+{% endif %}

@@ -1,0 +1,10 @@
+{% capture setupcache %}
+  <!--
+  - Dynamically set liquid variables for working with URLs/paths
+  -->
+  {% if site.root != '/' %}
+    {% assign root_url = site.root %}
+  {% else %}
+    {% assign root_url = nil %}
+  {% endif %}
+{% endcapture %}{% assign setupcache = nil %}

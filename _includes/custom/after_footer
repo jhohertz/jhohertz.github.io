@@ -1,0 +1,3 @@
+{% comment %}
+  Add content to be output at the very bottom of each page, just before </body>. (You might use this for analytics scripts, for example)
+{% endcomment %}

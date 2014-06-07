@@ -1,0 +1,22 @@
+<article role="article">
+  {% if page.title %}
+  <header class="page-header">
+    <h1 class="page-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
+    {% if page.subtitle %}<h1 class="subheader">{{ page.subtitle }}</h1>{% endif %}
+    <!--{% if page.date %}<p class="meta">{% include post/date.html %}{{ time }}</p>{% endif %}-->
+  </header>
+  {% endif %}
+  {{ content }}
+  {% unless page.footer == false %}
+    <footer>
+      {% if page.date or page.author %}<p class="meta">
+        {% if page.author %}{% include theme file="author" %}{% endif %}
+        {% include theme file="date" %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+        {% if page.categories %}{% include theme file="categories" %}{% endif %}
+      </p>{% endif %}
+      {% unless page.sharing == false %}
+        {% include modules/sharing %}
+      {% endunless %}
+    </footer>
+  {% endunless %}
+</article>

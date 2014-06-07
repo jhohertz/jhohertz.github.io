@@ -1,0 +1,3 @@
+{% for inc in include.array %}
+  {% include theme file=inc %}
+{% endfor %}

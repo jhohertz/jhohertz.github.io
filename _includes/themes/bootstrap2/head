@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ page.title }}</title>
+  {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
+  <meta name="author" content="{{ site.author.name }}">
+
+  <!-- Enable responsive viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- Le styles -->
+  <link href="{{ root_url }}/assets/themes/bootstrap2/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+  <link href="{{ root_url }}/assets/themes/bootstrap2/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+  {% include theme file="head_icons" %}
+  <!-- atom & rss feed -->
+  <link href="{{ root_url }}{{ site.data.subscribe.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+  <link href="{{ root_url }}{{ site.data.subscribe.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  <!-- jQuery needs to be up top, do not move -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+</head>

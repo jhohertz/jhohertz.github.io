@@ -4,10 +4,14 @@ category : lessons
 tagline: "Supporting tagline"
 tags : [intro, beginner, jekyll, tutorial]
 ---
-{% include JB/setup %}
+{% include setup %}
 
 This Jekyll introduction will outline specifically  what Jekyll is and why you would want to use it.
 Directly following the intro we'll learn exactly _how_ Jekyll does what it does.
+
+Dr. Henry is a base on top of jekyll for making sites, it is based somewhat on Jekyll-bootstrap, but is diverging quite quickly. It is of an "alpha" quality right now.
+
+<!--fold-->
 
 ## Overview
 
@@ -243,7 +247,7 @@ Render the content variable wherever you want your main content to be injected i
   </div>
 </body>
 ...{% endcapture %}
-{% include JB/liquid_raw %}
+{% include theme file="liquid_raw" %}
 
 ### Sub-Templates
 
@@ -408,5 +412,5 @@ Jekyll-bootstrap is intended to provide helper methods and strategies aimed at m
 
 ## Next Steps
 
-Please take a look at [{{ site.categories.api.first.title }}]({{ BASE_PATH }}{{ site.categories.api.first.url }})
-or jump right into [Usage]({{ BASE_PATH }}{{ site.categories.usage.first.url }}) if you'd like.
+Please take a look at [{{ site.categories.api.first.title }}]({{ root_url }}{{ site.categories.api.first.url }})
+or jump right into [Usage]({{ root_url }}{{ site.categories.usage.first.url }}) if you'd like.

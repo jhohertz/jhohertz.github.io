@@ -1,0 +1,8 @@
+{% if site.data.sharing.delicious_user %}
+<section>
+  <h1>On Delicious</h1>
+  <div id="delicious"></div>
+  <script type="text/javascript" src="http://feeds.delicious.com/v2/json/{{ site.data.sharing.delicious_user }}?count={{ site.data.sharing.delicious_count }}&amp;sort=date&amp;callback=renderDeliciousLinks"></script>
+  <p><a href="http://delicious.com/{{ site.data.sharing.delicious_user }}">My Delicious Bookmarks &raquo;</a></p>
+</section>
+{% endif %}

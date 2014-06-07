@@ -1,0 +1,6 @@
+{% include modules/comments-providers/disqus_footer %}
+{% include modules/sharing-providers/facebook_like_footer %}
+{% include modules/sharing-providers/google_plus_one_footer %}
+{% include modules/sharing-providers/twitter_footer %}
+{% include custom/after_footer %}
+

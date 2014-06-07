@@ -1,0 +1,10 @@
+<div class="blog-index">
+  {% assign index = true %}
+  {% for post in paginator.posts %}
+  {% assign content = post.content %}
+    <article>
+      {% include theme file="article" %}
+    </article>
+  {% endfor %}
+  {% include theme file="pagination_archive" %}
+</div>

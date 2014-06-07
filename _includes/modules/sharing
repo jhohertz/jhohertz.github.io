@@ -1,0 +1,18 @@
+{% if site.safe and site.data.sharing.provider and page.sharing != false %}
+  {% case site.data.sharing.provider %}
+    {% when "custom" %}
+      {% include custom/sharing %}
+    {% when "internal" %}
+      <div class="sharing">
+        {% if site.data.sharing.twitter_tweet_button %}
+        <a href="//twitter.com/share" class="twitter-share-button" data-url="{{ site.production_url }}{{ page.url }}" data-via="{{ site.data.sharing.twitter_user }}" data-counturl="{{ site.production_url }}{{ page.url }}" >Tweet</a>
+        {% endif %}
+        {% if site.data.sharing.google_plus_one %}
+        <div class="g-plusone" data-size="{{ site.data.sharing.google_plus_one_size }}"></div>
+        {% endif %}
+        {% if site.data.sharing.facebook_like %}
+          <div class="fb-like" data-href="{{ site.production_url }}{{ page.url }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        {% endif %}
+      </div>
+  {% endcase %}
+{% endif %}
