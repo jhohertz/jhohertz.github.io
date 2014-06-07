@@ -1,9 +1,9 @@
 The MIT License (MIT)
 
-Copyright (c) {{{year}}} {{{fullname}}}
+Copyright (c) 2014 Joseph H. Hohertz
 
-Portions of this code are copyright the following authors from which this
-software is derived, and are also released under the same MIT licence.
+Portions of this code are copyright the following authors whose works this
+software is derived, and are released under the same MIT licence.
 
 - [Jade Dominguez](http://plusjade.com/)
 - [Anne K. Johnson](http://annekjohnson.com/)
