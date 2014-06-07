@@ -1,12 +1,19 @@
-<div id="blog-archives">
-{% for post in site.posts reverse %}
-  {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
-  {% unless year == this_year %}
-    {% assign year = this_year %}
-    <h2>{{ year }}</h2>
-  {% endunless %}
-  <article>
-    {% include theme file="archive_post" %}
-  </article>
-{% endfor %}
+<div class="blog-index">
+  {% assign index = true %}
+  {% for post in site.posts reverse %}
+  {% assign content = post.content %}
+    <article>
+      {% include theme file="article" %}
+    </article>
+    {% unless post == paginator.posts.last %}
+    <hr>
+    {% endunless %}
+  {% endfor %}
+  <div class="pagination">
+    {% if site.posts.size > site.paginate %}
+      <a class="prev" href="{{ root_url }}{{ site.data.dr.blog_path }}/2">&larr; Older</a>
+    {% endif %}
+    <a href="{{ root_url }}{{ site.data.dr.archive_path }}">Blog Archives</a>
+  </div>
 </div>
+

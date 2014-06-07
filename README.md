@@ -53,7 +53,7 @@ At this stage, Dr. Henry is a proof of concept that seems to be working fairly w
 - some things carried over from other projects but not verified
 - no real work on formalizing front-matter data yet
 - it lacks documentation at the moment. 
-  - for now, look at the [core theme](https://github.com/jhohertz/dr-henry/tree/develop/_includes/themes/core) items, the (https://github.com/jhohertz/dr-henry/tree/develop/_data) files, and the [config.yml](https://github.com/jhohertz/dr-henry/blob/develop/_config.yml) file.
+  - for now, look at the [core theme](https://github.com/jhohertz/dr-henry/tree/develop/_includes/themes/core) items, the [_data files](https://github.com/jhohertz/dr-henry/tree/develop/_data) files, and the [config.yml](https://github.com/jhohertz/dr-henry/blob/develop/_config.yml) file.
   - then override if needed in top level themes like [jekb](https://github.com/jhohertz/dr-henry/tree/develop/_includes/themes/jekb), [octo](https://github.com/jhohertz/dr-henry/tree/develop/_includes/themes/octo), or [octolost](https://github.com/jhohertz/dr-henry/tree/develop/_includes/themes/octolost), or make your own.
 - the tooling is lacking yet.
   - a command-line helper is planned for creating pages/posts, w/ useful, commented front matter.
