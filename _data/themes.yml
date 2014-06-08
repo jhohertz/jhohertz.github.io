@@ -3,12 +3,14 @@
 # The local section is the one you should use for experimenting or altering an existing theme
 local:
   name: local
+  depends: octo
   provides:
     - page2.html
 # Theme conversion of Octofound: http://octofound.annekjohnson.com/
 # Requires foundation5 theme
 octolost:
   name: octolost
+  depends: foundation5
   provides:
     - archive_post
     - article
@@ -38,6 +40,7 @@ octolost:
 # Requires only core theme
 octo:
   name: octo
+  depends: core
   provides:
     - default.html
     - footer
@@ -50,12 +53,14 @@ octo:
 # Requires bootstrap3 theme
 jekb:
   name: jekb
+  depends: bootstrap3
   provides:
     - head
 # Bootstrap 2 theme, converted from Jekyll Bootstrap, not really maintained at present.
 # Requires core theme
 bootstrap2:
   name: bootstrap2
+  depends: core
   provides:
     - default.html
     - footer
@@ -68,6 +73,7 @@ bootstrap2:
 # Requires core theme
 bootstrap3:
   name: bootstrap3
+  depends: core
   provides:
     - default.html
     - page.html
@@ -82,6 +88,7 @@ bootstrap3:
 # Requires core theme
 foundation5:
   name: foundation5
+  depends: core
   provides:
     - default.html
     - footer
@@ -96,6 +103,7 @@ foundation5:
 # Core theme, always at the bottom of the dependency chain
 core:
   name: core
+  #depends:		# Core has no depends
   provides:
     - after_footer
     - archive_post
