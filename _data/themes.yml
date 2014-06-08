@@ -22,16 +22,16 @@ octolost:
     - blog_index
     - categories
     - date
-    - default.html
     - footer
     - head
     - header
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
     - navigation
-    - page.html
     - page_article_area
     - page_asides
     - pagination_pages
-    - post.html
     - post_article_area
     - post_asides
     - search_box
@@ -42,13 +42,13 @@ octo:
   name: octo
   depends: core
   provides:
-    - default.html
     - footer
     - head
     - header
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
     - navigation
-    - page.html
-    - post.html
 # Conversion of "bootstrap3" theme from Jekyll Bootstrap: http://jekyllbootstrap.com/
 # Requires bootstrap3 theme
 jekb:
@@ -62,27 +62,27 @@ bootstrap2:
   name: bootstrap2
   depends: core
   provides:
-    - default.html
     - footer
     - head
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
     - navigation
-    - page.html
     - pagination_pages
-    - post.html
 # Bootstrap 3 base/vanilla theme, meant for re-use, used by jekb
 # Requires core theme
 bootstrap3:
   name: bootstrap3
   depends: core
   provides:
-    - default.html
-    - page.html
-    - post.html
+    - after_footer
+    - footer
     - head
     - header
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
     - navigation
-    - footer
-    - after_footer
     - search_box
 # Foundation 5 base/vanilla theme, meant for re-use, used by octolost
 # Requires core theme
@@ -90,15 +90,15 @@ foundation5:
   name: foundation5
   depends: core
   provides:
-    - default.html
     - footer
     - head
     - header
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
     - navigation
     - page_asides
-    - page.html
     - post_asides
-    - post.html
     - search_box
 # Core theme, always at the bottom of the dependency chain
 core:
@@ -121,7 +121,11 @@ core:
     - date
     - footer
     - head_icons
+    - head
     - header
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
     - liquid_raw
     - navigation
     - page_article_area
