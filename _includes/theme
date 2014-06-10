@@ -2,10 +2,12 @@
   {% if include.dosetup == "yes" %}
     {% include setup %}
   {% endif %}
-  {% for theme in site.theme_chain %}
-    {% if site.data[theme].provides contains include.file %}
+  {% assign theme_include_filename = "bad_lookup" %}
+  {% assign last_include = include.file %}
+  {% for theme in theme_deps %}
+    {% if site.data.themes[theme].provides contains include.file %}
       {% capture theme_include_filename %}themes/{{ theme }}/{{ include.file }}{% endcapture %}
       {% break %}
     {% endif %}
   {% endfor %}
-{% endcapture %}{% assign tinc = nil %}{% include {{theme_include_filename}} %}
+{% endcapture %}{% assign tinc = nil %}{% include {{theme_include_filename}} %}{% assign theme_include_filename = nil %}

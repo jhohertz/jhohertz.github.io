@@ -1,0 +1,142 @@
+# This config file is wordy, as we must declare every template a theme uses at this time
+#
+# The local section is the one you should use for experimenting or altering an existing theme
+local:
+  name: local
+  depends: octolost
+  provides:
+    - page2.html
+# Theme conversion of Octofound: http://octofound.annekjohnson.com/
+# Requires foundation5 theme
+octolost:
+  name: octolost
+  depends: foundation5
+  provides:
+    - archive_post
+    - article
+    - asides/github.html
+    - asides/googleplus.html
+    - asides/recent_posts.html
+    - author
+    - blog_archive
+    - blog_index
+    - categories
+    - date
+    - footer
+    - head
+    - header
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
+    - navigation
+    - page_article_area
+    - page_asides
+    - pagination_pages
+    - post_article_area
+    - post_asides
+    - search_box
+    - subscribe
+# Conversion of Octopress 2.0 "Classic" default theme.
+# Requires only core theme
+octo:
+  name: octo
+  depends: core
+  provides:
+    - footer
+    - head
+    - header
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
+    - navigation
+# Conversion of "bootstrap3" theme from Jekyll Bootstrap: http://jekyllbootstrap.com/
+# Requires bootstrap3 theme
+jekb:
+  name: jekb
+  depends: bootstrap3
+  provides:
+    - head
+# Bootstrap 2 theme, converted from Jekyll Bootstrap, not really maintained at present.
+# Requires core theme
+bootstrap2:
+  name: bootstrap2
+  depends: core
+  provides:
+    - footer
+    - head
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
+    - navigation
+    - pagination_pages
+# Bootstrap 3 base/vanilla theme, meant for re-use, used by jekb
+# Requires core theme
+bootstrap3:
+  name: bootstrap3
+  depends: core
+  provides:
+    - after_footer
+    - footer
+    - head
+    - header
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
+    - navigation
+    - search_box
+# Foundation 5 base/vanilla theme, meant for re-use, used by octolost
+# Requires core theme
+foundation5:
+  name: foundation5
+  depends: core
+  provides:
+    - footer
+    - head
+    - header
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
+    - navigation
+    - page_asides
+    - post_asides
+    - search_box
+# Core theme, always at the bottom of the dependency chain
+core:
+  name: core
+  #depends:		# Core has no depends
+  provides:
+    - after_footer
+    - archive_post
+    - article
+    - asides/delicious.html
+    - asides/github.html
+    - asides/googleplus.html
+    - asides/pinboard.html
+    - asides/recent_posts.html
+    - author
+    - blog_index
+    - blog_archive
+    - categories
+    - categories_list
+    - date
+    - footer
+    - head_icons
+    - head
+    - header
+    - layout/default.html
+    - layout/page.html
+    - layout/post.html
+    - liquid_raw
+    - navigation
+    - page_article_area
+    - page_asides
+    - pages_list
+    - pagination_archive
+    - pagination_pages
+    - post_article_area
+    - post_asides
+    - posts_collate
+    - search_box
+    - subscribe
+    - tags_list
+
