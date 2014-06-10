@@ -10,24 +10,7 @@ gems:
   - jekyll-mentions
   - jemoji
 
-# This is going to be a lot easier later...
-# Must be set
-theme_chain: 
-  # Do local site stuff here, empty by default, masks all
-  - local
-  # Regular themes, need to pick right base below per comments
-  # Needs Bootstrap3
-  #- jekb
-  # No base needed
-  #- octo
-  # Needs Foundation5
-  - octolost
-  # Base themes from here to core pick what's needed
-  #- bootstrap2
-  #- bootstrap3
-  - foundation5
-  # Always have core.
-  - core
+# THEME SETTINGS NOW IN: _data/themes.yml
 
 icon_set: dr
 

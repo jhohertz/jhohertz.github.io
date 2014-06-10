@@ -10,5 +10,4 @@
   <!-- build theme dependency chain from theme data, this is tricky, as we have limited data creation facilities -->
   {% capture theme_dep_list %}{% include setup_theme_deps theme="local" %}{% endcapture %}
   {% assign theme_deps = theme_dep_list | strip_newlines | split:"|" %}
-  
 {% endcapture %}{% assign setupcache = nil %}
