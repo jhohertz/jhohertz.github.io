@@ -8,6 +8,8 @@
   {% include modules/comments %}
   </div>
   {% unless page.sidebar == false %}
-    {% include {{tt_post_asides}} %}
+    <aside class="sidebar large-3 columns">
+      {% include {{tt_post_asides}} %}
+    </aside>
   {% endunless %}
 </div>

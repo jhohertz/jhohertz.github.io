@@ -1,7 +1,0 @@
-<aside class="large-3 columns">
-  {% if site.data.asides.post.size %}
-    {% include asides array=site.data.asides.post %}
-  {% else %}
-    {% include asides array=site.data.asides.default %}
-  {% endif %}
-</aside>

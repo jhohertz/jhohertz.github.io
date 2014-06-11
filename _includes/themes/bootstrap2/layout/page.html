@@ -13,7 +13,9 @@
   </div>
   {% unless page.sidebar == false %}
   <div class="span3">
-    {% include {{tt_page_asides}} %}
+    <aside class="sidebar">
+      {% include {{tt_page_asides}} %}
+    </aside>
   </div>
   {% endunless %}
 </div>

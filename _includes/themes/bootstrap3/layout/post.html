@@ -9,7 +9,9 @@
   </div>
   {% unless page.sidebar == false %}
   <div class="col-xs-3">
-    {% include {{tt_post_asides}} %}
+    <aside class="sidebar">
+      {% include {{tt_post_asides}} %}
+    </aside>
   </div>
   {% endunless %}
 </div>

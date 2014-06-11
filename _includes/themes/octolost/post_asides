@@ -1,7 +1,0 @@
-<aside class="sidebar small-12 medium-12{% if page.sidebar_left %} large-pull-8{% endif %} large-4 columns">
-  {% if site.data.asides.post.size %}
-    {% include asides array=site.data.asides.post %}
-  {% else %}
-    {% include asides array=site.data.asides.default %}
-  {% endif %}
-</aside>

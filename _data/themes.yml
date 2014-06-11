@@ -3,7 +3,7 @@
 # The local section is the one you should use for experimenting or altering an existing theme
 local:
   name: local
-  depends: octolost
+  depends: jekb
   provides:
     - page2.html
 # Theme conversion of Octofound: http://octofound.annekjohnson.com/
@@ -21,9 +21,7 @@ octolost:
     - layout/page.html
     - layout/post.html
     - navigation
-    - page_asides
     - pagination_pages
-    - post_asides
     - search_box
     - subscribe
 # Conversion of Octopress 2.0 "Classic" default theme.
@@ -87,8 +85,6 @@ foundation5:
     - layout/page.html
     - layout/post.html
     - navigation
-    - page_asides
-    - post_asides
     - search_box
 # Core theme, always at the bottom of the dependency chain
 core:

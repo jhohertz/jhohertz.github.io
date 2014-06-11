@@ -3,5 +3,7 @@
   {% include modules/comments %}
 </div><!--.columns-->
 {% unless page.sidebar == false %}
-  {% include {{tt_page_asides}} %}
+  <aside class="sidebar small-12 medium-12{% if page.sidebar_left %} large-pull-8{% endif %} large-4 columns">
+    {% include {{tt_page_asides}} %}
+  </aside>
 {% endunless %}
