@@ -2,8 +2,8 @@
   {% include {{tt_article}} %}
   <footer>
     <p class="meta">
-      {% include {{tt_author}} %}
-      {% include {{tt_date}} %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
+      <!--{% include {{tt_author}} %}-->
+      <!--{% include {{tt_date}} %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}-->
       {% include {{tt_categories}} %}
     </p>
     {% unless page.sharing == false %}
@@ -14,4 +14,3 @@
     </p>
   </footer>
 </article>
-
