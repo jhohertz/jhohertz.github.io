@@ -18,8 +18,6 @@ octolost:
     - asides/googleplus.html
     - asides/recent_posts.html
     - author
-    - blog_archive
-    - blog_index
     - categories
     - date
     - footer

@@ -1,6 +1,6 @@
 <aside class="large-3 columns">
   {% if page.index_page and site.data.asides.blog_index.size %}
-    {% include asides  array=site.data.asides.blog_index %}
+    {% include asides array=site.data.asides.blog_index %}
   {% elsif site.data.asides.page.size %}
     {% include asides array=site.data.asides.page %}
   {% else %}

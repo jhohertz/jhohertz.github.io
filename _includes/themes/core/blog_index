@@ -5,6 +5,9 @@
     <article>
       {% include {{tt_article}} %}
     </article>
+    {% unless post == paginator.posts.last %}
+    <hr>
+    {% endunless %}
   {% endfor %}
   {% include {{tt_pagination_archive}} %}
 </div>
