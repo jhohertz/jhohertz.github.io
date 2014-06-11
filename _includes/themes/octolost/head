@@ -18,7 +18,7 @@
 
   {% capture canonical %}{{ site.url }}{% if site.permalink contains '.html' %}{{ page.url }}{% else %}{{ page.url | remove:'/index.html' }}{% endif %}{% endcapture %}
   <link rel="canonical" href="{{ canonical }}">
-  {% include theme file="head_icons" %}
+  {% include {{tt_head_icons}} %}
   <link href="{{ root_url }}/assets/themes/octolost/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 
   <style type="text/css">

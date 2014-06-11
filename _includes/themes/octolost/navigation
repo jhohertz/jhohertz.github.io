@@ -1,6 +1,6 @@
-<header role="banner" class="top-header">{% include theme file="header" %}</header>
+<header role="banner" class="top-header">{% include {{tt_header}} %}</header>
 <nav role="navigation">
-{% include theme file="subscribe" %}
+{% include {{tt_subscribe}} %}
 {% if site.fixed_navigation %}
 <div class="sticky" data-options="">
 {% endif %}
@@ -12,7 +12,7 @@
       <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
   </ul>
   <section class="top-bar-section">
-    {% include theme file="search_box" %}
+    {% include {{tt_search_box}} %}
     <ul class="main-navigation right">
         <li{% if page.url == '/index.html' %} class="active"{% endif %}><a href="{{ root_url }}/">Home</a></li>
         <li class="has-dropdown{% if page.url == site.data.dr.categories_path or page.url == site.data.dr.tags_path or page.url == site.data.dr.pages_path or page.url == '/no-sidebar/example-formatting/index.html' %} active{% endif %}">

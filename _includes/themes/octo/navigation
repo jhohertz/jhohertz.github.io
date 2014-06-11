@@ -1,5 +1,5 @@
-{% include theme file="subscribe" %}
-{% include theme file="search_box" %}
+{% include {{tt_subscribe}} %}
+{% include {{tt_search_box}} %}
 <ul class="main-navigation">
   <li><a href="{{ root_url }}//">Home</a></li>
   <li><a href="{{ root_url }}{{ site.data.dr.blog_path }}/">Blog</a></li>

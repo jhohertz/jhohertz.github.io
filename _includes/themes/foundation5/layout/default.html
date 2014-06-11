@@ -1,9 +1,9 @@
-{% include theme file="head" %}
+{% include {{tt_head}} %}
 <body {% if page.body_id %} id="{{ page.body_id }}" {% endif %}>
-  {% include theme file="navigation" %}
+  {% include {{tt_navigation}} %}
   {{ content }}
-  {% include theme file="footer" %}
+  {% include {{tt_footer}} %}
   {% include modules/analytics %}
-  {% include theme file="after_footer" %}
+  {% include {{tt_after_footer}} %}
 </body>
 </html>

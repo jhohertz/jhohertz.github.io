@@ -1,9 +1,9 @@
 <aside class="sidebar small-12 medium-12{% if page.sidebar_left %} large-pull-8{% endif %} large-4 columns">
-  {% if page.index_page and site.blog_index_asides.size %}
-    {% include asides array=site.blog_index_asides %}
-  {% elsif site.page_asides.size %}
-    {% include asides array=site.page_asides %}
+  {% if page.index_page and site.data.asides.blog_index.size %}
+    {% include asides array=site.data.asides.blog_index %}
+  {% elsif site.data.asides.page.size %}
+    {% include asides array=site.data.asides.page %}
   {% else %}
-    {% include asides array=site.default_asides %}
+    {% include asides array=site.data.asides.default %}
   {% endif %}
 </aside>

@@ -3,8 +3,8 @@
   {% for post in paginator.posts %}
   {% assign content = post.content %}
     <article>
-      {% include theme file="article" %}
+      {% include {{tt_article}} %}
     </article>
   {% endfor %}
-  {% include theme file="pagination_archive" %}
+  {% include {{tt_pagination_archive}} %}
 </div>

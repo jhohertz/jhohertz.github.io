@@ -1,7 +1,7 @@
 <div class="small-12 medium-12 {% if page.sidebar == false %}large-10 large-centered {% elsif page.sidebar_left %}large-8 large-push-4 {% else %}large-8 {% endif %}columns">
-  {% include theme file="post_article_area" %}
+  {% include {{tt_post_article_area}} %}
   {% include modules/comments %}
 </div>
 {% unless page.sidebar == false %}
-  {% include theme file="post_asides" %}
+  {% include {{tt_post_asides}} %}
 {% endunless %}

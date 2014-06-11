@@ -1,6 +1,0 @@
-{% capture tinc %}
-  {% if include.dosetup == "yes" %}
-    {% include setup %}
-  {% endif %}
-  {% include internal/theme_path_gen file=include.file %}
-{% endcapture %}{% assign tinc = nil %}{% include {{theme_include_filename}} %}{% assign theme_include_filename = nil %}
