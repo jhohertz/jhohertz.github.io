@@ -8,4 +8,4 @@
       {% break %}
     {% endif %}
   {% endfor %}
-{% endcapture %}{% assign tincgen = nil %}{{ theme_include_filename }}{% assign theme_include_filename = nil %}
+{% endcapture %}{% assign tincgen = nil %}

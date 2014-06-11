@@ -2,6 +2,5 @@
   {% if include.dosetup == "yes" %}
     {% include setup %}
   {% endif %}
-  {% capture theme_inc %}{% include internal/theme_path_gen file=include.file %}{% endcapture %}
-  {% assign theme_inc = theme_inc | strip_newlines %}
-{% endcapture %}{% assign tinc = nil %}{% include {{theme_inc}} %}{% assign theme_inc = nil %}
+  {% include internal/theme_path_gen file=include.file %}
+{% endcapture %}{% assign tinc = nil %}{% include {{theme_include_filename}} %}{% assign theme_include_filename = nil %}
