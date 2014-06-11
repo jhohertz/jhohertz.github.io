@@ -12,12 +12,9 @@ octolost:
   name: octolost
   depends: foundation5
   provides:
-    - archive_post
     - article
     - asides/googleplus.html
     - author
-    - categories
-    - date
     - footer
     - head
     - header
