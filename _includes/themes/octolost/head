@@ -20,6 +20,7 @@
   <link rel="canonical" href="{{ canonical }}">
   {% include {{tt_head_icons}} %}
   <link href="{{ root_url }}/assets/themes/octolost/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="{{ root_url }}/assets/fontawesome/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
 
   <style type="text/css">
 .top-bar input[type="text"], .top-bar .button {
