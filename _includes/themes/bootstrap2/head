@@ -19,9 +19,7 @@
   <link href="{{ root_url }}/assets/fontawesome/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="{{ root_url }}/assets/themes/bootstrap2/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
   {% include {{tt_head_icons}} %}
-  <!-- atom & rss feed -->
-  <link href="{{ root_url }}{{ site.data.subscribe.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
-  <link href="{{ root_url }}{{ site.data.subscribe.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+  {% include modules/head_feeds %}
 
   <!-- jQuery needs to be up top, do not move -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
