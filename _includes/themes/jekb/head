@@ -13,6 +13,7 @@
 
     <!-- Bootstrap styles -->
     <link href="{{ root_url }}/assets/themes/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ root_url }}/assets/fontawesome/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
     <!-- Optional theme -->
     <link href="{{ root_url }}/assets/themes/bootstrap3/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Sticky Footer -->

@@ -14,6 +14,7 @@
     <!-- Bootstrap styles -->
     <link href="{{ root_url }}/assets/themes/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
     <!-- Optional theme -->
+    <link href="{{ root_url }}/assets/fontawesome/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
     <link href="{{ root_url }}/assets/themes/bootstrap3/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Sticky Footer -->
     <link href="{{ root_url }}/assets/themes/bootstrap3/css/bs-sticky-footer.css" rel="stylesheet">
