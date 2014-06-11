@@ -1,9 +1,0 @@
-name: bootstrap2
-provides:
-  - default.html
-  - footer
-  - head
-  - navigation
-  - page.html
-  - pagination_pages
-  - post.html
