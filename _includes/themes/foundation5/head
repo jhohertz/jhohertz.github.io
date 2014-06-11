@@ -24,7 +24,7 @@
 }
   </style>
 
-  {% include theme file="head_icons" %}
+  {% include {{tt_head_icons}} %}
   <!-- atom & rss feed -->
   <link href="{{ root_url }}{{ site.data.subscribe.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
   <link href="{{ root_url }}{{ site.data.subscribe.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">

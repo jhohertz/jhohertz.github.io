@@ -7,7 +7,7 @@
     {% endif %}
     {% unless page.meta == false %}
       <p class="meta">
-        {% include theme file="date" %}{{ time }}
+        {% include {{tt_date}} %}{{ time }}
       </p>
     {% endunless %}
   </header>

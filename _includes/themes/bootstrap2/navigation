@@ -5,7 +5,7 @@
       <ul class="nav">
         {% assign pages_list = site.pages %}
         {% assign group = 'navigation' %}
-        {% include theme file="pages_list" %}
+        {% include {{tt_pages_list}} %}
       </ul>
     </div>
   </div>

@@ -4,10 +4,10 @@
   {% else %}
   <div class="large-9 columns" role="content">
   {% endif %}
-  {% include theme file="post_article_area" %}
+  {% include {{tt_post_article_area}} %}
   {% include modules/comments %}
   </div>
   {% unless page.sidebar == false %}
-    {% include theme file="post_asides" %}
+    {% include {{tt_post_asides}} %}
   {% endunless %}
 </div>
