@@ -1,0 +1,11 @@
+{% capture tincgen %}
+  <!-- resolve path based on dependency chain for theme include -->
+  {% assign theme_include_filename = "internal/bad_lookup" %}
+  {% assign last_include = include.file %}
+  {% for theme in theme_deps %}
+    {% if site.data.themes[theme].provides contains include.file %}
+      {% capture theme_include_filename %}themes/{{ theme }}/{{ include.file }}{% endcapture %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endcapture %}{% assign tincgen = nil %}{{ theme_include_filename }}{% assign theme_include_filename = nil %}
