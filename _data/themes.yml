@@ -3,7 +3,7 @@
 # The local section is the one you should use for experimenting or altering an existing theme
 local:
   name: local
-  depends: jekb
+  depends: octo
   provides:
     - page2.html
 # Theme conversion of Octofound: http://octofound.annekjohnson.com/
@@ -47,10 +47,6 @@ octolost:
     - url: http://fonts.googleapis.com/css?family=Roboto:300,300italic,500,500italic
     - url: http://fonts.googleapis.com/css?family=Ubuntu:500
   js_top:
-    - url: /assets/themes/foundation5/js/vendor/modernizr.js
-    - url: /assets/themes/foundation5/js/vendor/jquery.js
-    - url: /assets/themes/foundation5/js/vendor/fastclick.js
-    - url: /assets/themes/foundation5/js/foundation.min.js
     - url: /assets/themes/octolost/js/octopress.js
 # Conversion of Octopress 2.0 "Classic" default theme.
 # Requires only core theme
@@ -73,6 +69,7 @@ octo:
   js_top:
     - url: /assets/themes/octo/js/modernizr-2.0.js
     - url: //ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+    #- url: /assets/themes/octo/js/libs/jquery.min.js
     - url: /assets/themes/octo/js/octopress.js
 # Conversion of "bootstrap3" theme from Jekyll Bootstrap: http://jekyllbootstrap.com/
 # Requires bootstrap3 theme
@@ -100,6 +97,8 @@ bootstrap2:
     - url: /assets/themes/bootstrap2/bootstrap/css/bootstrap.2.2.2.min.css
     - url: /assets/themes/bootstrap2/css/style.css?body=1
       media: all
+  js_top:
+    - url: https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
 
 # Bootstrap 3 base/vanilla theme, meant for re-use, used by jekb
 # Requires core theme
@@ -120,6 +119,8 @@ bootstrap3:
     - url: /assets/themes/bootstrap3/css/bootstrap.min.css
     - url: /assets/themes/bootstrap3/css/bootstrap-theme.min.css
     - url: /assets/themes/bootstrap3/css/bs-sticky-footer.css
+  js_top:
+    - url: https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
 # Foundation 5 base/vanilla theme, meant for re-use, used by octolost
 # Requires core theme
 foundation5:
@@ -151,6 +152,7 @@ foundation5:
   js_top:
     - url: /assets/themes/foundation5/js/vendor/modernizr.js
     - url: /assets/themes/foundation5/js/vendor/jquery.js
+    - url: /assets/themes/foundation5/js/vendor/fastclick.js
     - url: /assets/themes/foundation5/js/foundation.min.js
 # Core theme, always at the bottom of the dependency chain
 core:
@@ -194,6 +196,8 @@ core:
   css:
     - url: /assets/fontawesome/css/font-awesome.min.css
       media: "screen, projection"
+  # For now, core cen not declare jquery, as something else might
+  # However, it requires something in the chain do so
   js_top:
     - url: https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
  
