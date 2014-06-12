@@ -10,7 +10,7 @@
         <link href="{{ thisurl }}" rel="stylesheet" type="text/css"{% if cssdef.media %} media="{{ cssdef.media }}"{% endif %}>
       {% elsif cssdef.inline %}
         <style type="text/css">
-          {{ cssdep.inline }}
+          {{ cssdef.inline }}
         </style>
       {% else %}
         <!-- improper CSS definition -->

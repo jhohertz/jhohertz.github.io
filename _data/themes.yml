@@ -3,7 +3,7 @@
 # The local section is the one you should use for experimenting or altering an existing theme
 local:
   name: local
-  depends: octo
+  depends: octolost
   provides:
     - page2.html
 # Theme conversion of Octofound: http://octofound.annekjohnson.com/
@@ -27,6 +27,23 @@ octolost:
   css:
     - url: /assets/themes/octolost/css/screen.css
       media: "screen, projection"
+    - inline: |
+        .top-bar input[type="text"], .top-bar .button {
+            font-size: 0.77778rem;
+            position: relative;
+            top: 7px;
+        }
+        .top-bar input[type="text"] {
+            height: auto;
+            padding-top: 0.35rem;
+            padding-bottom: 0.35rem;
+            font-size: 0.75rem;
+        }
+        .top-bar button[type="submit"] {
+            font-size: 0.77778rem;
+            position: relative;
+            top: 7px;
+        }
     - url: http://fonts.googleapis.com/css?family=Roboto:300,300italic,500,500italic
     - url: http://fonts.googleapis.com/css?family=Ubuntu:500
   js_top:
@@ -119,6 +136,18 @@ foundation5:
     - search_box
   css:
     - url: /assets/themes/foundation5/css/foundation.css
+    - inline: |
+        .top-bar input[type="text"], .top-bar .button {
+            font-size: 0.77778rem;
+            position: relative;
+            top: 7px;
+        }
+        .top-bar input[type="text"] {
+            height: auto;
+            padding-top: 0.35rem;
+            padding-bottom: 0.35rem;
+            font-size: 0.75rem;
+        }
   js_top:
     - url: /assets/themes/foundation5/js/vendor/modernizr.js
     - url: /assets/themes/foundation5/js/vendor/jquery.js

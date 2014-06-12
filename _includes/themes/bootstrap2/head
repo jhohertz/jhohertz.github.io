@@ -10,10 +10,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 
-  <!-- Le styles -->
-  <link href="{{ root_url }}/assets/themes/bootstrap2/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
-  <link href="{{ root_url }}/assets/fontawesome/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="{{ root_url }}/assets/themes/bootstrap2/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+   <!-- Le styles -->
+  {% include modules/head_css %}
   {% include {{tt_head_icons}} %}
   {% include modules/head_feeds %}
 

@@ -6,39 +6,12 @@
   {% include modules/head_title_meta %}
   <script src="{{ root_url }}/assets/themes/foundation5/js/vendor/modernizr.js"></script>
 
-
-
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   {% include {{tt_head_icons}} %}
-  <link href="{{ root_url }}/assets/themes/octolost/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="{{ root_url }}/assets/fontawesome/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
-
-  <style type="text/css">
-.top-bar input[type="text"], .top-bar .button {
-    font-size: 0.77778rem;
-    position: relative;
-    top: 7px;
-}
-
-.top-bar input[type="text"] {
-    height: auto;
-    padding-top: 0.35rem;
-    padding-bottom: 0.35rem;
-    font-size: 0.75rem;
-}
-
-.top-bar button[type="submit"] {
-    font-size: 0.77778rem;
-    position: relative;
-    top: 7px;
-}
-
-
-  </style>
-
+  {% include modules/head_css %}
   {% include modules/head_feeds %}
 
   <script src="{{ root_url }}/assets/themes/foundation5/js/vendor/jquery.js"></script>
@@ -50,9 +23,6 @@
     $(document).foundation();
   });
   </script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-  <link href='http://fonts.googleapis.com/css?family=Roboto:300,300italic,500,500italic' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
   {% include custom/head %}
 </head>
 

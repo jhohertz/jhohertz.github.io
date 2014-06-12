@@ -8,13 +8,7 @@
     <!-- Enable responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootstrap styles -->
-    <link href="{{ root_url }}/assets/themes/bootstrap3/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Optional theme -->
-    <link href="{{ root_url }}/assets/fontawesome/css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <link href="{{ root_url }}/assets/themes/bootstrap3/css/bootstrap-theme.min.css" rel="stylesheet">
-    <!-- Sticky Footer -->
-    <link href="{{ root_url }}/assets/themes/bootstrap3/css/bs-sticky-footer.css" rel="stylesheet">
+    {% include modules/head_css %}
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
