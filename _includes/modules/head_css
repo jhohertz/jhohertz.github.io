@@ -1,0 +1,20 @@
+{% for theme in theme_deps reversed %}
+  {% if site.data.themes[theme].css %}
+    {% for cssdef in site.data.themes[theme].css %}
+      {% if cssdef.url %}
+        {% if cssdef.url contains '//' %}
+          {% assign thisurl = cssdef.url %}
+        {% else %}
+          {% assign thisurl = cssdef.url | prepend:root_url %}
+        {% endif %}
+        <link href="{{ thisurl }}" rel="stylesheet" type="text/css"{% if cssdef.media %} media="{{ cssdef.media }}"{% endif %}>
+      {% elsif cssdef.inline %}
+        <style type="text/css">
+          {{ cssdep.inline }}
+        </style>
+      {% else %}
+        <!-- improper CSS definition -->
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
