@@ -18,7 +18,5 @@
     <![endif]-->
     {% include {{tt_head_icons}} %}
     {% include modules/head_feeds %}
-
-    <!-- jQuery needs to be up top, do not move -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    {% include modules/loader_js group="js_top" %}
   </head>

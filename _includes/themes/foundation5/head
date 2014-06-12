@@ -8,14 +8,6 @@
   {% include modules/head_css %}
   {% include {{tt_head_icons}} %}
   {% include modules/head_feeds %}
-
-  <script src="{{ root_url }}/assets/themes/foundation5/js/vendor/modernizr.js"></script>
-  <!-- jQuery needs to be up top, do not move -->
-  <script src="{{ root_url }}/assets/themes/foundation5/js/vendor/jquery.js"></script>
-  <script src="{{ root_url }}/assets/themes/foundation5/js/foundation.min.js"></script>
-  <script>
-    $(document).ready( function(){ $(document).foundation(); });
-  </script>
-
+  {% include modules/loader_js group="js_top" %}
 </head>
 

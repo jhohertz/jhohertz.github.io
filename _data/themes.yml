@@ -3,7 +3,7 @@
 # The local section is the one you should use for experimenting or altering an existing theme
 local:
   name: local
-  depends: octo
+  depends: octolost
   provides:
     - page2.html
 # Theme conversion of Octofound: http://octofound.annekjohnson.com/
@@ -28,17 +28,6 @@ octolost:
     - url: /assets/themes/octolost/css/screen.css
       media: "screen, projection"
     - inline: |
-        .top-bar input[type="text"], .top-bar .button {
-            font-size: 0.77778rem;
-            position: relative;
-            top: 7px;
-        }
-        .top-bar input[type="text"] {
-            height: auto;
-            padding-top: 0.35rem;
-            padding-bottom: 0.35rem;
-            font-size: 0.75rem;
-        }
         .top-bar button[type="submit"] {
             font-size: 0.77778rem;
             position: relative;
@@ -154,6 +143,8 @@ foundation5:
     - url: /assets/themes/foundation5/js/vendor/jquery.js
     - url: /assets/themes/foundation5/js/vendor/fastclick.js
     - url: /assets/themes/foundation5/js/foundation.min.js
+    - inline: |
+        $(document).ready( function(){ $(document).foundation(); });
 # Core theme, always at the bottom of the dependency chain
 core:
   name: core

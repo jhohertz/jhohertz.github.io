@@ -4,7 +4,6 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   {% include modules/head_title_meta %}
-  <script src="{{ root_url }}/assets/themes/foundation5/js/vendor/modernizr.js"></script>
 
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
@@ -13,16 +12,7 @@
   {% include {{tt_head_icons}} %}
   {% include modules/head_css %}
   {% include modules/head_feeds %}
-
-  <script src="{{ root_url }}/assets/themes/foundation5/js/vendor/jquery.js"></script>
-  <script src="{{ root_url }}/assets/themes/foundation5/js/vendor/fastclick.js"></script>
-  <script src="{{ root_url }}/assets/themes/foundation5/js/foundation.min.js"></script>
-  <script src="{{ root_url }}/assets/themes/octolost/js/octopress.js" type="text/javascript"></script>
-  <script>
-  $(document).ready(function(){
-    $(document).foundation();
-  });
-  </script>
+  {% include modules/loader_js group="js_top" %}
   {% include custom/head %}
 </head>
 
