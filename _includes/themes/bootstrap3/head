@@ -2,12 +2,7 @@
 <html lang="en">
   <head>
     {% include modules/head_title_meta %}
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Enable responsive viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    {% include modules/head_ui_meta %}
     {% include modules/head_css %}
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

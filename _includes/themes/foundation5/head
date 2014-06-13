@@ -2,9 +2,7 @@
 <html class="no-js" lang="en">
 <head>
   {% include modules/head_title_meta %}
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  {% include modules/head_ui_meta %}
   {% include modules/head_css %}
   {% include modules/head_icons %}
   {% include modules/head_feeds %}

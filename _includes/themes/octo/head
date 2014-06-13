@@ -4,10 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   {% include modules/head_title_meta %}
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% include modules/head_ui_meta %}
   {% include modules/head_icons %}
   {% include modules/head_css %}
   {% include modules/head_feeds %}
