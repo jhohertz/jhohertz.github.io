@@ -165,7 +165,6 @@ core:
     - categories_list
     - date
     - footer
-    - head_icons
     - head
     - header
     - layout/default.html

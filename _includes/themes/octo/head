@@ -8,7 +8,7 @@
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% include {{tt_head_icons}} %}
+  {% include modules/head_icons %}
   {% include modules/head_css %}
   {% include modules/head_feeds %}
   {% include modules/loader_js group="js_top" %}

@@ -58,9 +58,6 @@
   {% include internal/theme_path_gen file="footer" %}
   {% assign tt_footer = theme_include_filename %}
 
-  {% include internal/theme_path_gen file="head_icons" %}
-  {% assign tt_head_icons = theme_include_filename %}
-
   {% include internal/theme_path_gen file="head" %}
   {% assign tt_head = theme_include_filename %}
 

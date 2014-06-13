@@ -11,7 +11,7 @@
   <![endif]-->
 
   {% include modules/head_css %}
-  {% include {{tt_head_icons}} %}
+  {% include modules/head_icons %}
   {% include modules/head_feeds %}
   {% include modules/loader_js group="js_top" %}
 </head>
