@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    {% include modules/head_title_meta %}
-    {% include modules/head_ui_meta %}
-    {% include modules/head_css %}
+{% include modules/head_html_open %}
+<head>
+  {% include modules/head_title_meta %}
+  {% include modules/head_ui_meta %}
+  {% include modules/head_css %}
     
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-    {% include modules/head_icons %}
-    {% include modules/head_feeds %}
-    {% include modules/loader_js group="js_top" %}
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <![endif]-->
+  {% include modules/head_icons %}
+  {% include modules/head_feeds %}
+  {% include modules/loader_js group="js_top" %}
   </head>

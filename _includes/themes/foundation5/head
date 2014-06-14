@@ -1,5 +1,4 @@
-<!doctype html>
-<html class="no-js" lang="en">
+{% include modules/head_html_open %}
 <head>
   {% include modules/head_title_meta %}
   {% include modules/head_ui_meta %}
@@ -8,4 +7,3 @@
   {% include modules/head_feeds %}
   {% include modules/loader_js group="js_top" %}
 </head>
-

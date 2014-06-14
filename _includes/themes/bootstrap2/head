@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+{% include modules/head_html_open %}
 <head>
   {% include modules/head_title_meta %}
   {% include modules/head_ui_meta %}
