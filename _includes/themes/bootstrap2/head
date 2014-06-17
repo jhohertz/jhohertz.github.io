@@ -2,12 +2,7 @@
 <head>
   {% include modules/head_title_meta %}
   {% include modules/head_ui_meta %}
-
-  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-  <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-
+  {% include modules/head_html5_shim%}
   {% include modules/head_css %}
   {% include modules/head_icons %}
   {% include modules/head_feeds %}
