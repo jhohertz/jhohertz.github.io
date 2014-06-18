@@ -3,7 +3,7 @@
 # The local section is the one you should use for experimenting or altering an existing theme
 local:
   name: local
-  depends: jekb
+  depends: bootstrap2
   provides:
     - page2.html
 # Theme conversion of Octofound: http://octofound.annekjohnson.com/

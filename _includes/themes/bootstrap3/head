@@ -3,7 +3,7 @@
   {% include modules/head_title_meta %}
   {% include modules/head_ui_meta %}
   {% include modules/head_css %}
-  {% include modules/head_html_shim %}
+  {% include modules/head_html5_shim %}
   {% include modules/head_icons %}
   {% include modules/head_feeds %}
   {% include modules/loader_js group="js_top" %}
