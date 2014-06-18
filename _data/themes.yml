@@ -3,7 +3,7 @@
 # The local section is the one you should use for experimenting or altering an existing theme
 local:
   name: local
-  depends: bootstrap2
+  depends: octolost
   provides:
     - page2.html
 # Theme conversion of Octofound: http://octofound.annekjohnson.com/
@@ -15,7 +15,6 @@ octolost:
     - article
     - asides/googleplus.html
     - footer
-    - head
     - header
     - layout/default.html
     - layout/page.html
@@ -44,7 +43,6 @@ octo:
   depends: core
   provides:
     - footer
-    - head
     - header
     - layout/default.html
     - layout/page.html
@@ -65,8 +63,7 @@ octo:
 jekb:
   name: jekb
   depends: bootstrap3
-  provides:
-    - head
+  #provides:
   css:
     - url: /assets/themes/jekb/css/style.css?body=1
       media: all
@@ -117,7 +114,6 @@ foundation5:
   depends: core
   provides:
     - footer
-    - head
     - header
     - layout/default.html
     - layout/page.html

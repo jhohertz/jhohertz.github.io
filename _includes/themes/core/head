@@ -2,8 +2,9 @@
 <head>
   {% include modules/head_title_meta %}
   {% include modules/head_ui_meta %}
-  {% include modules/head_css %}
-  {% include modules/head_icons %}
   {% include modules/head_feeds %}
+  {% include modules/head_icons %}
+  {% include modules/head_css %}
   {% include modules/loader_js group="js_top" %}
+  {% include custom/head %}
 </head>
