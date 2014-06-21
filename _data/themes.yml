@@ -13,7 +13,6 @@ octolost:
   depends: foundation5
   provides:
     - article
-    - asides/googleplus.html
     - footer
     - header
     - layout/page.html
