@@ -35,7 +35,7 @@ production_url : http://username.github.io
 #permalink: /:categories/:year/:month/:day/:title 
 permalink: /blog/:year/:month/:day/:title/
 
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
+exclude: ["LICENCE.md", "BUGS.md", "README.md", "Rakefile", "TODO.md"]
 pygments: true
 
 # Pagination, affects both front and archive paging
