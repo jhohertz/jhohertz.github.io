@@ -1,1 +1,1 @@
-{% include custom/header %}
+{% comment %}Core theme does not implement a header{% endcomment %}

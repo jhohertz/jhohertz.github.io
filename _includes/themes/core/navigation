@@ -1,3 +1,2 @@
 {% include {{tt_subscribe}} %}
 {% include {{tt_search_box}} %}
-{% include custom/navigation %}

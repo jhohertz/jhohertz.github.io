@@ -6,5 +6,4 @@
   {% include modules/head_icons %}
   {% include modules/head_css %}
   {% include modules/loader_js group="js_top" %}
-  {% include custom/head %}
 </head>

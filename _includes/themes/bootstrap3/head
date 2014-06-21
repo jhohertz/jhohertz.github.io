@@ -7,5 +7,4 @@
   {% include modules/head_html5_shim %}
   {% include modules/head_css %}
   {% include modules/loader_js group="js_top" %}
-  {% include custom/head %}
 </head>

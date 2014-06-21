@@ -5,4 +5,3 @@
   <li><a href="{{ root_url }}{{ site.data.dr.blog_path }}/">Blog</a></li>
   <li><a href="{{ root_url }}{{ site.data.dr.archive_path }}">Archives</a></li>
 </ul>
-{% include custom/navigation %}
