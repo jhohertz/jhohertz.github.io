@@ -14,6 +14,5 @@
         {% include {{tt_search_box}} %}
       </section>
     </nav>
-    <hr/>
   </div>
 </div>

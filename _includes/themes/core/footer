@@ -1,1 +1,1 @@
-{% include custom/footer %}
+{% comment %}Core theme does not implement a footer{% endcomment %}
