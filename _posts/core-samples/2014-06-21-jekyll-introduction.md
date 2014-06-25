@@ -6,10 +6,14 @@ tags : [intro, beginner, jekyll, tutorial]
 ---
 {% include setup %}
 
+The guide below originally comes from [Jekyll Bootstrap](http://jekyllbootstrap.com/), and has been updated to reflect the changes in Dr. Henry where there are differences, and provides some background on some things the original did not. It's not actually about Dr. Henry, but since it is implemented in Jekyll, this is a useful tutorial if you are new to Jekyll. In a couple of cases it will note some areas where Dr. Henry works differently than what would otherwise be typical Jekyll use.
+
+If you just want to post with an existing theme, give this all a skim and focus on the sections about posts and configurations.
+
+And so we begin...
+
 This Jekyll introduction will outline specifically  what Jekyll is and why you would want to use it.
 Directly following the intro we'll learn exactly _how_ Jekyll does what it does.
-
-Dr. Henry is a base on top of jekyll for making sites, it is based somewhat on Jekyll-bootstrap, but is diverging quite quickly. It is of an "alpha" quality right now.
 
 <!--fold-->
 
@@ -20,15 +24,19 @@ Dr. Henry is a base on top of jekyll for making sites, it is based somewhat on J
 Jekyll is a parsing engine bundled as a ruby gem used to build static websites from
 dynamic components such as templates, partials, liquid code, markdown, etc. Jekyll is known as "a simple, blog aware, static site generator".
 
+Jekyll is the primary way to work with [Github Pages](https://pages.github.com), which provides free static hosting at GitHub, and offers Kekyll as a way to provide template-driven sites/blogs in an easy manner.
+
 ### Examples
 
 This website is created with Jekyll. [Other Jekyll websites](https://github.com/mojombo/jekyll/wiki/Sites).
 
 
-
 ### What does Jekyll Do?
 
-Jekyll is a ruby gem you install on your local system.
+Jekyll is a ruby gem you can install on your local system. This is only necessary if you want to test your site locally, as it is helpful for some kinds of debugging when things go wrong. Github Pages supplies the Jekyll runtime, and will process your site if it sees a Jekyll setup has been pushed to it, updating it usually within seconds of committing your changes.
+
+Thw rest of this section explains what Jekyll does when run, whether you are running locally or GitHub Pages is processing your site.
+
 Once there you can call `jekyll --server` on a directory and provided that directory
 is setup in a way jekyll expects, it will do magic stuff like parse markdown/textile files,
 compute categories, tags, permalinks, and construct your pages from layout templates and partials.
@@ -45,7 +53,11 @@ on each request, Jekyll does this once _beforehand_ and caches the _entire websi
 
 Jekyll does not come with any content nor does it have any templates or design elements.
 This is a common source of confusion when getting started.
-Jekyll does not come with anything you actually use or see on your website - you have to make it.
+Jekyll does not come with anything you actually use or see on your website - you have to make it or use an existing base of templates to start from.
+
+[Dr. Henry](https://github.com/jhohertz/dr-henry) is one such package of templates. [Jekyll Bootstrap](http://jekyllbootstrap.com) is another. Both of these are designed to work in the specific environment of GitHub Pages.
+
+Another way of using Jekyll with GitHub pages is to run Jekyll to render your site locally, and push the contents of the generate _site folder to GitHub. This lets you use plugins and other things the Jekyll GitHub Pages provides does not allow. This is the approach taken by [Octopress](http://octopress.org)
 
 ### Why Should I Care?
 
@@ -89,13 +101,17 @@ Jekyll expects your website directory to be laid out like so:
 
     .
     |-- _config.yml
+    |-- _data
+    |-- _drafts
     |-- _includes
     |-- _layouts
     |   |-- default.html
     |   |-- post.html
+    |   |-- page.html
     |-- _posts
     |   |-- 2011-10-25-open-source-is-good.markdown
-    |   |-- 2011-04-26-hello-world.markdown
+    |   |-- 2011-04-26-hello-world.md
+    |   |-- 2011-02-11-whrrrrrrrrr.html
     |-- _site
     |-- index.html
     |-- assets
@@ -105,14 +121,20 @@ Jekyll expects your website directory to be laid out like so:
 
 
 - **\_config.yml**
-	Stores configuration data.
+	Stores basic configuration data, mostly standard Jekyll things.
+
+- **\_data**
+	This folder is for additional configuration data.
+
+- **\_drafts**
+	This is a place you can put work-in-progress posts, and they will not publish
 
 - **\_includes**
 	This folder is for partial views.
 
 - **\_layouts**
 	This folder is for the main templates your content will be inserted into.
-	You can have different layouts for different pages or page sections.
+	You can have different layouts for different pages or page sections.:
 
 - **\_posts**
 	This folder contains your dynamic content/posts.
@@ -134,35 +156,34 @@ Jekyll expects your website directory to be laid out like so:
 Jekyll supports various configuration options that are fully outlined here:
 (<https://github.com/mojombo/jekyll/wiki/Configuration>)
 
-
-
-
 ## Content in Jekyll
 
-Content in Jekyll is either a post or a page.
+Content in Jekyll is either a post or a page. Jekyll 2.0, not yet supported by GitHub Pages, allows for "collections", which let
+you define custom types. (IE: Images, People, whatever you can think up).
 These content "objects" get inserted into one or more templates to build the final output for its respective static-page.
 
 ### Posts and Pages
 
-Both posts and pages should be written in markdown, textile, or HTML and may also contain Liquid templating syntax.
-Both posts and pages can have meta-data assigned on a per-page basis such as title, url path, as well as arbitrary custom meta-data.
+Both posts and pages should be written in markdown, textile, or HTML and may also contain Liquid templating syntax. You can mix and match these types within your site as you like.
+Both posts and pages can have meta-data assigned on a per-page basis such as title, url path, as well as arbitrary custom meta-data. This is referred to as the "YAML Front Matter", and is a chunk of YAML formatted markup before (in "front") of the content area of the file.
 
 ### Working With Posts
 
 **Creating a Post**
-Posts are created by properly formatting a file and placing it the `_posts` folder.
+Posts are created by properly formatting a file and placing it the `_posts` folder. You can structure your post files in directories however you would like, and it has no effect on the categorization of the content. Jekyll will recurse through all your folders the same as if you had one flat directory.
 
 **Formatting**
-A post must have a valid filename in the form `YEAR-MONTH-DATE-title.MARKUP` and be placed in the `_posts` directory.
+A post **must** have a valid filename in the form `YEAR-MONTH-DATE-title.MARKUP` and be placed in the `_posts` directory. A more specific time or title (or entirely different one) can be specified in the post metadata. If no metadata is set, Jeykll creates a datestamp and title based on the filename.
 If the data format is invalid Jekyll will not recognize the file as a post. The date and title are automatically parsed from the filename of the post file.
 Additionally, each file must have [YAML Front-Matter](https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter) prepended to its content.
-YAML Front-Matter is a valid YAML syntax specifying meta-data for the given file.
+YAML Front Matter is a valid YAML syntax specifying meta-data for the given file.
+The YAML Front Matter being present is what tells Jekyll to process a file. It can even be blank, as is common if generating javascript or css files from templates. A blank YAML Front matter is simply the first two lines being three dashes.
 
 **Order**
 Ordering is an important part of Jekyll but it is hard to specify a custom ordering strategy.
 Only reverse chronological and chronological ordering is supported in Jekyll.
 
-Since the date is hard-coded into the filename format, to change the order, you must change the dates in the filenames.
+Since the date is hard-coded into the filename format, to change the order, you must change the dates in the filenames. (FIXME: is this true even if the date is set in the front matter? It could be the core of Jekyll relies on the lexical ordering and does not sort at any point.)
 
 **Tags**
 Posts can have tags associated with them as part of their meta-data.
@@ -208,16 +229,13 @@ Example:
 This page will be available at `http://yourdomain.com/people/bob/essay.html`
 
 
-**Recommended Pages**
+**Noteable Pages**
 
 - **index.html**
-  You will always want to define the root index.html page as this will display on your root URL.
+  Like any website, you will always want to define the root index.html page as this will display on your root URL. Dr. Henry currently duplicates the first page of /blog to the index, but it can be something else entirely.
 - **404.html**
   Create a root 404.html page and GitHub Pages will serve it as your 404 response.
-- **sitemap.html**
-  Generating a sitemap is good practice for SEO.
-- **about.html**
-  A nice about page is easy to do and gives the human perspective to your website.
+- FIXME: More here
 
 
 ## Templates in Jekyll
@@ -234,8 +252,8 @@ Templates are created by properly formatting a file and placing it in the `_layo
 Templates should be coded in HTML and contain YAML Front Matter.
 All templates can contain Liquid code to work with your site's data.
 
-**Rending Page/Post Content in a Template**
-There is a special variable in all templates named : `content`.
+**Rending Page/Post Content in a Layout Template**
+There is a special variable in all layout templates named : `content`.
 The `content` variable holds the page/post content including any sub-template content previously defined.
 Render the content variable wherever you want your main content to be injected into your template:
 
@@ -251,9 +269,11 @@ Render the content variable wherever you want your main content to be injected i
 
 ### Sub-Templates
 
-Sub-templates are exactly templates with the only difference being they
+Sub-templates are exactly layout templates with the only difference being they
 define another "root" layout/template within their YAML Front Matter.
 This essentially means a template will render inside of another template.
+
+Most layout implementations will have page/post layout elements that are shared at their exteriors, into a default layout.
 
 ### Includes
 In Jekyll you can define include files by placing them in the `_includes` folder.
@@ -262,45 +282,34 @@ In this way, you can treat the code inside includes as if it was native to the p
 
 Any valid template code may be used in includes.
 
+Includes do not include any kind of YAML front matter, not require it to be processed as a result.
 
 ## Using Liquid for Templating
 
-Templating is perhaps the most confusing and frustrating part of Jekyll.
-This is mainly due to the fact that Jekyll templates must use the Liquid Templating Language.
+The closest thing there is to code in Jekyll templates, is the Liquid Templating Language, which it uses to provide the template language. It is both full of features, and very restrictive. For the business of taking data and putting it into markup, it is very flexible. It is not realistic to expect to do higher order programming in Liquid, which is why projects like Octopress exist, to extend both Liquid and Jekyll and run locally. Runnig with just GitHub Pages and an editor means working to the limits of what can be done with the templating langage. 
+
+A surprising amount of things can be done all the same.
 
 ### What is Liquid?
 
 [Liquid](https://github.com/Shopify/liquid) is a secure templating language developed by [Shopify](http://shopify.com).
-Liquid is designed for end-users to be able to execute logic within template files
-without imposing any security risk on the hosting server.
+Liquid is designed for end-users to be able to execute logic within template files without imposing any security risk on the hosting server.
 
 Jekyll uses Liquid to generate the post content within the final page layout structure and as the primary interface for working with
 your site and post/page data.
 
-### Why Do We Have to Use Liquid?
-
 GitHub uses Jekyll to power [GitHub Pages](http://pages.github.com/).
-GitHub cannot afford to run arbitrary code on their servers so they lock developers down via Liquid.
+GitHub cannot afford the risk of allowing users to run arbitrary code on their servers so they restrict you from running plugins in Jekyll's "safe" mode. They have recently whitelisted some plugins and made them available on GitHub Pages.
 
-### Liquid is Not Programmer-Friendly.
+### Limitations
 
-The short story is liquid is not real code and its not intended to execute real code.
-The point being you can't do jackshit in liquid that hasn't been allowed explicitly by the implementation.
-What's more you can only access data-structures that have been explicitly passed to the template.
+One of the most restrictive limits for implementing on only Liquid, is while we can make new string assignments to variables on the fly with no difficulty, and we can read complex structures, we can only indirectly create an array by building a string and splitting, and there appears to be no way to create hashes at all, partly because we cannot compound two arrays, one within the other. (That I can tell. - JH)
 
-In Jekyll's case it is not possible to alter what is passed to Liquid without hacking the gem or running custom plugins.
-Both of which cannot be supported by GitHub Pages.
+The makes recomposition of data pretty much impossible, but for if you have small amounts of string values you do not mind pulling into the global namespace. (A trick Dr. Henry uses in a setup function to make it's theme inclusions cleaner)
 
-As a programmer - this is very frustrating.
+GitHub also limits runtime of templates at 500 loops, if it invokes more than that, it is done. (FIXME: confirm if it's loops or loop iterations...). This should be enough to do a reasonable static page.
 
-But rather than look a gift horse in the mouth we are going to
-suck it up and view it as an opportunity to work around limitations and adopt client-side solutions when possible.
-
-**Aside**
-My personal stance is to not invest time trying to hack liquid. It's really unnecessary
-_from a programmer's_ perspective. That is to say if you have the ability to run custom plugins (i.e. run arbitrary ruby code)
-you are better off sticking with ruby. Toward that end I've built [Mustache-with-Jekyll](http://github.com/plusjade/mustache-with-jekyll)
-
+Pushing the limits of what Jekyll can do can be frustrating and rewarding, like a complicated puzzle.
 
 ## Static Assets
 
@@ -308,8 +317,6 @@ Static assets are any file in the root or non-underscored subfolders that are no
 That is they have no valid YAML Front Matter and are thus not treated as Jekyll Pages.
 
 Static assets should be used for images, css, and javascript files.
-
-
 
 
 ## How Jekyll Parses Files
@@ -328,6 +335,7 @@ And thus there are two main types of file formats needed for this parsing.
 - **Template files.**
 	These files go in `_layouts` folder and contain your blogs **templates**. They should be made in HTML with the help of Liquid syntax.
 	Since include files are simply injected into templates they are essentially parsed as if they were native to the template.
+	In Dr. Henry and Jekyll Bootstrap, the files in the _layouts directory just include the appropriate layout in the _includes/themes/THEME_NAME/layouts, as a part of there theme implementations. As such those files, not the ones in _layouts/ are what should be modified if customizing.
 
 **Arbitrary files and folders.**
 Files that _are not_ valid pages are treated as static content and pass through
@@ -345,6 +353,9 @@ YAML Front Matter must be prepended to the top of template/post/page files:
     layout: post
     category : pages
     tags : [how-to, jekyll]
+    your : custom
+    key: value
+    pairs : here
     ---
 
     ... contents ...
@@ -360,9 +371,6 @@ Configuration parameters for YAML Front-Matter is outlined here:
 The `layout` parameter in the YAML Front Matter defines the template file for which the given post or template should be injected into.
 If a template file specifies its own layout, it is effectively being used as a `sub-template.`
 That is to say loading a post file into a template file that refers to another template file with work in the way you'd expect; as a nested sub-template.
-
-
-
 
 
 ## How Jekyll Generates the Final Static Files.
@@ -412,5 +420,7 @@ Jekyll-bootstrap is intended to provide helper methods and strategies aimed at m
 
 ## Next Steps
 
-Please take a look at [{{ site.categories.api.first.title }}]({{ root_url }}{{ site.categories.api.first.url }})
-or jump right into [Usage]({{ root_url }}{{ site.categories.usage.first.url }}) if you'd like.
+If you just want to make posts using an existing theme, you probably just need to setup _config.yml and _data, and start making posts. You won't need much Liquid to create posts, but will need more understanding to work with pages, and customizing themes.
+
+Good luck!
+
