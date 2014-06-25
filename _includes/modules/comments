@@ -10,8 +10,6 @@
       {% include modules/comments-providers/intensedebate %}
     {% when "facebook" %}
       {% include modules/comments-providers/facebook %}
-    {% when "custom" %}
-      {% include custom/comments %}
     {% endcase %}
   </section>
 {% endif %}

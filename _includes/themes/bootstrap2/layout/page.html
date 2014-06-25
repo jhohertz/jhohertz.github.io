@@ -8,12 +8,14 @@
   {% else %}
   <div class="span9">
   {% endif %}
-  {% include theme file="page_article_area" %}
+  {% include {{tt_page_article_area}} %}
   {% include modules/comments %}
   </div>
   {% unless page.sidebar == false %}
   <div class="span3">
-    {% include theme file="page_asides" %}
+    <aside class="sidebar">
+      {% include {{tt_page_asides}} %}
+    </aside>
   </div>
   {% endunless %}
 </div>

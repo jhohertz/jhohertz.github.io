@@ -9,8 +9,6 @@
   {% include modules/analytics-providers/mixpanel %}
 {% when "piwik" %}
   {% include modules/analytics-providers/piwik %}
-{% when "custom" %}
-  {% include custom/analytics %}
 {% endcase %}
 
 {% endif %}

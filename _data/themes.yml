@@ -3,7 +3,7 @@
 # The local section is the one you should use for experimenting or altering an existing theme
 local:
   name: local
-  depends: octolost
+  depends: foundation5
   provides:
     - page2.html
 # Theme conversion of Octofound: http://octofound.annekjohnson.com/
@@ -12,30 +12,28 @@ octolost:
   name: octolost
   depends: foundation5
   provides:
-    - archive_post
     - article
-    - asides/github.html
-    - asides/googleplus.html
-    - asides/recent_posts.html
-    - author
-    - blog_archive
-    - blog_index
-    - categories
-    - date
     - footer
-    - head
     - header
-    - layout/default.html
     - layout/page.html
     - layout/post.html
     - navigation
-    - page_article_area
-    - page_asides
     - pagination_pages
-    - post_article_area
-    - post_asides
     - search_box
     - subscribe
+  css:
+    - url: /assets/themes/octolost/css/screen.css
+      media: "screen, projection"
+    - inline: |
+        .top-bar button[type="submit"] {
+            font-size: 0.77778rem;
+            position: relative;
+            top: 7px;
+        }
+    - url: http://fonts.googleapis.com/css?family=Roboto:300,300italic,500,500italic
+    - url: http://fonts.googleapis.com/css?family=Ubuntu:500
+  js_top:
+    - url: /assets/themes/octolost/js/octopress.js
 # Conversion of Octopress 2.0 "Classic" default theme.
 # Requires only core theme
 octo:
@@ -43,19 +41,30 @@ octo:
   depends: core
   provides:
     - footer
-    - head
     - header
     - layout/default.html
     - layout/page.html
     - layout/post.html
     - navigation
+  css:
+    - url: /assets/themes/octo/css/screen.css
+      media: "screen, projection"
+    - url: //fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic
+    - url: //fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic
+  js_top:
+    - url: /assets/themes/octo/js/modernizr-2.0.js
+    - url: //ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js
+    #- url: /assets/themes/octo/js/libs/jquery.min.js
+    - url: /assets/themes/octo/js/octopress.js
 # Conversion of "bootstrap3" theme from Jekyll Bootstrap: http://jekyllbootstrap.com/
 # Requires bootstrap3 theme
 jekb:
   name: jekb
   depends: bootstrap3
-  provides:
-    - head
+  #provides:
+  css:
+    - url: /assets/themes/jekb/css/style.css?body=1
+      media: all
 # Bootstrap 2 theme, converted from Jekyll Bootstrap, not really maintained at present.
 # Requires core theme
 bootstrap2:
@@ -68,7 +77,13 @@ bootstrap2:
     - layout/page.html
     - layout/post.html
     - navigation
-    - pagination_pages
+  css:
+    - url: /assets/themes/bootstrap2/bootstrap/css/bootstrap.2.2.2.min.css
+    - url: /assets/themes/bootstrap2/css/style.css?body=1
+      media: all
+  js_top:
+    - url: https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
+
 # Bootstrap 3 base/vanilla theme, meant for re-use, used by jekb
 # Requires core theme
 bootstrap3:
@@ -84,6 +99,12 @@ bootstrap3:
     - layout/post.html
     - navigation
     - search_box
+  css:
+    - url: /assets/themes/bootstrap3/css/bootstrap.min.css
+    - url: /assets/themes/bootstrap3/css/bootstrap-theme.min.css
+    - url: /assets/themes/bootstrap3/css/bs-sticky-footer.css
+  js_top:
+    - url: https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
 # Foundation 5 base/vanilla theme, meant for re-use, used by octolost
 # Requires core theme
 foundation5:
@@ -91,15 +112,33 @@ foundation5:
   depends: core
   provides:
     - footer
-    - head
     - header
     - layout/default.html
     - layout/page.html
     - layout/post.html
     - navigation
-    - page_asides
-    - post_asides
     - search_box
+  css:
+    - url: /assets/themes/foundation5/css/foundation.css
+    - inline: |
+        .top-bar input[type="text"], .top-bar .button {
+            font-size: 0.77778rem;
+            position: relative;
+            top: 7px;
+        }
+        .top-bar input[type="text"] {
+            height: auto;
+            padding-top: 0.35rem;
+            padding-bottom: 0.35rem;
+            font-size: 0.75rem;
+        }
+  js_top:
+    - url: /assets/themes/foundation5/js/vendor/modernizr.js
+    - url: /assets/themes/foundation5/js/vendor/jquery.js
+    - url: /assets/themes/foundation5/js/vendor/fastclick.js
+    - url: /assets/themes/foundation5/js/foundation.min.js
+    - inline: |
+        $(document).ready( function(){ $(document).foundation(); });
 # Core theme, always at the bottom of the dependency chain
 core:
   name: core
@@ -120,7 +159,6 @@ core:
     - categories_list
     - date
     - footer
-    - head_icons
     - head
     - header
     - layout/default.html
@@ -139,4 +177,11 @@ core:
     - search_box
     - subscribe
     - tags_list
-
+  css:
+    - url: /assets/fontawesome/css/font-awesome.min.css
+      media: "screen, projection"
+  # For now, core cen not declare jquery, as something else might
+  # However, it requires something in the chain do so
+  js_top:
+    - url: https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
+ 

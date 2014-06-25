@@ -1,3 +1,16 @@
 {% for inc in include.array %}
-  {% include theme file=inc %}
+<!--DEBUG: {{inc}} -->
+  {% case inc %}
+    {% when "recent_posts" %}
+      {% include {{tt_aside_recent_posts}} %}
+    {% when "github" %}
+      {% include {{tt_aside_github}} %}
+    {% when "delicious" %}
+      {% include {{tt_aside_delicious}} %}
+    {% when "pinboard" %}
+      {% include {{tt_aside_pinboard}} %}
+    {% when "googleplus" %}
+      {% include {{tt_aside_googleplus}} %}
+    {% else %}
+  {% endcase %}
 {% endfor %}

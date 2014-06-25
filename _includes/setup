@@ -8,6 +8,108 @@
     {% assign root_url = nil %}
   {% endif %}
   <!-- build theme dependency chain from theme data, this is tricky, as we have limited data creation facilities -->
-  {% capture theme_dep_list %}{% include setup_theme_deps theme="local" %}{% endcapture %}
+  {% capture theme_dep_list %}{% include internal/setup_theme_deps theme="local" %}{% endcapture %}
   {% assign theme_deps = theme_dep_list | strip_newlines | split:"|" %}
+
+  <!-- this is where we precalc all our theme include filenames, its messy, but not horrible -->
+
+  {% include internal/theme_path_gen file="after_footer" %}
+  {% assign tt_after_footer = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="archive_post" %}
+  {% assign tt_archive_post = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="article" %}
+  {% assign tt_article = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="asides/delicious.html" %}
+  {% assign tt_aside_delicious = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="asides/github.html" %}
+  {% assign tt_aside_github = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="asides/googleplus.html" %}
+  {% assign tt_aside_googleplus = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="asides/pinboard.html" %}
+  {% assign tt_aside_pinboard = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="asides/recent_posts.html" %}
+  {% assign tt_aside_recent_posts = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="author" %}
+  {% assign tt_author = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="blog_index" %}
+  {% assign tt_blog_index = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="blog_archive" %}
+  {% assign tt_blog_archive = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="categories" %}
+  {% assign tt_categories = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="categories_list" %}
+  {% assign tt_categories_list = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="date" %}
+  {% assign tt_date = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="footer" %}
+  {% assign tt_footer = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="head" %}
+  {% assign tt_head = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="header" %}
+  {% assign tt_header = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="layout/default.html" %}
+  {% assign tt_layout_default = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="layout/page.html" %}
+  {% assign tt_layout_page = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="layout/post.html" %}
+  {% assign tt_layout_post = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="liquid_raw" %}
+  {% assign tt_liquid_raw = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="navigation" %}
+  {% assign tt_navigation = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="page_article_area" %}
+  {% assign tt_page_article_area = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="page_asides" %}
+  {% assign tt_page_asides = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="pages_list" %}
+  {% assign tt_pages_list = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="pagination_archive" %}
+  {% assign tt_pagination_archive = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="pagination_pages" %}
+  {% assign tt_pagination_pages = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="post_article_area" %}
+  {% assign tt_post_article_area = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="post_asides" %}
+  {% assign tt_post_asides = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="posts_collate" %}
+  {% assign tt_posts_collate = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="search_box" %}
+  {% assign tt_search_box = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="subscribe" %}
+  {% assign tt_subscribe = theme_include_filename %}
+
+  {% include internal/theme_path_gen file="tags_list" %}
+  {% assign tt_tags_list = theme_include_filename %}
+
 {% endcapture %}{% assign setupcache = nil %}

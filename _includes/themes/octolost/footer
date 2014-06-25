@@ -3,9 +3,9 @@
   <span class="copyright">
        Copyright &copy; {{ site.time | date: "%Y" }} by {{ site.author.name }}
   </span>
-
+  <br/>
   <span class="credit">
-       Powered by <a href="https://github.com/jhohertz/dr-henry">Dr. Henry</a><br/>
+       Powered by <a href="https://github.com/jhohertz/dr-henry">Dr. Henry</a>, 
        Theme based on <a href="https://github.com/annejohnson/octofound">Octofound</a> by <a href="http://annekjohnson.com">Anne Johnson</a>
   </span>
 </p>

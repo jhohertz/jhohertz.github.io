@@ -10,12 +10,12 @@
   {% if has_date_formatted == '0' %}
     {% assign date_formatted = date | date_to_long_string %}
   {% endif %}
-  {% capture time %}<time datetime="{{ date | datetime | date_to_xmlschema }}" pubdate{% if updated %} data-updated="true"{% endif %}>{{ date_formatted }}</time>{% endcapture %}
+  {% capture time %}<i class="fa fa-calendar-o"></i> <time datetime="{{ date | datetime | date_to_xmlschema }}" pubdate{% if updated %} data-updated="true"{% endif %}>{{ date_formatted }}</time> {% endcapture %}
 {% endif %}
 {% if was_updated != '0' %}
   {% if has_updated_formatted == '0' %}
     {% assign updated_formatted = updated | date_to_long_string %}
   {% endif %}
-  {% capture updated %}<time datetime="{{ updated | datetime | date_to_xmlschema }}" class="updated">Updated {{ updated_formatted }}</time>{% endcapture %}
+  {% capture updated %}<i class="fa fa-calendar-o"></i> <time datetime="{{ updated | datetime | date_to_xmlschema }}" class="updated">Updated {{ updated_formatted }}</time> {% endcapture %}
 {% else %}{% assign updated = false %}{% endif %}
 

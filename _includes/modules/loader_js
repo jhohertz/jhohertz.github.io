@@ -1,0 +1,16 @@
+{% if include.group %}{% assign jsgroup = include.group %}{% else %}{% assign jsgroup = "js" %}{% endif %}
+{% for theme in theme_deps reversed %}
+  {% assign thistheme = site.data.themes[theme] %}
+  {% if thistheme[jsgroup] %}
+    {% for jsdef in thistheme[jsgroup] %}
+      {% if jsdef.url %}
+        {% if jsdef.url contains '//' %}{% assign thisurl = jsdef.url %}{% else %}{% assign thisurl = jsdef.url | prepend:root_url %}{% endif %}
+        <script src="{{ thisurl }}" type="text/javascript"></script>
+      {% elsif jsdef.inline %}
+        <script>{{ jsdef.inline }}</script>
+      {% else %}
+        <!-- improper JS definition -->
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}

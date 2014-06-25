@@ -2,7 +2,7 @@
   <div class="large-12 columns">
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
-        <li class="name">{% include theme file="header" %}</li>
+        <li class="name">{% include {{tt_header}} %}</li>
         <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
       </ul>
       <section class="top-bar-section">
@@ -11,9 +11,8 @@
           <li><a href="{{ root_url }}{{ site.data.dr.tags_path }}">Tags</a></li>
           <li><a href="{{ root_url }}{{ site.data.dr.pages_path }}">Pages</a></li>
         </ul>
-        {% include theme file="search_box" %}
+        {% include {{tt_search_box}} %}
       </section>
     </nav>
-    <hr/>
   </div>
 </div>

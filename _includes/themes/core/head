@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <title>{{ page.title }}</title>
-    {% if page.description %}<meta name="description" content="{{ page.description }}">{% endif %}
-    <meta name="author" content="{{ site.author.name }}">
-
-    {% include theme file="head_icons" %}
-    <!-- atom & rss feed -->
-    <link href="{{ root_url }}{{ site.data.subscribe.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
-    <link href="{{ root_url }}{{ site.data.subscribe.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
-
-    <!-- jQuery needs to be up top, do not move -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  </head>
+{% include modules/head_html_open %}
+<head>
+  {% include modules/head_title_meta %}
+  {% include modules/head_ui_meta %}
+  {% include modules/head_feeds %}
+  {% include modules/head_icons %}
+  {% include modules/head_css %}
+  {% include modules/loader_js group="js_top" %}
+</head>

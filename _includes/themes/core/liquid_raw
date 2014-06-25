@@ -21,7 +21,7 @@ Usage:
   |.% assign tags_list = null %.|{% endcapture %}    
 
   then do the include
-    include theme file="liquid_raw"
+    include {{tt_liquid_raw}}
   
   As seen here, you must use "|." and ".|" as opening and closing brackets.
 -->{% endcomment%}

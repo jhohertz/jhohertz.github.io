@@ -1,1 +1,0 @@
-{{ include.theme }}{% if site.data.themes[include.theme].depends != null %}|{% assign next_theme = site.data.themes[include.theme].depends %}{% include setup_theme_deps theme=next_theme %}{% endif %}

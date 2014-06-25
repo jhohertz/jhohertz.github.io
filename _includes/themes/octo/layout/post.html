@@ -1,7 +1,9 @@
 <div>
-  {% include theme file="post_article_area" %}
+  {% include {{tt_post_article_area}} %}
   {% include modules/comments %}
 </div>
 {% unless page.sidebar == false %}
-  {% include theme file="post_asides" %}
+  <aside class="sidebar">
+    {% include {{tt_post_asides}} %}
+  </aside>
 {% endunless %}
