@@ -5,15 +5,17 @@ tags : [welcome]
 ---
 {% include setup %}
 
-Welcome to my GitHub hosted blog! The one I will actually use, and post things on, and get twittered or whatever.
+Welcome to my GitHub hosted blog! The one I will actually use, and post things on, and twitter them or whatever.
 
-It's mostly going to be about various things typical of what you might find on someones GitHub account, some others, less so. As this is this first post, there is not much here as of yet. Updates on projects and other things related.
+It's mostly going to be about various things typical of what you might find on someones GitHub account, some others, less so. As this is this first post, there is not much here as of yet. Updates on projects and other things related to these interests will be the main focus of it's content.
 
-And contrary to what you might think if you read this whole post, I actually want to do some things that are accessible to people getting into programming. Like this blog, as in the engine that drives it. It's actually really easy to use it to make a blog. And anyone who doesn't already know Git or other software configuration management will get to know the basic operations of it if they get to know how to blog with it. Sneaky. Anyway more on that below.
+And contrary to what you might think if you read this whole post, I actually want to do some things that are accessible to people getting into programming. Like this blog, as in the engine that drives it. It's actually really easy to use it to make a blog. And anyone who doesn't already know Git or other software configuration management will get to know the basic operations of it, if they get to know how to blog with it. Sneaky. Anyway more on that below.
 
-I have recently decided to embrace using GitHub and push out all the various silly projects I have, for whatever reason hesitated to publish before now, and am in the process of cleaning things up to post for anyone who finds them of use. I've been using GitHub, and other software configuration management systems for nearly 20 years, even built my own private work alike to GitHub using [Redmine](http://www.redmine.org/), which eventually I will publish the recipe for. But anything I want to put out to the public, I am going to push to here.
+I have recently decided to embrace using GitHub and push out all the various silly projects I have, for whatever reason hesitated to publish before now, I am in the process of preparing them for uploading here, for anyone who finds them of use. 
 
-I didn't want to maintain my own infrastructure, or require much in the way of specific tooling to work with the blog. I found a way to do it using just git and and editor with GitHub Pages. (Or in ways that are both more, and less convenient, using just their website)
+I've been using GitHub, and other software configuration management systems for nearly 20 years, even built my own private work alike to GitHub using [Redmine](http://www.redmine.org/), which eventually I will publish the recipe for. But anything I want to put out to the public, I am going to push to here going forward.
+
+I didn't want to maintain my own infrastructure, or require much in the way of specific tooling to work with the blog. I found a way to do it using just git and and editor with GitHub Pages. (Or in ways that are both more, and less convenient, using just their website.)
 
 Read on if you care to learn more about how I host this blog, and other projects I working on.
 
