@@ -3,7 +3,7 @@
 # Set 'provider' to the sharing provider you want to use.
 # Set 'provider' to false to turn sharing off globally.
 #
-provider: false
+provider: internal
 
 # set provider to local, and setup below items
 # Twitter
@@ -20,7 +20,7 @@ googleplus_user:
 googleplus_hidden: false
 
 # Facebook Like
-facebook_appid: "123456789012345"
+facebook_appid: "457206664416277"
 facebook_like: true
 
 # Aside: Github user stats

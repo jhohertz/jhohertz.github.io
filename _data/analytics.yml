@@ -4,7 +4,7 @@
 #
 provider: google
 google:
-        tracking_id: 'UA-123-12'
+        tracking_id: 'UA-15380677-2'
 getclicky:
       site_id:
 mixpanel:
