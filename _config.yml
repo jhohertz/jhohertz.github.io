@@ -27,7 +27,7 @@ root: /
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://username.github.io
+production_url : http://jhohertz.github.io
 
 # This is the default format. 
 # For more see: http://jekyllrb.com/docs/permalinks/
@@ -50,14 +50,13 @@ excerpt_link: "Read on &rarr;"  # "Continue reading" link text at the bottom of 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : Dr. Henry
-subtitle : Jekyll transformation for your GitHub Pages... pages.
+title : GitHub Blog for Joe Hohertz
+subtitle : Updates about work published to GitHub
 author :
-  name : Name Lastname
-  email : blah@email.test
-  github : username
-  twitter : username
-  feedburner : feedname
+  name : Joe Hohertz
+  email : jhohertz@gmail.com
+  github : jhohertz
+  twitter : joehohertz
 
 # Recent posts aside limit
 recent_posts: 5
