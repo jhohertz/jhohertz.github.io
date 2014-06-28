@@ -61,8 +61,9 @@ Building every image from scratch would take a while to get done. So what Aminat
 
 As Buri got started, we had two main problems with using Aminator directly (some of which may be addressed now)
 
-- We had to use a different type of image for newer "HVM" machine types than Aminator assumed. There has been some work in this area in the current testing branch of Aminator.
-- You need to provide your own foundation and base AMIs. Aminator doesn't help build these.
+- We had to use a different type of image for newer "HVM" machine types than Aminator assumed.
+  - There has been some work in this area in the current testing branch of Aminator.
+- You need to provide your own foundation and base AMIs. Aminator doesn't help build these, but has the expectations around their format per the last point.
 
 So the first thing you can do with Buri, is bootstrap the creation of an Ubuntu LTS (12.04 or 14.04) foundation AMI in your account. You can not access the snapshots of the official Ubuntu LTS AMI's to work with in an incremental manner, so you need to "install" your own. This is the foundation. It requires no configuration to create, and is what all other AMIs will eventually trace back to.
 
@@ -88,7 +89,7 @@ In normal Ansible, it would be handling this, and defined as part of it's invent
 
 Other long term visions for Buri:
 
-- A public AMI that adds an installer like experience. Boot it up, log in to it, config forms for a given setup, save/load configs to S3, and it generates an AMI set, to that configuration, with feedback from Ansible, which provides detailed reporting on progress, boots up Asgard and off you go. (This is not on the horizon for a while)
+- A public AMI that adds an installer like experience. Boot it up, log in to it, config forms for a given setup, save/load configs to S3, and it generates an AMI set, to that configuration, with feedback from Ansible, which provides detailed reporting on progress, boots up Asgard and off you go. (This is not on the horizon for a while, but it should be possible, and would be a nice experience for use.)
 - There is a lot more automation on activating IAM policy, security groups, etc that could be done. Waiting to see what Asgard needs/provides before going there.
 - The all in one VM will be a priority to maintain.
 - While not a focus, trying not to get in the way of using the roles in Buri as "normal" Ansible is respected. This overlaps a bit with the all-in-one vm's needs.
