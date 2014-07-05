@@ -1,0 +1,585 @@
+---
+layout: reveal_fullscreen
+title: NetflixOSS - A survey of the open source offerings of Netflix
+title: Reveal.js 2.6.2 original index page
+comments: false
+---
+<section>
+	<h1>The NetflixOSS Stack</h1>
+	<h3>A high-level overview of Netflix's Open Source projects</h3>
+	<p>
+		<small>Presented by <a href="http://joe.hohertz.org">Joe Hohertz</a> / <a href="http://twitter.com/joehohertz">@joehohertz</a></small>
+	</p>
+	<p>
+		<small>Slides @ <a href="http://jhohertz.github.io/netflixoss-slides">http://jhohertz.github.io/netflixoss-slides</a></small>
+	</p>
+</section>
+
+<section>
+	<section>
+		<h1>Welcome</h1>
+	</section>
+	<section>
+		<h2>Audience</h2>
+		<ol>
+			<li class="fragment">Developers</li>
+			<li class="fragment">Operations</li>
+			<li class="fragment">Project managers</li>
+			<li class="fragment">Other interested parties</li>
+		</ol>
+
+		<aside class="notes">
+			This slide has fragments which are also stepped through in the notes window.
+		</aside>
+
+	</section>
+	<section>
+		<h1>Let's get started!</h1>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>What is NetflixOSS?</h1>
+		<h3>The view from 10,000 feet</h3>
+	</section>
+	<section>
+		<h2>What does NetflixOSS consist of?</h2>
+		<ol>
+			<li class="fragment">Cloud Native Architecture Components</li>
+			<li class="fragment">Anti-Fragile Patterns</li>
+			<li class="fragment">Other Cloud Tools</li>
+			<li class="fragment">Other Miscellaneous Projects</li>
+		</ol>
+	</section>
+
+	<section>
+		<h2>Cloud Native</h2>
+		<h3 class="fragment">What is this?</h3>
+		<ul>
+			<li class="fragment">Master copies of data are cloud-resident</li>
+			<li class="fragment">Everything is dynamically provisioned</li>
+			<li class="fragment">All services are ephemeral</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Anti-Fragile Patterns</h2>
+		<h3 class="fragment">What is this?</h3>
+		<ul>
+			<li class="fragment">Micro-services</li>
+			<li class="fragment">Highly available systems</li>
+			<li class="fragment">Ephemeral/Immutable components</li>
+			<li class="fragment">Circuit breakers</li>
+			<li class="fragment">Chaos engines</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Micro-services</h2>
+		<ul>
+			<li class="fragment">Split everything into series of micro services</li>
+			<li class="fragment">Clients assume failure will occur, seek alternates</li>
+			<li class="fragment">Calls between services done through circuit breaker pattern</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Chaos Engines</h2>
+		<ul>
+			<li class="fragment">Injected failures</li>
+			<li class="fragment">Expose weaknesses</li>
+			<li class="fragment">Ensure resiliency</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Deep use of Metrics</h2>
+		<ul>
+			<li class="fragment">Most libraries include rich metrics</li>
+			<li class="fragment">Not just for reporting</li>
+			<li class="fragment">Used internally for load management by:</li>
+			<ul>
+				<li class="fragment">Hystrix (breaks overloaded circuits)</li>
+				<li class="fragment">Eureka (service selection)</li>
+			</ul>
+			<li class="fragment">Excellent real-time visualization of metrics</li>
+		</ul>
+	</section>
+
+</section>
+
+<section>
+
+	<section>
+		<h1>Deployment</h1>
+	</section>
+
+	<section>
+		<h2>What is deployment like?</h2>
+		<ul>
+			<li class="fragment">Depends on Amazon's Cloud</li>
+			<li class="fragment">One service per node, combination discouraged</li>
+			<li class="fragment">Base AMI provisions a Java web container (Tomcat typical)</li>
+			<li class="fragment">Specific AMIs have WAR deployed onto base</li>
+			<li class="fragment">If WAR is a co-process, the service captured is also deployed to AMI image.</li>
+			<li class="fragment">Each AMI launches into it's own ASG (usually)</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Java?!</h2>
+		<ul>
+			<li class="fragment">Everything runs in a JVM</li>
+			<li class="fragment">Uses JMX for some core functions</li>
+			<li class="fragment">Supports many JSR-233 languages</li>
+			<li class="fragment">Not everything need be in Java-proper</li>
+			<li class="fragment">Many components using Groovy, Scala, etc.</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Image management</h2>
+		<ul>
+			<li class="fragment">Some pre-baked AMIs around...</li>
+			<li class="fragment">Not good for much more than some evaluation</li>
+			<li class="fragment">Bootstrapping your own necessary for real use</li>
+			<li class="fragment">Some level of config baked into AMI, some region-specific (AMI per service per region typical)</li>
+			<li class="fragment">Will build on available Ansible playbooks</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+
+	<section>
+		<h1>Cluster Tools</h1>
+		<h3>The management elements of NetflixOSS</h3>
+	</section>
+
+	<section>
+		<h2>Aminator / BUILD</h2>
+		<ul>
+			<li class="fragment">AMI Build tool</li>
+			<li class="fragment">Works with Ansible playbooks</li>
+			<li class="fragment">Handles laying a specific service into a container AMI</li>
+			<li class="fragment">Generates a configured, deployable in ASG, service AMI</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Asgard</h2>
+		<ul>
+			<li class="fragment">Application Deployment Manager</li>
+			<li class="fragment">Manages majority of AWS cloud</li>
+			<li class="fragment">Allows Red/Black rollouts</li>
+			<li class="fragment">Replaces use of EC2 console for most tasks</li>
+			<li class="fragment">Enforces deployment conventions / rules</li>
+			<li class="fragment">Does NOT cross production/test boundaries. (Each gets it's own Asgard)</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Ice</h2>
+		<ul>
+			<li class="fragment">Cost analysis / optimization</li>
+			<li class="fragment">Imports from billing API @ Amazon</li>
+			<li class="fragment">Allows querying/reporting on data</li>
+			<li class="fragment">Aware of reserved instances</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Edda</h2>
+		<ul>
+			<li class="fragment">Cluster state analysis/query</li>
+			<li class="fragment">Imports from config APIs @ Amazon</li>
+			<li class="fragment">Allows querying/reporting on data</li>
+			<li class="fragment">Display differences in environment over time</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Denominator</h2>
+		<ul>
+			<li class="fragment">Library/CLI for manipulating hosted DNS config</li>
+			<li class="fragment">Like jclouds for DNS (same author)</li>
+			<li class="fragment">A future state component, not intrinsic to current stack</li>
+			<li class="fragment">Netflix positions this as part of a multi-region failover strategy</li>
+		</ul>
+	</section>
+
+</section>
+<section>
+
+	<section>
+		<h1>Base Cluster Services</h1>
+		<h3>The lowest level of the stack</h3>
+	</section>
+
+	<section>
+		<h2>Exhibitor/Curator (Zookeeper)</h2>
+		<ul>
+			<li class="fragment">Zookeeper = Cluster Co-ordination services</li>
+			<li class="fragment">Exhibitor = Zookeeper Co-process</li>
+			<li class="fragment">Curator = Client wrapper for Zookeeper</li>
+			<li class="fragment">Leveraged for configuration management of stack / application on a cluster-wide basis</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Eureka</h2>
+		<ul>
+			<li class="fragment">Application services registry</li>
+			<li class="fragment">How parts of the application find provisioned services</li>
+			<li class="fragment">Central to scaling/HA</li>
+			<li class="fragment">Clients decide how to reach/retry a service given a registry list queried from Eureka (client-side load spreading)</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Turbine / Hystrix Dashboard</h2>
+		<ul>
+			<li class="fragment">Turbine = metrics aggregation</li>
+			<li class="fragment">Hystrix Dashboard = visualization</li>
+			<li class="fragment">Provides real-time insights into all areas of application performance</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Suro</h2>
+		<ul>
+			<li class="fragment">Distributed Data Pipeline</li>
+			<li class="fragment">Collection/Aggregation/Dispatch</li>
+			<li class="fragment">Integration w/ external pipelines (IE: Kafka)</li>
+			<li class="fragment">Supports data logging for Hadoop processing</li>
+		</ul>
+	</section>
+</section>
+<section>
+
+	<section>
+		<h1>Frameworks / Libraries</h1>
+		<h3>Application programming environment</h3>
+	</section>
+
+	<section>
+		<h2>Archaius</h2>
+		<ul>
+			<li class="fragment">Provides dynamic/composed config properties</li>
+			<li class="fragment">Can compose config from multiple sources</li>
+			<li class="fragment">Can handle environment/zone specific details</li>
+			<li class="fragment">Stores in zookeeper via curator</li>
+			<li class="fragment">Notifications on property changes available</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Servo</h2>
+		<ul>
+			<li class="fragment">Application metrics</li>
+			<li class="fragment">Publish to JMX is primary channel</li>
+			<li class="fragment">Other publications available (IE: Graphite, Turbine, Cloudwatch)</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Blitz4J</h2>
+		<ul>
+			<li class="fragment">Enhancements to Log4J</li>
+			<li class="fragment">Decouples logging from main thread</li>
+			<li class="fragment">Logging is async</li>
+			<li class="fragment">Can handle high log volumes</li>
+			<li class="fragment">Mitigates loss during log storms via summaries.</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Ribbon</h2>
+		<ul>
+			<li class="fragment">Model for interprocess communication</li>
+			<li class="fragment">Core of how services communicate with other services</li>
+			<li class="fragment">Where client-side load balancers are implemented</li>
+			<li class="fragment">Provides REST-based model for service exposure</li>
+			<li class="fragment">Various serialization schemes supported (JSON primarily)</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Governator</h2>
+		<ul>
+			<li class="fragment">Based on <a href="https://code.google.com/p/google-guice/">Google Guice</a>, a dependency injection framework</li>
+			<li class="fragment">Field validation</li>
+			<li class="fragment">Config to field mapping</li>
+			<li class="fragment">Classpath management</li>
+			<li class="fragment">Lifecycle management</li>
+			<li class="fragment">More...</li>
+		</ul>
+	</section>
+	<section>
+		<h2>RxJava</h2>
+		<ul>
+			<li class="fragment">Implementation of "Rx Observables"</li>
+			<li class="fragment">Rx = Reactive Extensions</li>
+			<li class="fragment">A port of <a href="https://rx.codeplex.com/">Rx.NET</a></li>
+			<li class="fragment">for composing asynchronous and event-based programs using observable sequences</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Hystrix</h2>
+		<ul>
+			<li class="fragment">Latency and Fault Tolerance helper</li>
+			<li class="fragment">Prevents hung services from taking down app</li>
+			<li class="fragment">A primary source of application metrics</li>
+			<li class="fragment">Manages queues of requests to like sources</li>
+			<li class="fragment">Collapses requests into batches where possible</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Commons</h2>
+		<ul>
+			<li class="fragment">Common utilities</li>
+			<li class="fragment">Implementation of an event bus</li>
+			<li class="fragment">Guice -> Jersey utilities</li>
+			<li class="fragment">Infix operator enhancements</li>
+			<li class="fragment">Helpers for adding custom metrics</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Karyon</h2>
+		<ul>
+			<li class="fragment">Base container for applications/services in this stack</li>
+			<li class="fragment">Ties most of the other libraries together</li>
+			<li class="fragment">Gives a built-in admin console w/ insights/statistics</li>
+			<li class="fragment">Companion library (Pytheas) provides web development aspects</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Pytheas</h2>
+		<ul>
+			<li class="fragment">Data source integration</li>
+			<li class="fragment">Provides common UI components</li>
+			<li class="fragment">Supports server-side events</li>
+			<li class="fragment">What front end development ultimately targets</li>
+			<li class="fragment">Edge services will be provisioned in terms of this and Karyon</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Zuul (The Gatekeeper)</h2>
+		<ul>
+			<li class="fragment">An even higher level edge framework.</li>
+			<li class="fragment">Sort of like a front end load balancer on steriods</li>
+			<li class="fragment">If used, rendering to users pushed down to a middle tier service</li>
+			<li class="fragment">Routes/filters requests to the appropriate service</li>
+			<li class="fragment">Allows powerful debugging, route specific requests to serperate API clusters</li>
+			<li class="fragment">Can route cross-region.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Glisten</h2>
+		<ul>
+			<li class="fragment">Groovy library for building application with <a href="http://aws.amazon.com/swf/">Amazon Simple Workflow</a></li>
+			<li class="fragment">Used by Asgard for co-ordinating deployment activities</li>
+		</ul>
+	</section>
+
+</section>
+	<section>
+
+	<section>
+		<h1>Data Services</h1>
+		<h3>Persistence, Caching, Query</h3>
+	</section>
+
+	<section>
+		<h2>Priam</h2>
+		<ul>
+			<li class="fragment">Co-process for Cassandra</li>
+			<li class="fragment">Manages configuration, tokens, seed discovery</li>
+			<li class="fragment">AWS aware</li>
+			<li class="fragment">Backup/Recovery (Complete/Incremental)</li>
+			<li class="fragment">Exposes Cassandra as a framework service</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Astyanax</h2>
+		<ul>
+			<li class="fragment">High level client side for Cassandra/Priam</li>
+			<li class="fragment">Provides recipes for common Cassandra use-cases</li>
+			<li class="fragment">Handles discovery of new nodes, marking of downed ones.</li>
+			<li class="fragment">Completely encapsulates client access</li>
+			<li class="fragment">Connection pooling</li>
+			<li class="fragment">In-progress: Rebasing to Datastax driver</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>EVCache</h2>
+		<ul>
+			<li class="fragment">Service for Ephemeral, Volatile Cache</li>
+			<li class="fragment">Distributed cache</li>
+			<li class="fragment">AWS Zone aware</li>
+			<li class="fragment">Allows replication of cached data</li>
+			<li class="fragment">Uses memcache</li>
+			<li class="fragment">Is a co-process like Priam</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Genie</h2>
+		<ul>
+			<li class="fragment">Implements Hadoop as a service</li>
+			<li class="fragment">Runs Hadoop/Hive/Pig jobs</li>
+			<li class="fragment">Schedules jobs to available resources (including launch of transients)</li>
+			<li class="fragment">Callers can do so without directly invoking a Hadoop client.</li>
+			<li class="fragment">Provides monitoring of jobs as well</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Aegisthus</h2>
+		<ul>
+			<li class="fragment">Bulk data pipeline from Cassandra</li>
+			<li class="fragment">Reads SSTables directly</li>
+			<li class="fragment">Emits compacted snapshot of column family</li>
+			<li class="fragment">Imports data into Apache Pig</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>PigPen</h2>
+		<ul>
+			<li class="fragment">Map/Reduce for Clojure</li>
+			<li class="fragment">supports distributed Clojure</li>
+			<li class="fragment">Compiles to Apache Pig</li>
+			<li class="fragment">Hides details of Pig, allows unit testing of map/reduce programs</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Lipstick</h2>
+		<ul>
+			<li class="fragment">Visualization of Pig jobs</li>
+			<li class="fragment">Graphical depiction of job flow</li>
+			<li class="fragment">Can reflect status of job in progress</li>
+			<li class="fragment">Complements Genie, providing status of jobs it manages</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Zeno</h2>
+		<ul>
+			<li class="fragment">In-memory data service for data sets with low latency tolerance</li>
+			<li class="fragment">Creates compact serialized representation of Java objects (with de-duplication)</li>
+			<li class="fragment">Creates smallest change set possible for propagation</li>
+			<li class="fragment">Used @ Netflix for video metadata that drives user experience</li>
+			<li class="fragment">Care taken to be as GC friendly as possible</li>
+		</ul>
+	</section>
+	
+	<section>
+		<h2>Netflix Graph</h2>
+		<ul>
+			<li class="fragment">Compact in-memory directed graphs</li>
+			<li class="fragment">Predecessor to Zeno?</li>
+			<li class="fragment">Claims an order-of-magnitude reduction of memory footprint vs. native java objects</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>S3mper</h2>
+		<ul>
+			<li class="fragment">Extension for Hadoop's S3-based filesystem</li>
+			<li class="fragment">Uses DynamoDB to provide added consistency checking</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>STAASH</h2>
+		<ul>
+			<li class="fragment">A REST-based exposure of data services</li>
+			<li class="fragment">Exposure to external languages/stacks</li>
+			<li class="fragment">Still very much a proof-of-concept, limited use within Netflix</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>Other Components</h1>
+		<h3>Things that don't fit in other areas</h3>
+	</section>
+
+	<section>
+		<h2>GCViz</h2>
+		<ul>
+			<li class="fragment">Visualize JVM garbage collector activity</li>
+			<li class="fragment">Requires a HotSpot JVM (IE: Oracle)</li>
+			<li class="fragment">Requires a specific set of JVM options to emit log</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Simian Army</h2>
+		<ul>
+			<li class="fragment">Chaos Monkey - Failure injection for resilience testing</li>
+			<li class="fragment">Janitor Monkey - Flag/Deactivate unused cloud resources</li>
+			<li class="fragment">Conformity Monkey - Scans cloud resources for non-conformance of best practices</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>Our additions</h1>
+		<h3>Things we've been working on</h3>
+	</section>
+	<section>
+		<h2>Buri</h2>
+		<ul>
+			<li class="fragment">Builds Ubuntu AMIs for all machine types</li>
+			<li class="fragment">A collection of Ansible recipes</li>
+			<li class="fragment">Works similar to Aminator</li>
+			<li class="fragment">But it includes foundation/base building</li>
+			<li class="fragment">Hosted on GitHub: <a href="https://github.com/viafoura/buri">https://github.com/viafoura/buri</a></li>
+		</ul>
+	</section>
+	<section>
+		<h2>Buri Roles (completed)</h2>
+		<ul>
+			<li class="fragment">Exhibitor/Zookeeper (clustered)</li>
+			<li class="fragment">Eureka (clustered)</li>
+			<li class="fragment">Ice</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Buri Roles (in progress)</h2>
+		<ul>
+			<li class="fragment">Priam/Cassandra</li>
+			<li class="fragment">Asgard</li>
+			<li class="fragment">Turbine/Hystrix Console</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h2>NetflixOSS Resources:</h2>
+		<ul>
+			<li class=fragment><a href="http://netflix.github.io/#repo">NetflixOSS Homepage</a></li>
+			<li class=fragment><a href="https://github.com/netflix">NetflixOSS Github Home</a></li>
+			<li class=fragment><a href="http://www.slideshare.net/adrianco/netflix-and-open-source">March 2013 Presentation by Adrian Cockcroft</a></li>
+			<li class=fragment><a href="http://www.slideshare.net/RuslanMeshenberg/svc-202netflixopensource">November 2013 Presentation by Ruslan Meshenberg</a></li>
+			<li class=fragment><a href="https://github.com/Answers4AWS/netflixoss-ansible">Ansible Playbooks for NetflixOSS</a></li>
+		<ul>
+	</section>
+	<section>
+		<h2>NetflixOSS Reference Implementations</h2>
+		<ul>
+			<li class=fragment><a href="https://github.com/cfregly/fluxcapacitor">Flux Capacitor, a reference implementation</a></li>
+			<li class=fragment><a href="https://github.com/aspyker/acmeair-netflix">Conversion of AcmeAir demo application</a></li>
+			<li class=fragment><a href="https://github.com/Netflix/recipes-rss">Example RSS reader application</a></li>
+		<ul>
+	</section>
+</section>
+
+<section>
+	<h1>THE END</h1>
+</section>
