@@ -3,13 +3,13 @@
     {% when "internal" %}
       <div class="sharing">
         {% if site.data.sharing.twitter_tweet_button %}
-        <a href="//twitter.com/share" class="twitter-share-button" data-url="{{ site.production_url }}{{ page.url }}" data-via="{{ site.data.sharing.twitter_user }}" data-counturl="{{ site.production_url }}{{ page.url }}" >Tweet</a>
+        <a href="//twitter.com/share" class="twitter-share-button" data-url="{{ site.production_url }}{{ canonical }}" data-via="{{ site.data.sharing.twitter_user }}" data-counturl="{{ site.production_url }}{{ canonical }}" >Tweet</a>
         {% endif %}
         {% if site.data.sharing.google_plus_one %}
         <div class="g-plusone" data-size="{{ site.data.sharing.google_plus_one_size }}"></div>
         {% endif %}
         {% if site.data.sharing.facebook_like %}
-          <div class="fb-like" data-href="{{ site.production_url }}{{ page.url }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"{% if include.fb_colorscheme %} colorscheme={{ include.fb_colorscheme }}{% endif%}></div>
+          <div class="fb-like" data-href="{{ site.production_url }}{{ canonical }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"{% if include.fb_colorscheme %} colorscheme={{ include.fb_colorscheme }}{% endif%}></div>
         {% endif %}
       </div>
   {% endcase %}
