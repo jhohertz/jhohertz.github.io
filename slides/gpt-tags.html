@@ -1,0 +1,736 @@
+---
+layout: reveal_fullscreen
+title: GPT and more - Gooogle's new ad framework
+description: An exploration and explanation of Google's GPT, IMA SDK, and related subjects.
+comments: false
+---
+<section>
+	<h1>GPT and more</h1>
+	<h3>And exploration and explanation of Google's GPT tags, IMA SDK, and related subjects.</h3>
+	<p>
+		<small>Presented by <a href="http://jhohertz.github.io">Joe Hohertz</a> / <a href="http://twitter.com/joehohertz">@joehohertz</a></small>
+	</p>
+</section>
+
+<section>
+	<section>
+		<h1>Welcome</h1>
+	</section>
+	<section>
+		<h2>What's Ahead?</h2>
+		<ul>
+			<li class="fragment">Some introductions</li>
+			<li class="fragment">A presentation on Google's ad delivery systems</li>
+			<li class="fragment">A break. :)</li>
+			<li class="fragment">Addressing <em>your</em> project needs.</li>
+		</ul>
+
+		<aside class="notes">
+			This slide has fragments which are also stepped through in the notes window.
+		</aside>
+
+	</section>
+	<section>
+		<h2>Audience</h2>
+		<ol>
+			<li class="fragment">Developers</li>
+			<li class="fragment">Users (IE: Ad Operations)</li>
+			<li class="fragment">Project managers</li>
+			<li class="fragment">Other interested parties</li>
+		</ol>
+
+		<aside class="notes">
+			This slide has fragments which are also stepped through in the notes window.
+		</aside>
+
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>Introductions</h1>
+	</section>
+	<section>
+		<h2>Who am I?</h2>
+		<h3 class="fragment">Joe Hohertz</h3>
+		<ul>
+			<li class="fragment">Started career in networks/systems 17+ years ago</li>
+			<li class="fragment">Switched focus to development projects 8 years ago</li>
+			<li class="fragment">Specialty in open systems</li>
+			<li class="fragment">Have led teams throughout my career</li>
+		</ul>
+
+		<aside class="notes">
+			This slide has fragments which are also stepped through in the notes window.
+		</aside>
+
+	</section>
+	<section>
+		<h2>What have I done?</h2>
+		<h3 class="fragment">Most recently?</h3>
+		<ul>
+			<li class="fragment">Provided technical leadership for development project at Rogers Digital Media for 5+ years</li>
+			<li class="fragment">Managed development department for 2+ years</li>
+			<li class="fragment">Personally handled ad implementation through 2 complete technology changes throughout time @ Rogers</li>
+			<li class="fragment">Have been involved in all aspects including managing major platform relaunches for nearly every Rogers Media brand</li>
+		</ul>
+
+		<aside class="notes">
+			This slide has fragments which are also stepped through in the notes window.
+		</aside>
+
+	</section>
+
+
+	<section>
+		<h2>What have I worked on?</h2>
+		<ul>
+			<li class="fragment">Television: <a href="http://www.citytv.com">City</a> (<a href="http://www.cityline.ca">Cityline</a>, <a href="http://www.bttoronto.ca">Breakfast Television</a>), <a href="http://www.sportsnet.ca">Sportsnet</a></li>
+			<li class="fragment">Radio: <a href="http://www.680news.com">680News</a>, <a href="http://www.chfi.com">CHFI 98.1</a>, <a href="http://www.kiss925.com">KiSS 92.5</a>, and nearly 50 other stations.</li>
+			<li class="fragment">Publishing: <a href="http://www.macleans.ca">Maclean's</a>, <a href="http://www.canadianbusiness.com">Canadian Business</a>, <a href="http://www.todaysparent.com">Today's Parent</a>, <a href="http://www.chatelaine.com">Chatelaine</a> and more</li>
+		</ul>
+
+		<aside class="notes">
+			This slide has fragments which are also stepped through in the notes window.
+		</aside>
+
+	</section>
+	<section>
+		<h2>Who are you?</h2>
+		<p class="fragment">Tell me a bit about yourself, and what you would like to come away with today from this session.</p>
+	</section>
+	<section>
+		<h2>How you can help me</h2>
+		<ul>
+			<li class="fragment">What is your local environment?</li>
+			<li class="fragment">Understanding ongoing efforts</li>
+			<li class="fragment">Understanding dependencies</li>
+			<li class="fragment">Understanding priorities</li>
+		</ul>
+	</section>
+
+	<section>
+		<h1>Let's get started!</h1>
+	</section>
+
+</section>
+
+<section>
+	<section>
+		<h2>Migrating from old DFP</h2>
+		<h3 class="fragment">A nostalgic look....</h3>
+		<h4 class="fragment">.... or why you really want this upgrade</h4>
+	</section>
+
+	<section>
+		<h2>Desktop Page Tags</h2>
+		<h3 class="fragment">Worst case</h3>
+		<ul>
+			<li class="fragment">"Just paste this thing in."</li>
+			<li class="fragment">You do. And keep doing so.</li>
+			<li class="fragment">End state: a heap of tags in your content</li>
+		</ul>
+</section>
+
+	<section>
+		<h2>Desktop Page Tags</h2>
+		<h3 class="fragment">Usual best case</h3>
+		<ul>
+			<li class="fragment">parameter based URL builder that writes in a script tag</li>
+			<li class="fragment">CMS manages signals used for pages via various metadata</li>
+		</ul>
+		<pre class="fragment"><code data-trim contenteditable>
+<script type="text/javascript">
+  // various variables used here were set in the header
+  // <![CDATA[
+  document.write('<script language="JavaScript" ' +
+    'src="http://ad.doubleclick.net/N5876/adj/' + 
+    advertising_site + '/' + advertising_zone + 
+    ';pos=np;tile=4;sz=300x100' + 
+    ';page='+ advertising_page_type +
+    ';section='+advertising_section +
+    ';category='+advertising_category +
+    ';contcat='+advertising_content_category +
+    ';'+advertising_keyword +
+    advertising_surround_session +
+    advertising_exclusions +
+    'ord=' + ord + '?" type="text/javascript"><\/script>');
+  // ]]>
+</script>
+		</code></pre>
+	</section>
+
+	<section>
+		<h2>Some big limits</h2>
+		<ul>
+			<li class="fragment">Shallow zone depth</li>
+			<li class="fragment">Severe limits on URL length limits signals that can be sent with request</li>
+			<li class="fragment">Almost no way to async ads without ugly hacks that cause issues</li>
+			<li class="fragment">Video companions requires custom browser code, doesn't integrate well</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Mobile Tags</h2>
+		<ul>
+			<li class="fragment">Architecture was developed when Nokia and PocketPC Phones were the state of art in mobile web</li>
+			<li class="fragment">Image-in-Anchor, like a noscript tag portion</li>
+			<li class="fragment">Video in web support non-existant</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Signals</h2>
+		<ul>
+			<li class="fragment">A heirarchical "zone" structure</li>
+			<li class="fragment">A very limited number/amount of key/value data via GET variables.</li>
+			<li class="fragment">Limits are on total URL length, you have to manage to ensure no one param pushes past global limit</li>
+		</ul>
+	</section>
+
+</section>
+
+<section>
+	<section>
+		<h2>Key features of the new Google ad system</h2>
+		<ul>
+			<li class="fragment">A real, modern, javascript API for ad placement</li>
+			<li class="fragment">Mobile / Desktop convergence</li>
+			<li class="fragment">Real async loading support</li>
+			<li class="fragment">Built in support for video companions (requires IMA3)</li>
+			<li class="fragment">Aggregate ad calls (All units in one call)</li>
+			<li class="fragment">Deeper zones, but otherwise conceptually the same.</li>
+			<li class="fragment"><em>Vastly</em> improved key/value handling.</li>
+		</ul>
+		<h3 class="fragment">We'll dive into this all shortly.</h3>
+	</section>
+
+	<section>
+		<h2>New platform, new quirks</h2>
+		<ul>
+			<li class="fragment">Async brings on complexities which can require fixes to ad creatives</li>
+			<li class="fragment">Aggregate calls can require surprisingly sophisticated setup, depending on requirements</li>
+			<li class="fragment">And there can be bugs, usually seen in certain, notoriously buggy browser, which shall remain unamed...</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Async vs. Sync</h2>
+		<ul>
+			<li class="fragment">Async mode helps solve many of the traditional pains in serving ads.</li>
+			<li class="fragment">But brings some of it's own</li>
+			<li class="fragment">It's the creative that's the problem in general</li>
+			<li class="fragment">Remember all that document.write() old ads are famous for?</li>
+			<li class="fragment">Old habits are hard to change.</li>
+			<li class="fragment">Async mode emulates document.write() to support old creatives.</li>
+			<li class="fragment">This works for simple cases, but falls down for the pathological cases</li>
+			<li class="fragment">Get testing for creative up EARLY to avoid headaches.</li>
+			<li class="fragment">Be ready to spend time chasing creative bugs.</li>
+		</ul>
+		<h3 class="fragment">We will focus mostly on aync mode, due to the strong advantages is brings. It's worth fixing the creative bugs to get these gains.</h3>
+	</section>
+
+	<section>
+		<h2>Using async vs. loading async</h2>
+		<ul>
+			<li class="fragment">You can use GPT async, while loading it sync</li>
+			<li class="fragment">If you're loading GPT, followed by your own code which wants to call GPT right away, it can avoid some complications. (Mostly on buggy browsers)</li>
+			<li class="fragment">There's another way around that problem, but it's not necessarily supported</li>
+			<li class="fragment">We'll cover "creative" uses of GPT like this at the end.</li>
+		</ul>
+		<h4 class="fragment">To load sync, just drop this from the initialization code:</h4>
+		<pre class="fragment"><code data-trim contenteditable>
+gads.async = true;  // or set to false
+		</code></pre>
+		<h4 class="fragment">More on initializing in a moment.</h4>
+		
+	</section>
+
+	<section>
+		<h2>Single Request Architecture (SRA)</h2>
+		<ul>
+			<li class="fragment">All ads declared in one call</li>
+			<li class="fragment">All ads <em>filled</em> in one call</li>
+			<li class="fragment">Ads later placed via display calls</li>
+			<li class="fragment">Ad people love it because it helps reliability of:</li>
+			<ul>
+				<li class="fragment">Impression counts</li>
+				<li class="fragment">Ad relationships (takeovers, above fold, etc.)</li>
+			</ul>
+			<li class="fragment">However...</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>The challenge of SRA</h2>
+		<h4 class="fragment">Your ad initialization looks like this:</h4>
+		<ul>
+			<li class="fragment">Set variables in header (zone, other targetting)</li>
+			<li class="fragment">Ad wrapper if you have one gets initialized</li>
+			<li class="fragment">This gets included in global page templates</li>
+		</ul>
+		<h4 class="fragment">And you have no inputs as to what pages might need what ads.</h4>
+		
+	</section>
+
+	<section>
+		<h2>How to handle SRA</h2>
+		<h4 class="fragment">A few options:</h4>
+		<ul>
+			<li class="fragment">Require uniform ad sets for all pages (not very flexible)</li>
+			<li class="fragment">Create some named sets of fixed units that can be selected (can be enough for many cases)</li>
+			<li class="fragment">Create some advanced ad code in your page composition (allows infinitely variable ad setups)</li>
+			<ul>
+				<li class="fragment">Requires your template system allow multiple passes.</li>
+				<li class="fragment">First ads are declared, then your header has knowledge needed to make the SRA call<li>
+				<li class="fragment">There's a variety of other ways to handle this</li>
+				<li class="fragment">What's best depends on your page renderer is capable of</li>
+			</ul>
+			<li class="fragment">Find a least common denominator of units to call via SRA, add others dynamic/async.</li>
+			<li class="fragment">Ignore it, if only for the short term while CMS/template advancements are tackled.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Video / Companion Ads</h2>
+		<ul>
+			<li class="fragment">Video ads now require use of IMA3 SDK</li>
+			<li class="fragment">You get nicely integrated companion support in GPT in return.</li>
+			<li class="fragment">It is possible to use VAST2 directly</li>
+			<li class="fragment">But without the magic of GPT companion support</li>
+			<li class="fragment">Get IMA3 support in your flash players ASAP</li>
+			<li class="fragment">Make sure your player will take base ad URL from the flash variables for the most flexibility</li>
+		</ul>
+	</section>
+
+</section>
+
+<section>
+	<section>
+		<h1>Looking at the code</h1>
+	</section>
+
+	<section>
+		<h2>GPT Loading, async mode</h2>
+		<pre class="fragment"><code data-trim contenteditable>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+  var gads = document.createElement('script');
+  gads.async = true; // can disable to LOAD sync, but use async mode
+  gads.type = 'text/javascript';
+  gads.src = '//www.googletagservices.com/tag/js/gpt.js';
+  var node = document.getElementsByTagName('script')[0];
+  node.parentNode.insertBefore(gads, node);
+})();
+		</code></pre>
+	</section>
+
+	<section>
+		<h2>The command pipeline</h2>
+		<h4 class="fragment">The first two lines are the most important for async mode</h4>
+		<pre class="fragment"><code data-trim contenteditable>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+		</code></pre>
+		<ul>
+			<li class="fragment">Closures get pushed onto googletag.cmd</li>
+			<li class="fragment">The GPT code takes these in the order added and runs them</li>
+			<li class="fragment">Allows for deferred execution</li>
+			<li class="fragment">Everything can queue up before GPT is ready</li>
+			<li class="fragment">You can slip your own initialization into here too</li>
+			<li class="fragment">Every call to a google command in async mode has to send it via this pipeline</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>GPT Loading, sync mode</h2>
+		<pre class="fragment"><code data-trim contenteditable>
+(function() {
+  var useSSL = 'https:' == document.location.protocol;
+  var src = (useSSL ? 'https:' : 'http:') +
+    '//www.googletagservices.com/tag/js/gpt.js';
+  document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+})();
+		</code></pre>
+		<h3 class="fragment">There's that document.write()...</h3>
+		<h4 class="fragment">Moving along, from here, all samples will be for async mode, with some notes for sync mode where applicable</h4>
+	</section>
+
+	<section>
+		<h2>Defining AdSense parameters</h2>
+		<h4 class="fragment">If you use this, and want to set overrides, do so before defining slots.</h4>
+		<pre class="fragment"><code data-trim contenteditable>
+googletag.pubads().set("adsense_background_color", "FFFFFF");
+		</code></pre>
+	</section>
+
+	<section>
+		<h2>Defining ad slots</h2>
+		<h4 class="fragment">If using SRA, slots must be defined prior to enabling services</h4>
+		<pre class="fragment"><code data-trim contenteditable>
+// define an ad slot.
+googletag.cmd.push(function() {
+  // parameters:
+  //  string: '/network/zone'
+  //  array: one or more pairs of [x,y] dimensions
+  //  string: the id of the div containing the ad
+  var adSlot = googletag.defineSlot(
+      '/6062/video-demo-preload',
+      [728, 90],
+      'adSlot1Div');
+  // can set these per-ad or as page-wide
+  adSlot.setTargeting("gender", "male")
+  // if this is to be a companion ad, add it to the companion service
+  // adSlot.addService(googletag.companionAds());
+  adSlot.addService(googletag.pubads());
+});
+// define as many more slots as needed
+		</code></pre>
+	</section>
+
+	<section>
+		<h2>Defining page-level targeting</h2>
+		<h4 class="fragment">Define global key/values for all units on the page</h4>
+		<pre class="fragment"><code data-trim contenteditable>
+googletag.cmd.push(function() {
+  googletag.pubads().setTargeting("topic","basketball");
+  googletag.pubads().setTargeting("tags",["basketball", "raptors"]);
+});
+		</code></pre>
+	</section>
+
+	<section>
+		<h2>Other early setup calls</h2>
+		<pre class="fragment"><code data-trim contenteditable>
+googletag.companionAds().setRefreshUnfilledSlots(true);
+		</code></pre>
+		<h4 class="fragment">If the video ad calls define no companion, refresh the slot with a regular ad</h4>
+		<pre class="fragment"><code data-trim contenteditable>
+googletag.pubads().enableSyncRendering();
+		</code></pre>
+		<h4 class="fragment">If you want sync mode, you have to ask for it here.</h4>
+		<pre class="fragment"><code data-trim contenteditable>
+googletag.pubads().enableSingleRequest();
+		</code></pre>
+		<h4 class="fragment">If all slots for the SRA call are defined, enable it here</h4>
+	</section>
+
+	<section>
+		<h2>Enable services</h2>
+		<h4 class="fragment">Once you've called all the setup functions, enable it:</h4>
+		<pre class="fragment"><code data-trim contenteditable>
+googletag.enableServices();
+		</code></pre>
+	</section>
+
+	<section>
+		<h2>Show the ads in your page</h2>
+		<pre class="fragment"><code data-trim contenteditable>
+<div id="adSlot1Div"
+    style="width:728px; height:90px;">
+  <script type='text/javascript'>
+  googletag.cmd.push(function() {
+    googletag.display('adSlot1Div');
+  });
+  </script>
+</div>
+
+		</code></pre>
+	</section>
+
+	<section>
+		<h2>Non-SRA ads</h2>
+		<h4 class="fragment">To place a non-SRA ad, simply move the defineSlot call down into the div, just before the display call, like so:</h4>
+		<pre class="fragment"><code data-trim contenteditable>
+<div id="adSlot1Div"
+    style="width:728px; height:90px;">
+  <script type='text/javascript'>
+  googletag.cmd.push(function() {
+    var adSlot = googletag.defineSlot(
+      '/6062/video-demo-preload',
+      [728, 90],
+      'adSlot1Div');
+    //adSlot.addService(googletag.companionAds());
+    adSlot.addService(googletag.pubads());
+    googletag.display('adSlot1Div');
+  });
+  </script>
+</div>
+		</code></pre>
+	</section>
+
+	<section>
+		<h2>Giving a slot static HTML preload</h2>
+		<h4 class="fragment">Used for companions, on click-to-play player, with no availablity of a scheduled pre-load ad. Specified HTML will fill the area until an ad replaces it.</h4>
+re class="fragment"><code data-trim contenteditable>
+googletag.cmd.push(function() {
+  var adSlot = googletag.defineSlot(
+    '/6062/video-demo-preload',
+    [728, 90],
+    'adSlot1Div');
+  adSlot.addService(googletag.companionAds());
+  adSlot.addService(googletag.pubads());
+  // new parts here and below:
+  adSlot.addService(googletag.content());
+  googletag.content().setContent(adSlot,
+    '<h2>Custom content in ad slot.</h2>'
+  );
+});
+		</code></pre>
+
+	</section>
+
+
+	<section>
+		<h2>Other things to account for / tips</h2>
+		<ul>
+			<li class="fragment">All ad slots registered to the companion service must be unique in dimension</li>
+			<li class="fragment">Ads registered to the companion service will not load until a video loads, UNLESS something has been scheduled to fill as "preload"</li>
+			<li class="fragment">Companions in sync mode add other complexities not yet covered here</li>
+			<li class="fragment">You can <strong>NOT</strong> mix sync calls once async mode is set</li>
+			<li class="fragment">You CAN make non-SRA calls after your initial SRA call (IE: dynamic insertions)</li>
+			<li class="fragment">Auto-starting video players add complexities not yet convered here</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Debugging GPT tags</h2>
+		<h4 class="fragment">To bring up the GPT debug console, append this to your URL:</h4>
+		<pre class="fragment"><code data-trim contenteditable>
+url = u "?google_force_console=1"
+		</code></pre>
+	</section>
+
+	<section>
+		<h2>GPT Tag Resources:</h2>
+		<ul>
+			<li class=fragment><a href="https://support.google.com/dfp_premium/answer/1650154?hl=en&ref_topic=28788">GPT tag API Reference</a></li>
+			<li class=fragment><a href="https://support.google.com/dfp_premium/answer/1638622">GPT examples page</a></li>
+			<li class=fragment><a href="https://developers.google.com/interactive-media-ads/docs/companions/companions-gpt.html">GPT companion examples page</a></li>
+			<li class=fragment><a href="https://support.google.com/dfp_sb/answer/181070?hl=en">GPT debug console documentation</a></li>
+			<li class=fragment><a href="https://developers.google.com/doubleclick-publishers/">DFP API Developer Home (For integrating to DFP backend, not tagging)</a></li>
+			<li class=fragment><a href="https://support.google.com/dfp_premium/answer/179039?hl=en">Master DFP Changelog</a></li>
+		<ul>
+	</section>
+	<section>
+		<h2>That's 95% of GPT</h2>
+		<ul>
+			<li class="fragment">There's other functions/ways to use it</li>
+			<li class="fragment">What we've covered is the best practices that will cover most needs</li>
+			<li class="fragment">The other 5% is edge cases and/or things best avoided</li>
+		</ul>
+	</section>
+</section>
+
+
+
+
+<section>
+	<section>
+		<h1>Video ads and the IMA3 SDKs</h1>
+	</section>
+
+	<section>
+		<h2>The family of IMA3 SDKs</h2>
+		<h3 class="fragment">The family of IMA SDKs:</h3>
+		<ul>
+			<li class="fragment"><a href="https://developers.google.com/interactive-media-ads/docs/sdks/flash/v3/">IMA Flash SDK</a></li>
+			<li class="fragment"><a href="https://developers.google.com/interactive-media-ads/docs/sdks/html5/v3/">IMA HTML5 SDK</a></li>
+			<li class="fragment"><a href="https://developers.google.com/interactive-media-ads/docs/sdks/android/v3/">IMA Android SDK Beta</a></li>
+			<li class="fragment"><a href="https://developers.google.com/interactive-media-ads/docs/sdks/ios/v3/">IMA iOS SDK Beta</a></li>
+		</ul>
+		<h3 class="fragment">We'll explore some of these, but first:</h3>
+	</section>
+
+	<section>
+		<h2>The general business of video ad serving</h2>
+		<ul>
+			<li class="fragment">All of these SDKs share a lot in common</li>
+			<li class="fragment">They're all trying to solve the same problems</li>
+			<li class="fragment">They use the same kind of DFP call, which is <strong>NOT GPT</strong>, but a VAST2 XML type</li>
+			<li class="fragment">So before looking at any one SDK in detail...</li>
+			<li class="fragment">First, we'll go over the parts that are the same</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>What the IMA <strong>DOES</strong> address</h2>
+		<ul>
+			<li class="fragment">The making of a VAST2 XML call</li>
+			<li class="fragment">Parsing the response</li>
+			<li class="fragment">Playing the creative, triggering GPT companion slot fill</li>
+			<li class="fragment">Making the many status callbacks requested in the VAST2 response</li>
+			<li class="fragment">Some handlers for overlay type ads on content</li>
+			<li class="fragment">Providing various event hooks for player integration including:</li>
+			<ul>
+				<li class="fragment">Ad system setup and request state updates, error handling</li>
+				<li class="fragment">Transitioning controls from ad and content modes</li>
+				<li class="fragment">Time remaining updates to let the user know when content begins</li>
+				<li class="fragment">Syncing common state between ad player and content player (IE: volume, full screen state)</li>
+			</ul>
+		</ul>
+	</section>
+
+	<section>
+		<h2>What the IMA <strong>DOES NOT</strong> address directly</h2>
+		<ul>
+			<li class="fragment">Adding signals to your ad call.</li>
+			<li class="fragment">Where in your video to make the ad call(s)</li>
+			<li class="fragment">How/where to get the VAST2 XML call URL from</li>
+			<li class="fragment">How a vendor will choose to integrate it and expose it</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>A simple VAST2 XML URL builder</h2>
+		<pre class="fragment"><code data-trim contenteditable>
+// still doing an "ord" like value here
+var correlator = Math.round(Math.random() * 100000000);
+// parameters
+var video_size = "400x300";
+var companion_sizes = "300x250,728x90";
+var video_zone = "/6062/video-demo";
+// build the URL
+var vastURL = "http://pubads.g.doubleclick.net/gampad/ads" +
+ '?sz=' + video_size + 
+ '&iu=' + encodeURIComponent(video_size) + 
+ '&ciu_szs=' + encodeURIComponent(companion_sizes) + 
+ '&impl=s&gdfp_req=1&env=vp&output=xml_vast2&unviewed_position_start=1' +
+ '&url=' + encodeURIComponent(window.top.location.href) +
+ '&correlator=' + correlator;
+		</code></pre>
+		<ul>
+			<li class="fragment">This is a base URL, with zone, but without any other signals</li>
+			<li class="fragment">IMA->player integration adds parameters to this base</li>
+			<li class="fragment">State cues can be added (IE: is this a pre-roll or a post-roll call?)</li>
+			<li class="fragment">You can allow some base key/vals be set here as well</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Looking at the VAST2 XML response structure</h2>
+		<h4 class="fragment">The response is to large to include here. An overview of it's contents, then we'll look at certain parts</h4>
+		<ul>
+			<li class="fragment">A header, containing error and impression callback URL</li>
+			<li class="fragment">A block of video creative(s), each containing:</li>
+			<ul>
+				<li class="fragment">The creative's duration</li>
+				<li class="fragment">Over a dozen status callbacks, covering progression at quartiles, transport use, etc.</li>
+				<li class="fragment">The click URL</li>
+				<li class="fragment">Media file(s) (multiple formats/renditions can be expressed for runtime selection)</li>
+			</ul>
+			<li class="fragment">A block of companion ads each containing:</li>
+			<ul>
+				<li class="fragment">Dimension of companion ad</li>
+				<li class="fragment">An ad resource definition (there can be image, script, flash)</li>
+				<li class="fragment">Click URL</li>
+			</ul>
+			<li class="fragment">A block of extension declarations</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>This will help debug scheduling errors on companions</h2>
+		<ul>
+			<li class="fragment">For the most part, you can ignore the XML, as IMA is handling it for you.</li>
+			<li class="fragment">Where looking is usefull is when you have a video ad play, but...</li>
+			<li class="fragment">You don't see the expected companions</li>
+			<li class="fragment">Missing companion scheduling is easy to spot when you know where to look</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Other gotchas</h2>
+		<ul>
+			<li class="fragment">Due to how VAST expressed companion sets, you can only have one companion ad of any given dimension. (but as many unique dimensions as you want)</li>
+			<li class="fragment">It's easy to have missed URL encoding mess up your day when building VAST2 URLs</li>
+			<li class="fragment">You're back to using GET parameters for key/value pairs, the improvements in GPT aren't available here</li>
+		</ul>
+	</section>
+</section>
+
+
+
+<section>
+	<section>
+		<h1>IMA3 Flash SDK</h1>
+	</section>
+	<section>
+		<h2>Using a vendor's player?</h2>
+		<ul>
+			<li class="fragment">Most vendors will have IMA3 support by now</li>
+			<li class="fragment">Use their connector</li>
+			<li class="fragment">This may involve some back and forth if you're the first one moving to it as bugs get worked out</li>
+			<li class="fragment">Flash best for cases where DRM forces you there</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Using open source player bases?</h2>
+		<h4 class="fragment">Most have IMA3 plugins available</h4>
+		<ul>
+			<li class="fragment">OVP</li>
+			<li class="fragment">OSMF</li>
+			<li class="fragment">Flowplayer</li>
+		</ul>
+	</section>
+	<section>
+		<h2>Something else?</h2>
+		<ul>
+			<li class="fragment">You're doing your own IMA3 integration, custom</li>
+			<li class="fragment">Look to the samples from Google, and the open player plugins for guidance</li>
+			<li class="fragment">Most folks shouldn't need to go here, are covered by using vendor or open player base</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>IMA HTML5 SDK</h1>
+	</section>
+	<section>
+		<h2>The holy grail....</h2>
+		<ul>
+			<li class="fragment">One day, it might work everywhere...</li>
+			<li class="fragment">Very attractive for unification of desktop/mobile</li>
+			<li class="fragment">Strongly indicated for "responsive" designs</li>
+			<li class="fragment">Doesn't (yet) get you everywhere...</li>
+			<li class="fragment">iOS/Android <em>tablets</em> supported, <em>phones</em>: not yet</li>
+			<li class="fragment">Only usable if DRM is not a requirement (currently)</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>IMA Mobile Beta SDKs</h1>
+	</section>
+	<section>
+		<h2>Use the betas?</h2>
+		<ul>
+			<li class="fragment">Confession: I am not a mobile app guy</li>
+			<li class="fragment">Some folks may find value skipping these</li>
+			<li class="fragment">But you'd lose the non-linear creative support</li>
+			<li class="fragment">I looked over the docs, the interface seems clean</li>
+			<li class="fragment">Mostly handlers/glue to the player for the items mentioned in general discussion</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>Last thoughts on IMA</h1>
+	</section>
+	<section>
+		<h2>IMA Resources</h2>
+		<ul>
+			<li class="fragment"><a href="https://developers.google.com/interactive-media-ads/">Google IMA Home</a></li>
+			<li class="fragment"><a href="https://developers.google.com/interactive-media-ads/docs/compatibility">IMA SDK Compatability Chart</a></li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<h1>THE END</h1>
+	<h3>BY Joe Hohertz / joe.hohertz.org</h3>
+</section>
+
