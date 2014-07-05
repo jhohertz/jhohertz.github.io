@@ -178,7 +178,7 @@ core:
     - subscribe
     - tags_list
   css:
-    - url: /assets/fontawesome/css/font-awesome.min.css
+    - url: /assets/external/fontawesome/css/font-awesome.min.css
       media: "screen, projection"
   # For now, core cen not declare jquery, as something else might
   # However, it requires something in the chain do so
