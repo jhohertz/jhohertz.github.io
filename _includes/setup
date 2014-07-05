@@ -73,6 +73,9 @@
   {% include internal/theme_path_gen file="layout/post.html" %}
   {% assign tt_layout_post = theme_include_filename %}
 
+  {% include internal/theme_path_gen file="layout/reveal_fullscreen.html" %}
+  {% assign tt_layout_reveal_full = theme_include_filename %}
+
   {% include internal/theme_path_gen file="liquid_raw" %}
   {% assign tt_liquid_raw = theme_include_filename %}
 
