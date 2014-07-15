@@ -182,7 +182,7 @@ core:
     - url: /assets/external/fontawesome/css/font-awesome.min.css
       media: "screen, projection"
     - inline: |
-        .fb-like span { vertical-align: baseline; }
+        .fb-like span { vertical-align: baseline !important; }
   # For now, core cen not declare jquery, as something else might
   # However, it requires something in the chain do so
   js_top:
