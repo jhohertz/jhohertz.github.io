@@ -191,7 +191,7 @@ core:
       id: theme
     - url: /assets/external/reveal.js/lib/css/zenburn.css
     - inline: |
-        .fb-like { line-height: 0; }
+        .fb-like { line-height: 0; height: 20px; }
   js_top_reveal:
     # Not 100 these are templated...
     - inline: |
