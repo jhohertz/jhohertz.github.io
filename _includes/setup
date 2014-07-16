@@ -7,6 +7,8 @@
   {% else %}
     {% assign root_url = nil %}
   {% endif %}
+  {% capture canonical_capture %}{{ site.url }}{% if site.permalink contains '/index.html' %}{{ page.url }}{% else %}{{ page.url | remove:'/index.html' }}{% endif %}{% endcapture %}
+  {% assign canonical = canonical_capture %}
   <!-- build theme dependency chain from theme data, this is tricky, as we have limited data creation facilities -->
   {% capture theme_dep_list %}{% include internal/setup_theme_deps theme="local" %}{% endcapture %}
   {% assign theme_deps = theme_dep_list | strip_newlines | split:"|" %}
