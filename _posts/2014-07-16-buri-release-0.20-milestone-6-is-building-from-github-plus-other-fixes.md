@@ -25,7 +25,6 @@ turbine_build_url: http://search.maven.org/remotecontent?filepath=com/netflix/tu
 turbine_git_repo: https://github.com/Netflix/turbine.git
 turbine_git_ref: master
 {% endhighlight %}
-<br/>
 
 Other things updated in this release:
 
