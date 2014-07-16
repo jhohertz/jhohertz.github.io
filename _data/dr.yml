@@ -1,4 +1,4 @@
-version: 0.1.0
+version: 0.1.1
 blog_path: /blog
 archive_path: /blog/archives
 categories_path : /categories.html
