@@ -5,7 +5,7 @@ tags : [buri]
 ---
 {% include setup %}
 
-I am pleased to announce the next release of [Buri](https://github.com/viafoura/buri), version 0.3.0.
+I am pleased to announce the next release of [Buri](https://github.com/viafoura/buri), version 0.30.
 
 We have new demonstration application it can deploy, lots of fixes, and a shiny new front-end which has a cleaner look, and built-in help on the various commands/actions Buri supports. There are new roles, a new class of role for generic java daemons, and a focus on supporting Cassandra 2.0 where we can.
 
@@ -13,7 +13,7 @@ Read on for more about this release.
 
 <!--fold-->
 
-Here is a quick summary of what is new in Buri v0.3.0:
+Here is a quick summary of what is new in Buri v0.30:
 
 - new "buri" tool replaces the various helper scripts for launching builds, provides on-line help for the various commands
 - AMI building now uses the python-based [awscli](http://aws.amazon.com/cli/) tools instead of the older java-based [EC2 API tools](https://aws.amazon.com/developertools/351). This mostly has the effect of speeding things up.
