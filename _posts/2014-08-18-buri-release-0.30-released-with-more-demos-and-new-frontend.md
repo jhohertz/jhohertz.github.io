@@ -30,34 +30,26 @@ Here is a quick summary of what is new in Buri v0.3.0:
 
 The new front end collects all the various shell scripts previously supplied into one tool, which when invoked with no parameters gives some basic hints as to it's use:
 
-{% highlight %}
     $ ./buri 
     usage: buri [--help] [--loglevel <level>] [--environment <env_name>]
             
                 {fluxdemo,rssdemo,apply,buildhost,foundation,resnap,cleanup_fail,keys_cassandra,keys_bundle}
                 ...
     buri: error: too few arguments
-{% endhighlight %}
 
 Help on indivudual commands can be requested:
 
-{% highlight %}
     $ ./buri resnap --help
     usage: buri resnap <parent_ami_id> <role>
     buri resnap: error: too few arguments
-{% endhighlight %}
 
 To deploy the new RSS demo application, you can run:
 
-{% highlight %}
     $ ./buri rssdemo <ip of your vm>
-{% endhighlight %}
 
 Which is just shorthand for:
 
-{% highlight %}
     $ ./buri --environment dev_vm apply all_in_one_rss <ip of your vm>
-{% endhighlight %}
 
 It's a very simple front end script, should make the use of Buri a little bit easier.
 
