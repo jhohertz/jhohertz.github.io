@@ -5,7 +5,7 @@
     {% for cssdef in thistheme[cssgroup] %}
       {% if cssdef.url %}
         {% if cssdef.url contains '//' %}{% assign thisurl = cssdef.url %}{% else %}{% assign thisurl = cssdef.url | prepend:root_url %}{% endif %}
-        <link href="{{ thisurl }}" rel="stylesheet" type="text/css"{% if cssdef.media %} media="{{ cssdef.media }}"{% endif %}>
+        <link href="{{ thisurl }}" rel="stylesheet" type="text/css"{% if cssdef.id %} id="{{ cssdef.id }}"{% endif %}{% if cssdef.media %} media="{{ cssdef.media }}"{% endif %}>
       {% elsif cssdef.inline %}
         <style type="text/css">{{ cssdef.inline }}</style>
       {% else %}

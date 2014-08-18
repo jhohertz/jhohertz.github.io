@@ -164,6 +164,7 @@ core:
     - layout/default.html
     - layout/page.html
     - layout/post.html
+    - layout/reveal_fullscreen.html
     - liquid_raw
     - navigation
     - page_article_area
@@ -178,10 +179,54 @@ core:
     - subscribe
     - tags_list
   css:
-    - url: /assets/fontawesome/css/font-awesome.min.css
+    - url: /assets/external/fontawesome/css/font-awesome.min.css
       media: "screen, projection"
+    - inline: |
+        .fb-like span { vertical-align: baseline !important; }
   # For now, core cen not declare jquery, as something else might
   # However, it requires something in the chain do so
   js_top:
     - url: https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
- 
+  css_reveal:
+    - url: /assets/external/reveal.js/css/reveal.min.css
+    - url: /assets/external/reveal.js/css/theme/default.css
+      id: theme
+    - url: /assets/external/reveal.js/lib/css/zenburn.css
+    - inline: |
+        .fb-like span { vertical-align: baseline !important; }
+  js_top_reveal:
+    # Not 100 these are templated...
+    - inline: |
+        if( window.location.search.match( /print-pdf/gi ) ) {
+          var link = document.createElement( 'link' );
+          link.rel = 'stylesheet';
+          link.type = 'text/css';
+          link.href = dr_root_prefix + '/assets/external/reveal.js/css/print/pdf.css';
+          document.getElementsByTagName( 'head' )[0].appendChild( link );
+        }
+  js_bottom_reveal:
+    - url: /assets/external/reveal.js/lib/js/head.min.js
+    - url: /assets/external/reveal.js/js/reveal.min.js
+    - inline: |
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          center: true,
+          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+          transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+          // Parallax scrolling
+          // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+          // parallaxBackgroundSize: '2100px 900px',
+          // Optional libraries used to extend on reveal.js
+          dependencies: [
+            { src: dr_root_prefix + '/assets/external/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: dr_root_prefix + '/assets/external/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: dr_root_prefix + '/assets/external/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+            { src: dr_root_prefix + '/assets/external/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+            { src: dr_root_prefix + '/assets/external/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: dr_root_prefix + '/assets/external/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          ]
+        });
+
+

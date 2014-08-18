@@ -5,5 +5,8 @@
   {% include modules/head_feeds %}
   {% include modules/head_icons %}
   {% include modules/head_css %}
+  <script>
+    var dr_root_prefix="{{ root_url }}";
+  </script>
   {% include modules/loader_js group="js_top" %}
 </head>

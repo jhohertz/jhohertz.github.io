@@ -8,6 +8,7 @@ software is derived, and are released under the same MIT licence.
 - [Jade Dominguez](http://plusjade.com/)
 - [Anne K. Johnson](http://annekjohnson.com/)
 - [Brandon Mathis](http://brandonmathis.com/)
+- Includes reveal.js, under the same license, Copyright (C) 2014 Hakim El Hattab, http://hakim.se
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
