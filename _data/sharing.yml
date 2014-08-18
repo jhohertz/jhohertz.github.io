@@ -7,7 +7,7 @@ provider: internal
 
 # set provider to local, and setup below items
 # Twitter
-twitter_user: joehohertz
+twitter_user:
 twitter_tweet_button: true
 
 # Google +1

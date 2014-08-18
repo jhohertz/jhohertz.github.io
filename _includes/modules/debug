@@ -1,0 +1,7 @@
+{% if include.this[0] == null %}
+"{{ include.this }}"
+{% elsif include.this.first[0] == null %}
+[ {% for item in include.this %}{% include modules/debug this=item %}{% if not forloop.last %}, {% endif %}{% endfor %} ]
+{% else %}
+{ {% for item in include.this %}{{item}}: {% include modules/debug this=item %}{% if not forloop.last %}, {% endif %}{% endfor %} }
+{% endif %}

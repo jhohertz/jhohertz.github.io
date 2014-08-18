@@ -1,0 +1,25 @@
+---
+layout: page
+#title: Debug
+index_page: true
+comments: false
+sharing: false
+---
+{% include setup %}
+<div class="debugpage">
+  <code>
+    {{ site }}
+  </code>
+  {% assign index = true %}
+  {% for post in site.posts limit: site.paginate %}
+  {% assign content = post.content %}
+    <article role="article">
+      {% include {{tt_article}} %}
+    </article>
+  {% endfor %}
+  {% if site.posts.size > site.paginate %}
+    <div class="pagination">
+      <a class="prev" href="{{ root_url }}{{ site.data.dr.archive_path }}/2">&larr; Older</a>
+    </div>
+  {% endif %}
+</div>
