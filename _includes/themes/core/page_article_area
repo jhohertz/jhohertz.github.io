@@ -3,7 +3,7 @@
   <header class="page-header">
     <h1 class="page-title">{% if site.titlecase %}{{ page.title | titlecase }}{% else %}{{ page.title }}{% endif %}</h1>
     {% if page.subtitle %}<h1 class="subheader">{{ page.subtitle }}</h1>{% endif %}
-    <!-- {% if page.date %}<p class="meta">{% include {{tt_date}}" %}{{ time }}</p>{% endif %} -->
+    <!-- {% if page.date %}<p class="meta">{% include {{tt_date}} %}{{ time }}</p>{% endif %} -->
   </header>
   {% endif %}
   {{ content }}
