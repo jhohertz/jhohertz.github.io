@@ -14,7 +14,7 @@ sharing: false
   {% for post in site.posts limit: site.paginate %}
   {% assign content = post.content %}
     <article role="article">
-      {% include theme file="article" %}
+      {% include {{tt_article}} %}
     </article>
   {% endfor %}
   {% if site.posts.size > site.paginate %}
