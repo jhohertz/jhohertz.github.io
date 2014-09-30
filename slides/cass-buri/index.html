@@ -1,0 +1,514 @@
+---
+layout: reveal_fullscreen
+title: Cassandra and Priam, deployment with Buri
+comments: false
+---
+<section>
+	<h1>Cassandra and Priam</h1>
+	<h3>Using Buri to assist deployment</h3>
+	<p>
+		<small>Presented by <a href="https://www.linkedin.com/in/joehohertz">Joe Hohertz</a> / <a href="http://twitter.com/joehohertz">@joehohertz</a></small>
+	</p>
+	<p>
+		<small>Slides @ <a href="http://jhohertz.github.io/cass-buri">http://jhohertz.github.io/cass-buri</a></small>
+	</p>
+</section>
+
+<section>
+	<section>
+		<h1>Welcome</h1>
+	</section>
+	<section>
+		<h2>Audience</h2>
+		<ol>
+			<li class="fragment">Anyone curious about Priam</li>
+			<li class="fragment">Those concerned with operation of cassandra</li>
+			<li class="fragment">Users of Amazon Web Services</li>
+			<li class="fragment">Other interested parties</li>
+		</ol>
+	</section>
+
+	<section>
+		<h2>Shameless Plug</h2>
+                <a href="http://viafoura.com/" target="_blank"><img width="1318" height="1037" data-src="img/viaplug.png" alt="Viafoura"></a>
+	</section>
+
+        <section>
+                <h2>Who am I?</h2>
+                <h3 class="fragment">Joe Hohertz</h3>
+                <ul>
+                        <li class="fragment">Been building networks/systems since 1996</li>
+                        <li class="fragment">More software development focus since 2005 </li>
+                        <li class="fragment">Specialty in open source</li>
+                        <li class="fragment">Recent focus on clould systems</li>
+                </ul>
+        </section>
+
+        <section>
+                <h2>Summary</h2>
+                <ul>
+                        <li class="fragment">Explore what Priam is, what it does</li>
+                        <li class="fragment">Challenges of deploying Priam</li>
+                        <li class="fragment">Introduction to Buri</li>
+                        <li class="fragment">Using Buri to deploy Priam</li>
+                </ul>
+        </section>
+
+	<section>
+		<h1>Let's get started!</h1>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>Priam</h1>
+	</section>
+
+	<section>
+		<h2>What is Priam?</h2>
+		<ul>
+			<li class="fragment">Co-process / Sidecar for Cassandra</li>
+			<li class="fragment">Release by Netflix as open source</li>
+			<li class="fragment">Implemented in Java, as a web application</li>
+			<li class="fragment">Assists the operation of Cassandra clusters in EC2</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>What operations does it handle?</h2>
+		<ul>
+			<li class="fragment">Manages cassandra.yml many of the cassandra.yml values</li>
+			<li class="fragment">Start/Stop of cluster nodes</li>
+			<li class="fragment">Discovery of topology info (zone) for configuring tokens</li>
+			<li class="fragment">Within cassandra, a startup handler provides seed information</li>
+			<li class="fragment">Controls bootstrap mode (with our patches)</li>
+			<li class="fragment">Backup to S3 storage, restoration of nodes</li>
+			<li class="fragment">Dead node replacements</li>
+		</ul>
+	</section>
+
+
+	<section>
+		<h2>Limitations</h2>
+		<ul>
+			<li class="fragment">Does not yet support nodes w/ vnodes (multiple tokens)</li>
+			<li class="fragment">Size growth therefore must be based on doubling clusters</li>
+			<li class="fragment">Some awkward configuration when running in VPCs in AWS</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Other challenges</h2>
+		<ul>
+			<li class="fragment">Available documentation is not up to date</li>
+			<li class="fragment">Project is a bit neglected relative to other NetflixOSS projects</li>
+			<li class="fragment">Current Netflix tree has a serious bug</li>
+			<li class="fragment">Forks outside of Netflix diverge heavily</li>
+			<li class="fragment">Very deeply rooted in 1.x Cassandra. 2.0+ challenges some of it's assumptions</li>
+			<li class="fragment">New developments seem to indicate a trend towards becoming DSE-specific</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Patches needed to run Priam sucessfully w/ C* 2.0+</h2>
+		<ul>
+			<li class="fragment">2.0+ Streaming API changes</li>
+			<li class="fragment">Cluster bootstrapping changes</li>
+			<li class="fragment">Gossipinfo REST call fixes</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>2.0+ Streaming API changes</h2>
+		<ul>
+			<li class="fragment">Affects network statistics REST call (querying streams)</li>
+			<li class="fragment">Also affects restoring backups. (initiating streams)</li>
+			<li class="fragment">Using pull request <a href="https://github.com/Netflix/Priam/pull/346">#346</a> to effect this.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Cluster bootstrap changes</h2>
+		<ul>
+			<li class="fragment">Priam attempts to set autobootstrap on every node</li>
+			<li class="fragment">In 1.x it was possible to get away with this</li>
+			<li class="fragment">2.x is much more strict about this</li>
+			<li class="fragment">We have <a href="https://github.com/jhohertz/Priam/tree/cluster_bootstrapping_2.0">modified Priam</a> to ensure the very first node does not get this set.</li>
+			<li class="fragment">Requires <a href="https://issues.apache.org/jira/browse/CASSANDRA-7650">patch to Cassandra</a> to expose auto bootstrap flag as a system property, included in 2.0.10+</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Gossip info REST call fix</h2>
+		<ul>
+			<li class="fragment">REST call meant to work like nodetool gossipinfo</li>
+			<li class="fragment">Current code in Priam corrupts the response by not breaking up the data correctly</li>
+			<li class="fragment">Causes duplicate entries for some nodes in the response</li>
+			<li class="fragment">As of <a href="https://github.com/Netflix/Priam/commit/6eb29e7649485278167f3349d66e8996ba137028">commit 6eb29e7</a> Priam started using this REST call to probe other nodes on launch to determine if it is performing a dead node replacement</li>
+			<li class="fragment">Will cause eventual failures replacing nodes, requiring manual cleanup of gossipinfo via JMX</li>
+			<li class="fragment">We have a still pending pull request, <a href="https://github.com/Netflix/Priam/pull/350">#350</a> addressing this issue.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Our Priam Fork</h2>
+		<ul>
+			<li class="fragment">We'd rather not have a fork, however...</li>
+			<li class="fragment">We wanted to have a fully patched tree that works.</li>
+			<li class="fragment">No success with getting pull requests merged so far</li>
+			<li class="fragment">Located here: <a href="https://github.com/viafoura/Priam"></a>https://github.com/viafoura/Priam</li>
+		</ul>
+	</section>
+</section>
+
+<section>
+	<section>
+		<h1>Deployment</h1>
+	</section>
+
+	<section>
+		<h2>Use of autoscale groups</h2>
+		<ul>
+			<li class="fragment">Priam requires being deployed in an auto scale group</li>
+			<li class="fragment">Not used for any aspect of "auto" scaling</li>
+			<li class="fragment">Seperate ASGs per availability zone</li>
+			<li class="fragment">Priam uses two things from the ASG:</li>
+			<ul>
+				<li class="fragment">Name, which must be composite of your cluster name and the availability zone</li>
+				<li class="fragment">Maximum instances, used to determine size of cluster</li>
+			</ul>
+		</ul>
+	</section>
+
+	<section>
+		<h2>SimpleDB for shared configuration</h2>
+		<ul>
+			<li class="fragment">Two schemas are kept for common configuration</li>
+			<li class="fragment">PriamProperties, which is both configuration of Priam itself, as well as variables it will pass to cassandra.yaml across a cluster</li>
+			<li class="fragment">InstanceIdentity, which it uses to track the state of the cluster, active/dead nodes, and token assignments</li>
+			<li class="fragment">This must be initialized prior to launching your cluster</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Immutable deployment</h2>
+		<ul>
+			<li class="fragment">How we (And Netflix) deploy Priam</li>
+			<li class="fragment">What is it?</li>
+			<li class="fragment">Machine images are generated via a build process</li>
+			<li class="fragment">Live machines are never updated directly</li>
+			<li class="fragment">Build a new machine image, deploy, cut over</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Aminator</h2>
+		<ul>
+			<li class="fragment">tool for working with EC2 AMIs</li>
+			<li class="fragment">mounts volume from existing EBS AMI's underlying snapshot</li>
+			<li class="fragment">runs a provisioner within chroot of mount point</li>
+			<li class="fragment">unmounts and snapshot the volume</li>
+			<li class="fragment">register new AMI against the new snapshot</li>
+			<li class="fragment">bring your own base AMIs</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Layered AMI generation</h2>
+		<ul>
+			<li class="fragment">Foundation: Very close to a vanilla install of the OS</li>
+			<li class="fragment">Base: Local additions to the foundation AMI, things you want everywhere</li>
+			<li class="fragment">Role-specific: Run against the base, for a particular application</li>
+			<li class="fragment">Why?</li>
+			<li class="fragment">Consistency + Speed in generating final role AMIs</li>
+		</ul>
+	</section>
+
+</section>
+
+<section>
+	<section>
+		<h1>Buri</h1>
+	</section>
+
+	<section>
+		<h2>What is Buri?</h2>
+		<ul>
+			<li class="fragment">Implemented mostly in Ansible</li>
+			<li class="fragment">Python-based wrapper to simplify use, provide some additional functions</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Features of Buri</h2>
+		<ul>
+			<li class="fragment">Uses Ansible to provide a collection of roles useful for NetflixOSS work</li>
+			<li class="fragment">Allows "installation" of Ubuntu as a foundation AMI</li>
+			<li class="fragment">Provides templated approach to role definitions webapps under Jetty, and JSVC-compatible java daemons</li>
+			<li class="fragment">Support for binary or source-based installations from git for most roles</li>
+			<li class="fragment">Has it's own Aminator-like provisioning, with different strengths and weaknesses</li>
+			<li class="fragment">Early version of an <a href="https://github.com/aminator-plugins/buri-provisioner">Aminator plugin</a> to use Buri as the povisioner is available</li>
+			<li class="fragment">Provides off-cloud all-in-one demonstation roles for Flux Capacitor and Netflix RSS Recipes</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Differences between Aminator and Buri's AMI generation features</h2>
+		<ul>
+			<li class="fragment">Aminator has better support for running concurrent jobs. Buri has basic protections, but lacks hard locking due to limitations in Ansible</li>
+			<li class="fragment">Buri supports the historical no-partition volumes, as well as normal partitioned systems, for all machine types. Aminator does not current support partitioned volumes.</li>
+			<li class="fragment">Buri can register all combinations of HVM/PVM machine AMI, and S3/EBS root storage as a part of a single run. Aminator requires seperate jobs to be run.</li>
+			<li class="fragment">Using Buri's provisioner directly may be more convenient when developing roles, and Aminator with the plugin used for the "real" production bound generations.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Differences between NetflixOSS-Ansible, and Buri's role library</h2>
+		<ul>
+			<li class="fragment">Some roles are directly carried over and enhanced (Ice, Asgard, Edda)</li>
+			<li class="fragment">Buri only currently targets Ubuntu LTS releases, NetflixOSS-Ansible targets Amazon Linux as well</li>
+			<li class="fragment">Many new roles in Buri (Exhibitor, Priam, Flux Capacitor demo)</li>
+			<li class="fragment">Focus in Buri on both EC2 and local development VM deployment</li>
+			<li class="fragment">Buri biases access controls to be handled via IAM, vs. using API keys</li>
+		</ul>
+	</section>
+
+</section>
+
+<section>
+	<section>
+		<h1>Using Buri</h1>
+	</section>
+
+	<section>
+		<h2>Overview</h2>
+		<ul>
+			<li class="fragment">Initial look at demo on Local VM via Vagrant</li>
+			<li class="fragment">Configuring Buri for your EC2 environment</li>
+			<li class="fragment">Bootstrapping a build environment in EC2</li>
+			<li class="fragment">Creating a foundation AMI</li>
+			<li class="fragment">Creating a base AMI</li>
+			<li class="fragment">Creating a builder role AMI</li>
+			<li class="fragment">Creating a other AMI roles</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Requirements for local VM / Bootstrap</h2>
+		<ul>
+			<li class="fragment">Ansible 1.6.x</li>
+			<li class="fragment">For local VMs: JDK, Oracle VirtualBox, Vagrant, 8+GB RAM on workstation</li>
+			<li class="fragment">git</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Launch all-in-one Flux Capacitor demo</h2>
+                <pre><code data-trim contenteditable>
+# checkout Buri
+git clone -b develop https://github.com/viafoura/buri
+cd buri
+
+# add vagrant plugin requirement
+vagrant plugin install vagrant-host-shell
+
+# launch and provision!
+vagrant up
+                </code></pre>
+	</section>
+
+	<section>
+		<h2>Configure Buri for YOUR EC2 environment</h2>
+                <pre><code data-trim contenteditable>
+# In Buri checkout
+mkdir local                    # only needed if you never ran the VM above
+
+# Copy default configurations as starting point
+cp -rv etc/inventory local/
+
+# Edit variables for target environment (we will use "test")
+vi local/inventory/group_vars/test
+
+# Uncomment the environment line and set default to test:
+vi etc/buri.cfg
+                </code></pre>
+		<ul>
+			<li class="fragment">Account numbers, S3 buckets, are the first things to modify</li>
+			<li class="fragment">You should commit local folder to a *private* repository, or manage in some other manner</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Bootstrapping a build node</h2>
+		<ul>
+			<li class="fragment">Setup an IAM role using policies/aminator.sample as template (modify S3 bucket reference to match what you created)</li>
+			<li class="fragment">Launch an official Ubuntu AMI with the AMI role assigned</li>
+			<li class="fragment">From your workstation with Buri:</li>
+		</ul>
+                <pre><code data-trim contenteditable>
+# In Buri checkout
+./buri --environment test buildhost HOSTNAME
+
+# Pre-installed Buri is WIP, ignore for now, copy w/ local folder from workstation
+scp -r . ubuntu@HOSTNAME:buri
+
+# login to node and use it from here on
+ssh ubuntu@HOSTNAME
+cd buri
+                </code></pre>
+	</section>
+
+	<section>
+		<h2>Create foundation AMI</h2>
+                <pre><code data-trim contenteditable>
+# From buri folder on bootstrapped host:
+sudo ./buri foundation
+                </code></pre>
+		<ul>
+			<li class="fragment">Make note of the EBS/PVM AMI ID, which is always used for re-snapshotting against an image</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Derive base AMI from foundation</h2>
+                <pre><code data-trim contenteditable>
+# From buri folder on bootstrapped host:
+sudo ./buri resnap FOUNDATION-AMI-ID base
+                </code></pre>
+		<ul>
+			<li class="fragment">Make note of the EBS/PVM AMI ID, which most roles will use as the base to provision upon</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Derive builder AMI from base</h2>
+		<ul>
+			<li class="fragment">Recreates same build environment you are using now so it can be directly started</li>
+			<li class="fragment">Eventually you want to boot it and shutdown the bootstrap node, but for now you can keep using it</li>
+		</ul>
+                <pre><code data-trim contenteditable>
+# From buri folder on bootstrapped host:
+sudo ./buri resnap BASE-AMI-ID aminator
+                </code></pre>
+	</section>
+
+
+</section>
+
+<section>
+	<section>
+		<h1>Using Buri to Deploy Priam</h1>
+	</section>
+
+	<section>
+		<h2>Priam Configuration (environment group_vars)</h2>
+                <pre><code data-trim contenteditable>
+                </code></pre>
+# Key variables for Priam:
+
+# Set this true unless in a VPC in a single region
+priam_multiregion_enable: true
+# How Priam reports cluster member to eachother changes in a VPC, this is the signal to do so
+priam_vpc: true
+# Ec2MultiRegionSnitch recommended always, unless in a VPC, single region, set to Ec2Snitch
+priam_endpoint_snitch: "org.apache.cassandra.locator.Ec2Snitch"
+# This must be set to zones you wish to use (usually 3 per region, but which may vary depending on account)
+# i.e. "us-east-1a,us-east-1c,us-west-1a,us-west-1b,us-west-1c" or "us-east-1c,us-east-1d"
+priam_zones_available: "us-east-1a,us-east-1d"
+# If you want backups, set this variable to the name of an s3 bucket you have created.
+priam_s3_bucket: "SET_ME_PLEASE"
+	</section>
+
+	<section>
+		<h2>Derive Priam AMI from base</h2>
+		<ul>
+			<li class="fragment">Cluster names are special, specified from command line, as they can be used for generating several AMIs with small config difference if you like/need.</li>
+			<li class="fragment">Role is special, in that it will also setup the SimpleDB entities if needed, for running Priam, as the image is generated.</li>
+		</ul>
+                <pre><code data-trim contenteditable>
+# From buri folder on bootstrapped host:
+sudo ./buri --cluster-name your-name resnap BASE-AMI-ID priam
+                </code></pre>
+	</section>
+
+	<section>
+		<h2>Setup S3/IAM role for Priam</h2>
+		<ul>
+			<li class="fragment">Setup an IAM role using policies/priam.sample as template</li>
+			<li class="fragment">Modify S3 bucket reference to match what you create for the purpose</li>
+			<li class="fragment">Note that you can use same bucket for multiple clusters</li>
+		</ul>
+	</section>
+
+
+	<section>
+		<h2>Create security group for Priam cluster</h2>
+		<ul>
+			<li class="fragment">Need a security group per cluster name</li>
+			<li class="fragment">Names are important, Buri convention is priam-CLUSTER-NAME</li>
+			<li class="fragment">All members of the group should be able to talk to all others in group on TCP 1024-65535</li>
+			<li class="fragment">Client port access (CQL, Thrift, etc)</li>
+			<li class="fragment">Other admin access per your conventions</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Create launch configuration for autoscale groups</h2>
+		<ul>
+			<li class="fragment">Launch configuration should specify the Priam AMI, IAM role, security group.</li>
+			<li class="fragment">If running in a non-default VPC, ensure assign public IP is selected.</li>
+			<li class="fragment">Ensure all the ephemeral storage is activated in the config.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>Create per-zone autoscale groups</h2>
+		<ul>
+			<li class="fragment">Each uses same launch configuration</li>
+			<li class="fragment">Names MUST be the cluster name, a dash, and the zone name stripped of it's dashes</li>
+			<li class="fragment">EG: if your cluster is name mycluster, and you are using us-east only, in zones b, d, and e, you would need ASG named:</li>
+			<ul>
+				<li class="fragment">mycluster-useast1b</li>
+				<li class="fragment">mycluster-useast1d</li>
+				<li class="fragment">mycluster-useast1e</li>
+			</ul>
+			<li class="fragment">Only set ASG size to one instance for now, do not set rules for automatic size changes</li>
+			<li class="fragment">Once complete, you should see 3 instances launching</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>What happens as it comes online</h2>
+		<ul>
+			<li class="fragment">If there is more than 1 ephemeral drive available, they will be striped into a single volume on /mnt. Depending on size of storage, this may take some time.</li>
+			<li class="fragment">First node Priam comes up on will see no other seeds, and disable auto bootstrap to initialize the first node of the ring.</li>
+			<li class="fragment">Subsequent nodes will see seeds available, and auto bootstrap into the ring using those seeds.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>What to do from here?</h2>
+		<ul>
+			<li class="fragment">Double the ring as needed to scale cluster (Make REST call, expand ASG size)</li>
+			<li class="fragment">Load dummy data with cassandra-stress, specifying replication factor >1.... kill nodes one at a time, observe that replacement comes online, and streams data to itself on joining.</li>
+			<li class="fragment">Check S3, which should be getting SSTables backed up in near real-time</li>
+			<li class="fragment">Setup Expiration/Glacier policies on S3 bucket</li>
+		</ul>
+	</section>
+
+</section>
+
+<section>
+	<section>
+		<h2>Resources:</h2>
+		<ul>
+			<li class=fragment><a href="http://netflix.github.io/">NetflixOSS Homepage</a></li>
+			<li class=fragment><a href="https://github.com/netflix/Priam">Priam Github Home</a></li>
+			<li class=fragment><a href="http://techblog.netflix.com/2012/02/announcing-priam.html">Netflix Blog post about Priam (2012)</a></li>
+		<ul>
+	</section>
+</section>
+
+<section>
+	<h1>THE END</h1>
+</section>
