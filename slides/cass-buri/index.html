@@ -402,21 +402,22 @@ sudo ./buri resnap BASE-AMI-ID aminator
 	</section>
 
 	<section>
-		<h2>Priam Configuration (environment group_vars)</h2>
+		<h2>Priam Configuration</h2>
                 <pre class="fragment"><code data-trim contenteditable>
 # Key variables for Priam:
 
 # Set this true unless in a VPC in a single region
 priam_multiregion_enable: true
-# How Priam reports cluster member to eachother changes in a VPC, this is the signal to do so
+
+# How Priam reports cluster members to eachother changes in a VPC
 priam_vpc: true
+
 # Ec2MultiRegionSnitch recommended always, unless in a VPC, single region, set to Ec2Snitch
 priam_endpoint_snitch: "org.apache.cassandra.locator.Ec2Snitch"
-# This must be set to zones you wish to use (usually 3 per region, but which may vary depending on account)
-# i.e. "us-east-1a,us-east-1c,us-west-1a,us-west-1b,us-west-1c" or "us-east-1c,us-east-1d"
-priam_zones_available: "us-east-1a,us-east-1d"
-# If you want backups, set this variable to the name of an s3 bucket you have created.
-priam_s3_bucket: "SET_ME_PLEASE"
+
+priam_zones_available: "us-east-1a,us-east-1d,us-east-1e"
+
+priam_s3_bucket: "your_s3_bucket/some_optional_path"
                 </code></pre>
 	</section>
 
@@ -426,7 +427,7 @@ priam_s3_bucket: "SET_ME_PLEASE"
 			<li class="fragment">Cluster names are special, specified from command line, as they can be used for generating several AMIs with small config difference if you like/need.</li>
 			<li class="fragment">Role is special, in that it will also setup the SimpleDB entities if needed, for running Priam, as the image is generated.</li>
 		</ul>
-                <pre><code data-trim contenteditable>
+                <pre class="fragment"><code data-trim contenteditable>
 # From buri folder on bootstrapped host:
 sudo ./buri --cluster-name your-name resnap BASE-AMI-ID priam
                 </code></pre>
