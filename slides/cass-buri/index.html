@@ -68,7 +68,7 @@ comments: false
 		<h2>What is Priam?</h2>
 		<ul>
 			<li class="fragment">Co-process / Sidecar for Cassandra</li>
-			<li class="fragment">Release by Netflix as open source</li>
+			<li class="fragment">Released by Netflix as open source</li>
 			<li class="fragment">Implemented in Java, as a web application</li>
 			<li class="fragment">Assists the operation of Cassandra clusters in EC2</li>
 		</ul>
@@ -77,9 +77,9 @@ comments: false
 	<section>
 		<h2>What operations does it handle?</h2>
 		<ul>
-			<li class="fragment">Manages cassandra.yml many of the cassandra.yml values</li>
-			<li class="fragment">Start/Stop of cluster nodes</li>
-			<li class="fragment">Discovery of topology info (zone) for configuring tokens</li>
+			<li class="fragment">Manages many of the cassandra.yml values</li>
+			<li class="fragment">Start/Stop of cassandra processes</li>
+			<li class="fragment">Discovery of topology info for configuring tokens</li>
 			<li class="fragment">Within cassandra, a startup handler provides seed information</li>
 			<li class="fragment">Controls bootstrap mode (with our patches)</li>
 			<li class="fragment">Backup to S3 storage, restoration of nodes</li>
@@ -91,7 +91,7 @@ comments: false
 	<section>
 		<h2>Limitations</h2>
 		<ul>
-			<li class="fragment">Does not yet support nodes w/ vnodes (multiple tokens)</li>
+			<li class="fragment">Does not yet support vnodes (multiple tokens)</li>
 			<li class="fragment">Size growth therefore must be based on doubling clusters</li>
 			<li class="fragment">Some awkward configuration when running in VPCs in AWS</li>
 		</ul>
@@ -130,9 +130,9 @@ comments: false
 	<section>
 		<h2>Cluster bootstrap changes</h2>
 		<ul>
-			<li class="fragment">Priam attempts to set autobootstrap on every node</li>
+			<li class="fragment">Priam attempts to set auto bootstrap on every node</li>
 			<li class="fragment">In 1.x it was possible to get away with this</li>
-			<li class="fragment">2.x is much more strict about this</li>
+			<li class="fragment">2.x is more strict</li>
 			<li class="fragment">We have <a href="https://github.com/jhohertz/Priam/tree/cluster_bootstrapping_2.0">modified Priam</a> to ensure the very first node does not get this set.</li>
 			<li class="fragment">Requires <a href="https://issues.apache.org/jira/browse/CASSANDRA-7650">patch to Cassandra</a> to expose auto bootstrap flag as a system property, included in 2.0.10+</li>
 		</ul>
@@ -156,7 +156,7 @@ comments: false
 			<li class="fragment">We'd rather not have a fork, however...</li>
 			<li class="fragment">We wanted to have a fully patched tree that works.</li>
 			<li class="fragment">No success with getting pull requests merged so far</li>
-			<li class="fragment">Located here: <a href="https://github.com/viafoura/Priam"></a>https://github.com/viafoura/Priam</li>
+			<li class="fragment">Located here: <a href="https://github.com/viafoura/Priam">https://github.com/viafoura/Priam</a></li>
 		</ul>
 	</section>
 </section>
@@ -204,12 +204,13 @@ comments: false
 	<section>
 		<h2>Aminator</h2>
 		<ul>
-			<li class="fragment">tool for working with EC2 AMIs</li>
-			<li class="fragment">mounts volume from existing EBS AMI's underlying snapshot</li>
-			<li class="fragment">runs a provisioner within chroot of mount point</li>
-			<li class="fragment">unmounts and snapshot the volume</li>
-			<li class="fragment">register new AMI against the new snapshot</li>
-			<li class="fragment">bring your own base AMIs</li>
+			<li class="fragment">Tool for working with EC2 AMIs</li>
+			<li class="fragment">Mounts volume from an existing EBS AMI's underlying snapshot</li>
+			<li class="fragment">Runs a provisioner within chroot of mount point</li>
+			<li class="fragment">Unmounts and snapshots the volume</li>
+			<li class="fragment">Registers new AMI against the new snapshot</li>
+			<li class="fragment">Built in provisioners for APT/YUM installations</li>
+			<li class="fragment">Bring your own base AMIs</li>
 		</ul>
 	</section>
 
@@ -244,7 +245,7 @@ comments: false
 		<ul>
 			<li class="fragment">Uses Ansible to provide a collection of roles useful for NetflixOSS work</li>
 			<li class="fragment">Allows "installation" of Ubuntu as a foundation AMI</li>
-			<li class="fragment">Provides templated approach to role definitions webapps under Jetty, and JSVC-compatible java daemons</li>
+			<li class="fragment">Provides templated approach to role definitions for webapps under Jetty, and JSVC-compatible java daemons</li>
 			<li class="fragment">Support for binary or source-based installations from git for most roles</li>
 			<li class="fragment">Has it's own Aminator-like provisioning, with different strengths and weaknesses</li>
 			<li class="fragment">Early version of an <a href="https://github.com/aminator-plugins/buri-provisioner">Aminator plugin</a> to use Buri as the povisioner is available</li>
@@ -304,7 +305,7 @@ comments: false
 
 	<section>
 		<h2>Launch all-in-one Flux Capacitor demo</h2>
-                <pre><code data-trim contenteditable>
+                <pre class="fragment"><code data-trim contenteditable>
 # checkout Buri
 git clone -b develop https://github.com/viafoura/buri
 cd buri
@@ -319,7 +320,7 @@ vagrant up
 
 	<section>
 		<h2>Configure Buri for YOUR EC2 environment</h2>
-                <pre><code data-trim contenteditable>
+                <pre class="fragment"><code data-trim contenteditable>
 # In Buri checkout
 mkdir local                    # only needed if you never ran the VM above
 
@@ -345,7 +346,7 @@ vi etc/buri.cfg
 			<li class="fragment">Launch an official Ubuntu AMI with the AMI role assigned</li>
 			<li class="fragment">From your workstation with Buri:</li>
 		</ul>
-                <pre><code data-trim contenteditable>
+                <pre class="fragment"><code data-trim contenteditable>
 # In Buri checkout
 ./buri --environment test buildhost HOSTNAME
 
@@ -360,7 +361,7 @@ cd buri
 
 	<section>
 		<h2>Create foundation AMI</h2>
-                <pre><code data-trim contenteditable>
+                <pre class="fragment"><code data-trim contenteditable>
 # From buri folder on bootstrapped host:
 sudo ./buri foundation
                 </code></pre>
@@ -371,7 +372,7 @@ sudo ./buri foundation
 
 	<section>
 		<h2>Derive base AMI from foundation</h2>
-                <pre><code data-trim contenteditable>
+                <pre class="fragment"><code data-trim contenteditable>
 # From buri folder on bootstrapped host:
 sudo ./buri resnap FOUNDATION-AMI-ID base
                 </code></pre>
@@ -386,7 +387,7 @@ sudo ./buri resnap FOUNDATION-AMI-ID base
 			<li class="fragment">Recreates same build environment you are using now so it can be directly started</li>
 			<li class="fragment">Eventually you want to boot it and shutdown the bootstrap node, but for now you can keep using it</li>
 		</ul>
-                <pre><code data-trim contenteditable>
+                <pre class="fragment"><code data-trim contenteditable>
 # From buri folder on bootstrapped host:
 sudo ./buri resnap BASE-AMI-ID aminator
                 </code></pre>
@@ -402,8 +403,7 @@ sudo ./buri resnap BASE-AMI-ID aminator
 
 	<section>
 		<h2>Priam Configuration (environment group_vars)</h2>
-                <pre><code data-trim contenteditable>
-                </code></pre>
+                <pre class="fragment"><code data-trim contenteditable>
 # Key variables for Priam:
 
 # Set this true unless in a VPC in a single region
@@ -417,6 +417,7 @@ priam_endpoint_snitch: "org.apache.cassandra.locator.Ec2Snitch"
 priam_zones_available: "us-east-1a,us-east-1d"
 # If you want backups, set this variable to the name of an s3 bucket you have created.
 priam_s3_bucket: "SET_ME_PLEASE"
+                </code></pre>
 	</section>
 
 	<section>
